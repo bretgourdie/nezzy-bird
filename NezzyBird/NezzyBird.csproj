@@ -42,7 +42,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Components\Bird.cs" />
+    <Compile Include="Components\AffectedByGravity.cs" />
+    <Compile Include="Components\DisplaysNumber.cs" />
+    <Compile Include="Components\EndsGameOnCollision.cs" />
+    <Compile Include="Components\IncreasesScoreWhenPassing.cs" />
+    <Compile Include="Components\JumpsOnTap.cs" />
+    <Compile Include="Components\ScrollingLeft.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
