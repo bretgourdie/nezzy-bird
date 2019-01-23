@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using NezzyBird.Components;
 
@@ -21,6 +22,7 @@ namespace NezzyBird
 
             var scene = Scene.createWithDefaultRenderer(Color.CornflowerBlue);
 
+            var birdTexture = this.Content.Load<Texture2D>("Textures/birdflap1");
             var bird = new Entity();
             bird.addComponent(new AffectedByGravity());
             bird.addComponent(new JumpsOnTap());
