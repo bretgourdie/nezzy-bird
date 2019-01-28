@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
-using NezzyBird.Components;
 using NezzyBird.Entities;
 
 namespace NezzyBird
@@ -26,7 +25,6 @@ namespace NezzyBird
             var birdTexture = this.Content.Load<Texture2D>("Textures/birdflap1");
 
             var bird = new Bird(birdTexture);
-            bird.transform.setLocalPosition(new Vector2(200, 200));
             scene.addEntity(bird);
 
             Core.scene = scene;

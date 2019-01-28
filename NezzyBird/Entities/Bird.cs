@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
 using NezzyBird.Components;
@@ -13,6 +14,8 @@ namespace NezzyBird.Entities
             addComponent(sprite);
             addComponent(new AffectedByGravity());
             addComponent(new JumpsOnTap());
+
+            this.position = new Vector2(200, 200);
         }
     }
 }
