@@ -15,6 +15,8 @@ namespace NezzyBird.Entities
             addComponent(new AffectedByGravity());
             addComponent(new JumpsOnTap());
 
+            this.scale = new Vector2(3, 3);
+
             this.position = new Vector2(200, 200);
         }
     }
