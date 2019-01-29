@@ -22,7 +22,7 @@ namespace NezzyBird
 
             var scene = Scene.createWithDefaultRenderer(Color.CornflowerBlue);
 
-            var birdTexture = this.Content.Load<Texture2D>("Textures/birdflap1");
+            var birdTexture = this.Content.Load<Texture2D>("Textures/Atlas/birdflap1");
 
             var bird = new Bird(birdTexture);
             scene.addEntity(bird);
