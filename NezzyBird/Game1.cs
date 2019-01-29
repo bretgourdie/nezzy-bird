@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
+using Nez.TextureAtlases;
 using NezzyBird.Entities;
 
 namespace NezzyBird
@@ -22,9 +23,9 @@ namespace NezzyBird
 
             var scene = Scene.createWithDefaultRenderer(Color.CornflowerBlue);
 
-            var birdTexture = this.Content.Load<Texture2D>("Textures/Atlas/birdflap1");
+            var textureAtlas = Content.Load<TextureAtlas>("Textures/TextureAtlas");
 
-            var bird = new Bird(birdTexture);
+            var bird = new Bird(textureAtlas);
             scene.addEntity(bird);
 
             Core.scene = scene;
