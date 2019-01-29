@@ -31,7 +31,12 @@
 
 #begin Textures/TextureAtlas.xml
 /importer:XmlImporter
-/processor:PassThroughProcessor
+/processor:TextureAtlasProcessor
+/processorParam:compressTexture=False
+/processorParam:animationFPS=10
+/processorParam:flattenPaths=True
+/processorParam:colorKeyColor=0,0,0,0
+/processorParam:colorKeyEnabled=False
 /build:Textures/TextureAtlas.xml
 
 #begin Textures/Atlas/BirdAnimation/birdflap1_0.png
