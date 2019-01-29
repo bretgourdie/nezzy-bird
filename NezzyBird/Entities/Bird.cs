@@ -12,7 +12,7 @@ namespace NezzyBird.Entities
         public Bird(TextureAtlas textureAtlas)
         {
             var birdAnimation = textureAtlas.getSpriteAnimation("BirdAnimation");
-            var birdIdleSubtexture = textureAtlas.getSubtexture("BirdAnimation/birdflap1_2");
+            var birdIdleSubtexture = textureAtlas.getSubtexture("birdflap1_2");
             addComponent(new Sprite(birdIdleSubtexture.texture2D));
             addComponent(new AffectedByGravity());
             addComponent(new JumpsOnTap());
