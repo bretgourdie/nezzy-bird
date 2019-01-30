@@ -9,12 +9,13 @@ namespace NezzyBird.Entities
 {
     public class Bird : Entity
     {
+        private const float GRAVITY_WEIGHT = 0.25f;
         public Bird(TextureAtlas textureAtlas)
         {
             var lastSpriteName = textureAtlas.regionNames.lastItem();
             var birdIdleSprite = textureAtlas.getSubtexture(lastSpriteName);
             addComponent(new Sprite(birdIdleSprite));
-            addComponent(new AffectedByGravity());
+            addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
             addComponent(new JumpsOnTap());
 
             this.scale = new Vector2(3, 3);

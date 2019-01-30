@@ -4,6 +4,11 @@ namespace NezzyBird.Components
 {
     public class AffectedByGravity : Component
     {
-        private const float gravitationalPull = 0.25f;
+        private readonly float _gravitationalPull;
+
+        public AffectedByGravity(float gravitationalPull)
+        {
+            _gravitationalPull = gravitationalPull;
+        }
     }
 }
