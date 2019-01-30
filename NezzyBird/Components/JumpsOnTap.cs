@@ -4,6 +4,11 @@ namespace NezzyBird.Components
 {
     public class JumpsOnTap : Component
     {
-        public const float jumpAmount = 2.5f;
+        private readonly float _jumpAmount;
+
+        public JumpsOnTap(float jumpAmount)
+        {
+            _jumpAmount = jumpAmount;
+        }
     }
 }
