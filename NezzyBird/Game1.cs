@@ -10,6 +10,14 @@ namespace NezzyBird
     /// </summary>
     public class Game1 : Nez.Core
     {
+        private const int spriteWidth = 144;
+        private const int spriteHeight = 256;
+
+        public Game1() : base(
+            width: spriteWidth * GameConstants.SPRITE_SCALE_FACTOR,
+            height: spriteHeight * GameConstants.SPRITE_SCALE_FACTOR,
+            windowTitle: GameConstants.GAME_NAME) { }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic

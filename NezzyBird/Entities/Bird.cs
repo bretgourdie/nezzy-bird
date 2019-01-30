@@ -19,7 +19,9 @@ namespace NezzyBird.Entities
             addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
             addComponent(new JumpsOnTap(JUMP_HEIGHT));
 
-            this.scale = new Vector2(3, 3);
+            this.scale = new Vector2(
+                GameConstants.SPRITE_SCALE_FACTOR,
+                GameConstants.SPRITE_SCALE_FACTOR);
 
             this.position = new Vector2(200, 200);
         }
