@@ -23,20 +23,5 @@ namespace NezzyBird.Entities
 
             this.position = new Vector2(200, 200);
         }
-
-        public Vector2 getBirdStart()
-        {
-            return new Vector2(150, 263);
-        }
-
-        public Vector2 getBirdSize()
-        {
-            return new Vector2(17, 12);
-        }
-
-        public Vector2 getBirdPadding()
-        {
-            return new Vector2(1, 1);
-        }
     }
 }
