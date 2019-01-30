@@ -1,5 +1,4 @@
-﻿using System;
-using Nez;
+﻿using Nez;
 
 namespace NezzyBird.Components
 {
