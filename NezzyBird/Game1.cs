@@ -10,12 +10,12 @@ namespace NezzyBird
     /// </summary>
     public class Game1 : Nez.Core
     {
-        private const int spriteWidth = 144;
-        private const int spriteHeight = 256;
+        private const int screenHeight = 256;
+        private const int screenWidth = 144;
 
         public Game1() : base(
-            width: spriteWidth * GameConstants.SPRITE_SCALE_FACTOR,
-            height: spriteHeight * GameConstants.SPRITE_SCALE_FACTOR,
+            width: screenWidth * GameConstants.SPRITE_SCALE_FACTOR,
+            height: screenHeight * GameConstants.SPRITE_SCALE_FACTOR,
             windowTitle: GameConstants.GAME_NAME) { }
 
         /// <summary>
@@ -32,7 +32,10 @@ namespace NezzyBird
 
             var textureAtlas = Content.Load<TextureAtlas>("Textures/TextureAtlas");
 
+            var background = new Background(textureAtlas);
             var bird = new Bird(textureAtlas);
+
+            scene.addEntity(background);
             scene.addEntity(bird);
 
             Core.scene = scene;
