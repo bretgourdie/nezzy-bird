@@ -48,6 +48,7 @@
     <Compile Include="Components\IncreasesScoreWhenPassing.cs" />
     <Compile Include="Components\JumpsOnTap.cs" />
     <Compile Include="Components\ScrollingLeft.cs" />
+    <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameConstants.cs" />
