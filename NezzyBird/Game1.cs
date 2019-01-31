@@ -10,12 +10,9 @@ namespace NezzyBird
     /// </summary>
     public class Game1 : Nez.Core
     {
-        private const int screenHeight = 256;
-        private const int screenWidth = 144;
-
         public Game1() : base(
-            width: screenWidth * GameConstants.SPRITE_SCALE_FACTOR,
-            height: screenHeight * GameConstants.SPRITE_SCALE_FACTOR,
+            width: (int)GameConstants.GetScreenBounds().X,
+            height: (int)GameConstants.GetScreenBounds().Y,
             windowTitle: GameConstants.GAME_NAME) { }
 
         /// <summary>

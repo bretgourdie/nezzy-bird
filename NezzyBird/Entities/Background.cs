@@ -17,9 +17,7 @@ namespace NezzyBird.Entities
 
             this.scale = GameConstants.GetGameScale();
 
-            var middleOfScreen = new Vector2(
-                backgroundSprite.width / 2,
-                backgroundSprite.height / 2);
+            var middleOfScreen = GameConstants.GetScreenBounds() / 2;
             this.setPosition(middleOfScreen);
         }
     }
