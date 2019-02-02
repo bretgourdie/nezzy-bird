@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Nez;
 using Nez.TextureAtlases;
 using NezzyBird.Entities;
@@ -16,6 +17,9 @@ namespace NezzyBird.Scenes
 
             this.addEntity(background);
             this.addEntity(bird);
+
+            var renderer = new DefaultRenderer();
+            renderer.renderTargetClearColor = Color.CornflowerBlue;
 
             this.addRenderer(new DefaultRenderer());
         }
