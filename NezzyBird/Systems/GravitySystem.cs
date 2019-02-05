@@ -14,7 +14,8 @@ namespace NezzyBird.Systems
                 {
                     typeof(AffectedByGravity),
                     typeof(JumpsOnTap),
-                    typeof(Mover)
+                    typeof(Mover),
+                    typeof(HasVelocity)
                 });
 
             return matcher;
@@ -27,12 +28,23 @@ namespace NezzyBird.Systems
             var gravity = entity.getComponent<AffectedByGravity>();
             var jump = entity.getComponent<JumpsOnTap>();
             var mover = entity.getComponent<Mover>();
+            var velocity = entity.getComponent<HasVelocity>();
 
-            var velocity = new Vector2();
-            velocity.Y = gravity.GravitationalPull - jump.GetJumpAmount();
+            if (jump.IsJumping)
+            {
+                velocity.CurrentVelocity = new Vector2(0, -jump.GetJumpAmount());
+            }
 
-            CollisionResult collisionResult;
-            mover.move(velocity, out collisionResult);
+            else
+            {
+                velocity.CurrentVelocity =
+                    new Vector2(
+                        velocity.CurrentVelocity.X,
+                        velocity.CurrentVelocity.Y + gravity.GravitationalPull);
+            }
+
+            var collisionResult = new CollisionResult();
+            mover.move(velocity.CurrentVelocity, out collisionResult);
         }
     }
 }

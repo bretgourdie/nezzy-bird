@@ -10,7 +10,7 @@ namespace NezzyBird.Entities
     public class Bird : Entity
     {
         private const float GRAVITY_WEIGHT = 0.25f;
-        private const float JUMP_HEIGHT = 2.5f;
+        private const float JUMP_HEIGHT = 4.5f;
 
         public Bird(TextureAtlas textureAtlas)
         {
@@ -20,6 +20,7 @@ namespace NezzyBird.Entities
             addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
             addComponent(new JumpsOnTap(JUMP_HEIGHT));
             addComponent(new Mover());
+            addComponent(new HasVelocity());
 
             this.scale = GameConstants.GetGameScale();
 
