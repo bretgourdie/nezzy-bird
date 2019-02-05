@@ -6,6 +6,7 @@ namespace NezzyBird.Components
     public class JumpsOnTap : Component, IUpdatable
     {
         private readonly float _jumpAmount;
+        public bool IsJumping { get; set; }
 
         private VirtualButton _jumpButton;
 
@@ -28,10 +29,12 @@ namespace NezzyBird.Components
 
         public void update()
         {
-            if (_jumpButton.isPressed)
-            {
-                Nez.Debug.log("you just jumped!");
-            }
+            IsJumping = _jumpButton.isPressed;
+        }
+
+        public float GetJumpAmount()
+        {
+            return IsJumping ? _jumpAmount : 0;
         }
     }
 }

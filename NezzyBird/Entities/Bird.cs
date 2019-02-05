@@ -2,6 +2,7 @@
 using Nez;
 using Nez.Sprites;
 using Nez.TextureAtlases;
+using Nez.Tiled;
 using NezzyBird.Components;
 
 namespace NezzyBird.Entities
@@ -18,6 +19,7 @@ namespace NezzyBird.Entities
             addComponent(new Sprite(birdIdleSprite));
             addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
             addComponent(new JumpsOnTap(JUMP_HEIGHT));
+            addComponent(new Mover());
 
             this.scale = GameConstants.GetGameScale();
 

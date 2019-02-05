@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Nez;
 using Nez.TextureAtlases;
 using NezzyBird.Entities;
+using NezzyBird.Systems;
 
 namespace NezzyBird.Scenes
 {
@@ -22,6 +23,9 @@ namespace NezzyBird.Scenes
             renderer.renderTargetClearColor = Color.CornflowerBlue;
 
             this.addRenderer(new DefaultRenderer());
+
+            var gravitySystem = new GravitySystem();
+            this.addEntityProcessor(gravitySystem);
         }
     }
 }
