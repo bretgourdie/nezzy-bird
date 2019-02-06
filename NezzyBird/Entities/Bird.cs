@@ -9,8 +9,8 @@ namespace NezzyBird.Entities
 {
     public class Bird : Entity
     {
-        private const float GRAVITY_WEIGHT = 0.25f;
-        private const float JUMP_HEIGHT = 4.5f;
+        public static readonly float GRAVITY_WEIGHT = 0.25f;
+        public static readonly float JUMP_HEIGHT = 4.5f;
 
         public Bird(TextureAtlas textureAtlas)
         {
