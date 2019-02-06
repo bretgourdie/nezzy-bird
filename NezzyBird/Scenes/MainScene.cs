@@ -19,8 +19,7 @@ namespace NezzyBird.Scenes
             this.addEntity(background);
             this.addEntity(bird);
 
-            var renderer = new DefaultRenderer();
-            renderer.renderTargetClearColor = Color.CornflowerBlue;
+            var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
 
             this.addRenderer(new DefaultRenderer());
 
