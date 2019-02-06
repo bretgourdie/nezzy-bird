@@ -17,73 +17,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Textures/spritesheet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/spritesheet.png
-
-#begin Textures/TextureAtlas.xml
-/importer:XmlImporter
-/processor:TextureAtlasProcessor
-/processorParam:compressTexture=False
-/processorParam:animationFPS=10
-/processorParam:flattenPaths=True
-/processorParam:colorKeyColor=0,0,0,0
-/processorParam:colorKeyEnabled=False
-/build:Textures/TextureAtlas.xml
-
-#begin Textures/Atlas/BirdAnimation/birdflap1_0.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/Atlas/BirdAnimation/birdflap1_0.png
-
-#begin Textures/Atlas/BirdAnimation/birdflap1_1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/Atlas/BirdAnimation/birdflap1_1.png
-
-#begin Textures/Atlas/BirdAnimation/birdflap1_2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/Atlas/BirdAnimation/birdflap1_2.png
-
-#begin nez/effects/transitions/Squares.mgfxo
-/copy:nez/effects/transitions/Squares.mgfxo
-
-#begin nez/effects/transitions/TextureWipe.mgfxo
-/copy:nez/effects/transitions/TextureWipe.mgfxo
-
-#begin nez/effects/transitions/Wind.mgfxo
-/copy:nez/effects/transitions/Wind.mgfxo
-
 #begin nez/effects/Bevels.mgfxo
 /copy:nez/effects/Bevels.mgfxo
 
@@ -168,6 +101,15 @@
 #begin nez/effects/SpriteLines.mgfxo
 /copy:nez/effects/SpriteLines.mgfxo
 
+#begin nez/effects/transitions/Squares.mgfxo
+/copy:nez/effects/transitions/Squares.mgfxo
+
+#begin nez/effects/transitions/TextureWipe.mgfxo
+/copy:nez/effects/transitions/TextureWipe.mgfxo
+
+#begin nez/effects/transitions/Wind.mgfxo
+/copy:nez/effects/transitions/Wind.mgfxo
+
 #begin nez/effects/Twist.mgfxo
 /copy:nez/effects/Twist.mgfxo
 
@@ -197,4 +139,134 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/Atlas/Backgrounds/Night.png
+
+#begin Textures/Atlas/Bird0/bird0flap0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird0/bird0flap0.png
+
+#begin Textures/Atlas/Bird0/bird0flap1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird0/bird0flap1.png
+
+#begin Textures/Atlas/Bird0/bird0flap2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird0/bird0flap2.png
+
+#begin Textures/Atlas/Bird1/bird1flap0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird1/bird1flap0.png
+
+#begin Textures/Atlas/Bird1/bird1flap1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird1/bird1flap1.png
+
+#begin Textures/Atlas/Bird1/bird1flap2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird1/bird1flap2.png
+
+#begin Textures/Atlas/Bird2/bird2flap0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird2/bird2flap0.png
+
+#begin Textures/Atlas/Bird2/bird2flap1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird2/bird2flap1.png
+
+#begin Textures/Atlas/Bird2/bird2flap2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Bird2/bird2flap2.png
+
+#begin Textures/spritesheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/spritesheet.png
+
+#begin Textures/TextureAtlas.xml
+/importer:XmlImporter
+/processor:TextureAtlasProcessor
+/processorParam:compressTexture=False
+/processorParam:animationFPS=10
+/processorParam:flattenPaths=True
+/processorParam:colorKeyColor=0,0,0,0
+/processorParam:colorKeyEnabled=False
+/build:Textures/TextureAtlas.xml
 
