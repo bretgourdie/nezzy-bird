@@ -13,7 +13,6 @@ namespace NezzyBird.Systems
                 new System.Type[]
                 {
                     typeof(AffectedByGravity),
-                    typeof(JumpsOnTap),
                     typeof(Mover),
                     typeof(HasVelocity)
                 });
@@ -30,9 +29,12 @@ namespace NezzyBird.Systems
             var mover = entity.getComponent<Mover>();
             var velocity = entity.getComponent<HasVelocity>();
 
-            if (jump.IsJumping)
+            if (jump != null)
             {
-                velocity.CurrentVelocity = new Vector2(0, -jump.GetJumpAmount());
+                if (jump.IsJumping)
+                {
+                    velocity.CurrentVelocity = new Vector2(0, -jump.GetJumpAmount());
+                }
             }
 
             velocity.CurrentVelocity =
