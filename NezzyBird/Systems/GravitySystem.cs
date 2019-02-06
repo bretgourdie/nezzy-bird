@@ -6,21 +6,12 @@ namespace NezzyBird.Systems
 {
     public class GravitySystem : EntityProcessingSystem
     {
-        public static Matcher GetMatcher()
-        {
-            var matcher = new Matcher();
-            matcher.all(
-                new System.Type[]
-                {
-                    typeof(AffectedByGravity),
-                    typeof(Mover),
-                    typeof(HasVelocity)
-                });
-
-            return matcher;
-        }
-
-        public GravitySystem() : base(GravitySystem.GetMatcher()) { }
+        public GravitySystem() :
+            base(new Matcher().all(
+                typeof(AffectedByGravity),
+                typeof(Mover),
+                typeof(HasVelocity)
+            )) { }
 
         public override void process(Entity entity)
         {

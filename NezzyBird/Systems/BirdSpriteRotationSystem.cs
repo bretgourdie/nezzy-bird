@@ -9,20 +9,11 @@ namespace NezzyBird.Systems
 {
     public class BirdSpriteRotationSystem : EntityProcessingSystem
     {
-        public static Matcher GetMatcher()
-        {
-            var matcher = new Matcher();
-            matcher.all(
-                new System.Type[]
-                {
-                    typeof(HasVelocity),
-                    typeof(Sprite)
-                });
-
-            return matcher;
-        }
-
-        public BirdSpriteRotationSystem() : base(BirdSpriteRotationSystem.GetMatcher()) { }
+        public BirdSpriteRotationSystem() : base(
+            new Matcher().all(
+                typeof(HasVelocity),
+                typeof(Sprite)
+            )) { }
 
         public override void process(Entity entity)
         {
