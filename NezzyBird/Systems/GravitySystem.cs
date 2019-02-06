@@ -35,13 +35,10 @@ namespace NezzyBird.Systems
                 velocity.CurrentVelocity = new Vector2(0, -jump.GetJumpAmount());
             }
 
-            else
-            {
-                velocity.CurrentVelocity =
-                    new Vector2(
-                        velocity.CurrentVelocity.X,
-                        velocity.CurrentVelocity.Y + gravity.GravitationalPull);
-            }
+            velocity.CurrentVelocity =
+                new Vector2(
+                    velocity.CurrentVelocity.X,
+                    velocity.CurrentVelocity.Y + gravity.GravitationalPull);
 
             var collisionResult = new CollisionResult();
             mover.move(velocity.CurrentVelocity, out collisionResult);
