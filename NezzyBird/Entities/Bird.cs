@@ -2,7 +2,6 @@
 using Nez;
 using Nez.Sprites;
 using Nez.TextureAtlases;
-using Nez.Tiled;
 using NezzyBird.Components;
 
 namespace NezzyBird.Entities
@@ -14,7 +13,8 @@ namespace NezzyBird.Entities
 
         public Bird(TextureAtlas textureAtlas)
         {
-            var birdFlapAnimation = textureAtlas.getSpriteAnimation("BirdAnimation");
+            var randomBirdIndex = Random.choose(0, 1, 2);
+            var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird{randomBirdIndex}");
             var birdIdleSprite = birdFlapAnimation.frames.lastItem();
             addComponent(new Sprite(birdIdleSprite));
             addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
