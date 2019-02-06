@@ -1,9 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Nez;
+﻿using Nez;
 using Nez.Sprites;
 using NezzyBird.Components;
-using NezzyBird.Entities;
-using System;
 
 namespace NezzyBird.Systems
 {
@@ -11,29 +8,24 @@ namespace NezzyBird.Systems
     {
         public BirdSpriteRotationSystem() : base(
             new Matcher().all(
-                typeof(HasVelocity),
+                typeof(JumpsOnTap),
                 typeof(Sprite)
-            )) { }
+            ))
+        {
+        }
 
         public override void process(Entity entity)
         {
-            var velocity = entity.getComponent<HasVelocity>();
+            var jumpsOnTap = entity.getComponent<JumpsOnTap>();
             var sprite = entity.getComponent<Sprite>();
 
-            var lowerBound = -2f;
-            var upperBound = Bird.JUMP_HEIGHT;
-
-            var clampedVelocity =
-                MathHelper.Clamp(
-                    velocity.CurrentVelocity.Y,
-                    lowerBound,
-                    upperBound);
-
-            var rotationSignificance = (clampedVelocity - lowerBound) / (Math.Abs(upperBound - lowerBound));
-
-            var rotationDegrees = MathHelper.Lerp(-40, 90, rotationSignificance);
-
-            sprite.transform.rotationDegrees = rotationDegrees;
+            if (jumpsOnTap.IsJumping)
+            {
+                sprite.transform.tweenRotationDegreesTo(-40f)
+                    .setNextTween(
+                        sprite.transform.tweenRotationDegreesTo(90f, 0.5f))
+                .start();
+            }
         }
     }
 }
