@@ -49,8 +49,10 @@
     <Compile Include="Components\IncreasesScoreWhenPassing.cs" />
     <Compile Include="Components\JumpsOnTap.cs" />
     <Compile Include="Components\ScrollingLeft.cs" />
+    <Compile Include="Components\VerticalDirection.cs" />
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
+    <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameConstants.cs" />
     <Compile Include="Program.cs" />

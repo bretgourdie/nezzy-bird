@@ -4,6 +4,11 @@ namespace NezzyBird.Components
 {
     public class ScrollingLeft : Component
     {
-        public const float rate = 0.5f;
+        private readonly float _rate;
+
+        public ScrollingLeft(float rate)
+        {
+            _rate = rate;
+        }
     }
 }
