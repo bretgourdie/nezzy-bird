@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nez;
+﻿using Nez;
+using Nez.TextureAtlases;
 using NezzyBird.Components;
 
 namespace NezzyBird.Entities
@@ -11,9 +7,11 @@ namespace NezzyBird.Entities
     public class Pipe : Entity
     {
         public static readonly float SCROLL_SPEED = 1f;
-        public Pipe(VerticalDirection.MouthOpens mouthOpens)
+        public Pipe(
+            TextureAtlas textureAtlas,
+            VerticalDirection.MouthOpens mouthOpens)
         {
-            addComponent(new VerticalDirection(mouthOpens));
+            addComponent(new VerticalDirection(textureAtlas, mouthOpens));
             addComponent(new ScrollingLeft(SCROLL_SPEED));
             addComponent(new Mover());
             addComponent(new EndsGameOnCollision());
