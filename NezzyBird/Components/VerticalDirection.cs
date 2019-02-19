@@ -7,7 +7,7 @@ namespace NezzyBird.Components
 {
     public class VerticalDirection : Component
     {
-        public Sprite Sprite { get; private set; }
+        private readonly Sprite _sprite;
 
         public enum MouthOpens
         {
@@ -23,7 +23,12 @@ namespace NezzyBird.Components
         {
             _openDirection = openDirection;
             var _subtexture = getCorrectSubtexture(textureAtlas, openDirection);
-            Sprite = new Sprite(_subtexture);
+            _sprite = new Sprite(_subtexture);
+        }
+
+        public override void onAddedToEntity()
+        {
+            base.entity.addComponent(_sprite);
         }
 
         private Subtexture getCorrectSubtexture(
