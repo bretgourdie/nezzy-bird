@@ -52,6 +52,7 @@
     <Compile Include="Components\VerticalDirection.cs" />
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
+    <Compile Include="Entities\Foreground.cs" />
     <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Entities\PipePair.cs" />
     <Compile Include="Game1.cs" />
