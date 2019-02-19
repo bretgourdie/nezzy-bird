@@ -248,6 +248,18 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Atlas/Bird2/bird2flap2.png
 
+#begin Textures/Atlas/Foregrounds/Foreground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Atlas/Foregrounds/Foreground.png
+
 #begin Textures/Atlas/Pipe0/Pipe0MouthDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
