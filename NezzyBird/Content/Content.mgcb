@@ -248,28 +248,6 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Atlas/Bird2/bird2flap2.png
 
-#begin Textures/spritesheet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/spritesheet.png
-
-#begin Textures/TextureAtlas.xml
-/importer:XmlImporter
-/processor:TextureAtlasProcessor
-/processorParam:compressTexture=False
-/processorParam:animationFPS=10
-/processorParam:flattenPaths=True
-/processorParam:colorKeyColor=0,0,0,0
-/processorParam:colorKeyEnabled=False
-/build:Textures/TextureAtlas.xml
-
 #begin Textures/Atlas/Pipe0/Pipe0MouthDown.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -317,4 +295,26 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/Atlas/Pipe1/Pipe1MouthUp.png
+
+#begin Textures/spritesheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/spritesheet.png
+
+#begin Textures/TextureAtlas.xml
+/importer:XmlImporter
+/processor:TextureAtlasProcessor
+/processorParam:compressTexture=False
+/processorParam:animationFPS=10
+/processorParam:flattenPaths=True
+/processorParam:colorKeyColor=0,0,0,0
+/processorParam:colorKeyEnabled=False
+/build:Textures/TextureAtlas.xml
 
