@@ -62,6 +62,7 @@
     <Compile Include="Scenes\MainScene.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
     <Compile Include="Systems\BirdSpriteRotationSystem.cs" />
+    <Compile Include="Systems\ScrollingSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
