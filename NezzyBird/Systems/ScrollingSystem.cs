@@ -1,4 +1,5 @@
 ﻿using Nez;
+using Nez.Sprites;
 using NezzyBird.Components;
 
 namespace NezzyBird.Systems
@@ -7,13 +8,18 @@ namespace NezzyBird.Systems
     {
         public ScrollingSystem() :
             base(new Matcher().all(
-                typeof(Scrolling)
+                typeof(Scrolling),
+                typeof(Mover)
             ))
         { }
 
         public override void process(Entity entity)
         {
-            throw new System.NotImplementedException();
+            var scrolling = entity.getComponent<Scrolling>();
+            var mover = entity.getComponent<Mover>();
+
+            CollisionResult collisionResult;
+            mover.move(scrolling.Movement, out collisionResult);
         }
     }
 }
