@@ -14,9 +14,11 @@ namespace NezzyBird.Scenes
             var textureAtlas = content.Load<TextureAtlas>("Textures/TextureAtlas");
 
             var background = new Background(textureAtlas);
+            var foreground = new Foreground(textureAtlas);
             var bird = new Bird(textureAtlas);
 
             this.addEntity(background);
+            this.addEntity(foreground);
             this.addEntity(bird);
 
             var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
