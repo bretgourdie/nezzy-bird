@@ -11,10 +11,15 @@ namespace NezzyBird.Entities
         public Foreground(TextureAtlas textureAtlas)
         {
             var foregroundSubtexture = textureAtlas.getSubtexture("Foreground");
-            addComponent(new Sprite(foregroundSubtexture));
+            var sprite = new Sprite(foregroundSubtexture);
+            sprite.renderLayer = GameConstants.RenderingLevels.Foreground;
+            addComponent(sprite);
 
             this.scale = GameConstants.GetGameScale();
-            this.position = new Vector2(0, GameConstants.SOURCE_SCREEN_WIDTH);
+            this.position = new Vector2(
+                GameConstants.SOURCE_SCREEN_WIDTH / 2,
+                GameConstants.SOURCE_SCREEN_HEIGHT - 10)
+                * GameConstants.GetGameScale();
         }
     }
 }
