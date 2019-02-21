@@ -16,5 +16,14 @@ namespace NezzyBird
             new Vector2(
                 SOURCE_SCREEN_WIDTH * SPRITE_SCALE_FACTOR,
                 SOURCE_SCREEN_HEIGHT * SPRITE_SCALE_FACTOR);
+
+        public static class RenderingLevels
+        {
+            public const int Background = 100;
+            public const int Foreground = 50;
+            public const int Pipes = 75;
+            public const int Bird = 25;
+            public const int HUD = 1;
+        }
     }
 }

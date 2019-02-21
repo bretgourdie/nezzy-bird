@@ -12,7 +12,7 @@ namespace NezzyBird.Entities
             var selectedBackground = Random.choose("Day", "Night");
             var backgroundSubtexture = atlas.getSubtexture(selectedBackground);
             var backgroundSprite = new Sprite(backgroundSubtexture);
-            backgroundSprite.renderLayer = 100;
+            backgroundSprite.renderLayer = GameConstants.RenderingLevels.Background;
             addComponent(backgroundSprite);
 
             this.scale = GameConstants.GetGameScale();
