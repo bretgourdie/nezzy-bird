@@ -25,10 +25,9 @@ namespace NezzyBird.Scenes
 
             this.addRenderer(new DefaultRenderer());
 
-            var gravitySystem = new GravitySystem();
-            this.addEntityProcessor(gravitySystem);
-            var birdSpriteRotationSystem = new BirdSpriteRotationSystem();
-            this.addEntityProcessor(birdSpriteRotationSystem);
+            this.addEntityProcessor(new GravitySystem());
+            this.addEntityProcessor(new BirdSpriteRotationSystem());
+            this.addEntityProcessor(new ScrollingSystem());
         }
     }
 }
