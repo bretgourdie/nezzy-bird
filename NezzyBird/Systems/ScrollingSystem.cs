@@ -9,7 +9,8 @@ namespace NezzyBird.Systems
         public ScrollingSystem() :
             base(new Matcher().all(
                 typeof(Scrolling),
-                typeof(Mover)
+                typeof(Mover),
+                typeof(Sprite)
             ))
         { }
 
@@ -17,9 +18,15 @@ namespace NezzyBird.Systems
         {
             var scrolling = entity.getComponent<Scrolling>();
             var mover = entity.getComponent<Mover>();
+            var sprite = entity.getComponent<Sprite>();
 
             CollisionResult collisionResult;
             mover.move(scrolling.Movement, out collisionResult);
+
+            if (!sprite.isVisible)
+            {
+                entity.destroy();
+            }
         }
     }
 }
