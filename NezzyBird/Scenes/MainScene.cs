@@ -28,6 +28,8 @@ namespace NezzyBird.Scenes
             this.addEntityProcessor(new GravitySystem());
             this.addEntityProcessor(new BirdSpriteRotationSystem());
             this.addEntityProcessor(new ScrollingSystem());
+
+            addEntity(new PipePairSpawner(textureAtlas));
         }
     }
 }
