@@ -55,6 +55,7 @@
     <Compile Include="Entities\Foreground.cs" />
     <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Entities\PipePair.cs" />
+    <Compile Include="Entities\PipePairSpawner.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameConstants.cs" />
     <Compile Include="Program.cs" />
