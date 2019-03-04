@@ -10,13 +10,17 @@ namespace NezzyBird.Entities
         private readonly Pipe _mouthUpPipe;
         private readonly Pipe _mouthDownPipe;
 
-        public PipePair(TextureAtlas textureAtlas)
+        public PipePair(
+            TextureAtlas textureAtlas,
+            float startingYCenter)
         {
-            // TODO: Update starting Y
             _mouthUpPipe = new Pipe(textureAtlas, VerticalDirection.MouthOpens.Up);
-            _mouthUpPipe.position = new Vector2(_mouthUpPipe.position.X, 700);
+            var mouthUpPipeStartingY = startingYCenter;
+            _mouthUpPipe.position = new Vector2(_mouthUpPipe.position.X, mouthUpPipeStartingY);
+
             _mouthDownPipe = new Pipe(textureAtlas, VerticalDirection.MouthOpens.Down);
-            _mouthDownPipe.position = new Vector2(_mouthDownPipe.position.X, 50);
+            var mouthDownPipeStartingY = startingYCenter;
+            _mouthDownPipe.position = new Vector2(_mouthDownPipe.position.X, mouthDownPipeStartingY);
         }
 
         public override void onAddedToScene()

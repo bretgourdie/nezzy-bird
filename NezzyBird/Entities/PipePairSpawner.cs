@@ -21,7 +21,9 @@ namespace NezzyBird.Entities
 
         public void SpawnPipePair()
         {
-            scene.addEntity(new PipePair(_textureAtlas));
+            // TODO: Figure out startingYCenter maths
+            var startingYCenter = 400;
+            scene.addEntity(new PipePair(_textureAtlas, startingYCenter));
         }
     }
 }
