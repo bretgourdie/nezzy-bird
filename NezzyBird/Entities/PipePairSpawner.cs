@@ -21,8 +21,9 @@ namespace NezzyBird.Entities
 
         public void SpawnPipePair()
         {
-            // TODO: Figure out startingYCenter maths
-            var startingYCenter = 400;
+            var topVerticalMargin = 147 * GameConstants.SPRITE_SCALE_FACTOR;
+            var bottomVerticalMargin = GameConstants.SCREEN_HEIGHT;
+            var startingYCenter = Random.random.Next(topVerticalMargin, bottomVerticalMargin);
             scene.addEntity(new PipePair(_textureAtlas, startingYCenter));
         }
     }
