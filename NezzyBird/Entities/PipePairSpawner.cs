@@ -16,7 +16,7 @@ namespace NezzyBird.Entities
 
         public override void onAddedToScene()
         {
-            addComponent(new ActionOnInterval(SpawnPipePair, 1.5f));
+            addComponent(new ActionOnInterval(SpawnPipePair, 1.75f));
         }
 
         public void SpawnPipePair()

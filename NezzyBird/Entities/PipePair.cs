@@ -14,7 +14,7 @@ namespace NezzyBird.Entities
             TextureAtlas textureAtlas,
             float startingYCenter)
         {
-            var spaceFromStartingYCenter = 10 * GameConstants.SPRITE_SCALE_FACTOR;
+            var spaceFromStartingYCenter = 6 * GameConstants.SPRITE_SCALE_FACTOR;
 
             var spaceAboveStartingY = startingYCenter - spaceFromStartingYCenter;
             var spaceBelowStartingY = startingYCenter + spaceFromStartingYCenter;
