@@ -23,7 +23,7 @@ namespace NezzyBird.Systems
             CollisionResult collisionResult;
             mover.move(scrolling.Movement, out collisionResult);
 
-            if (!sprite.isVisible)
+            if (entity.position.X < 0 && !sprite.isVisible)
             {
                 entity.destroy();
             }

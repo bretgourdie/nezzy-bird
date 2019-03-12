@@ -19,7 +19,7 @@ namespace NezzyBird.Entities
             addComponent(new EndsGameOnCollision());
 
             this.scale = GameConstants.GetGameScale();
-            var startingX = GameConstants.SCREEN_WIDTH;
+            var startingX = GameConstants.SCREEN_WIDTH + 200;
             this.position = new Vector2(startingX, this.position.Y);
         }
     }
