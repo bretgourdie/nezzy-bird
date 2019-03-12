@@ -29,8 +29,8 @@ namespace NezzyBird.Systems
 
             TweenManager.stopAllTweensWithTarget(sprite.transform);
 
-            var jumpBegin = sprite.transform.tweenRotationDegreesTo(-35, 0.1f);
-            var descentBegin = sprite.transform.tweenRotationDegreesTo(90, 0.25f).setDelay(0.35f);
+            var jumpBegin = sprite.transform.tweenRotationDegreesTo(-25, 0.1f);
+            var descentBegin = sprite.transform.tweenRotationDegreesTo(90, 0.65f).setEaseType(EaseType.ExpoIn);
 
             var completeAnimation = jumpBegin.setNextTween(descentBegin);
 
