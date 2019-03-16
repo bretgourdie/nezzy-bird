@@ -14,7 +14,7 @@ namespace NezzyBird.Entities
             VerticalDirection.MouthOpens mouthOpens)
         {
             addComponent(new VerticalDirection(textureAtlas, mouthOpens));
-            addComponent(new Scrolling(Scrolling.ScrollDirection.Left, SCROLL_SPEED));
+            addComponent(new Scrolling(ScrollDirection.Left, SCROLL_SPEED));
             addComponent(new Mover());
             addComponent(new EndsGameOnCollision());
 

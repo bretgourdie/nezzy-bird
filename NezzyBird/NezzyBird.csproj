@@ -50,6 +50,7 @@
     <Compile Include="Components\IncreasesScoreWhenPassing.cs" />
     <Compile Include="Components\JumpsOnTap.cs" />
     <Compile Include="Components\ReactsToTap.cs" />
+    <Compile Include="Components\ScrollDirection.cs" />
     <Compile Include="Components\Scrolling.cs" />
     <Compile Include="Components\VerticalDirection.cs" />
     <Compile Include="Entities\Background.cs" />

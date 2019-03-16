@@ -6,14 +6,6 @@ namespace NezzyBird.Components
 {
     public class Scrolling : Component
     {
-        public enum ScrollDirection
-        {
-            Up,
-            Down,
-            Left,
-            Right
-        }
-
         public readonly Vector2 Movement;
 
         public Scrolling(ScrollDirection scrollDirection, float rate)
