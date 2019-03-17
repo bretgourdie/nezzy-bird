@@ -5,8 +5,8 @@ namespace NezzyBird.Components
 {
     public class ParallaxScrolling : Component
     {
-        public Sprite Sprite { get; private set; }
-        public Sprite SecondSprite { get; private set; }
+        public Sprite LeftMostSprite { get; private set; }
+        public Sprite RightMostSprite { get; private set; }
         private ScrollDirection _scrollDirection;
         private float _rate;
 
@@ -20,8 +20,8 @@ namespace NezzyBird.Components
 
         public override void onAddedToEntity()
         {
-            Sprite = entity.getComponent<Sprite>();
-            SecondSprite = new Sprite(Sprite.subtexture);
+            LeftMostSprite = entity.getComponent<Sprite>();
+            RightMostSprite = new Sprite(LeftMostSprite.subtexture);
         }
     }
 }
