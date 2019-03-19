@@ -1,11 +1,6 @@
 ﻿using Nez;
 using Nez.Sprites;
 using NezzyBird.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NezzyBird.Systems
 {
@@ -24,7 +19,6 @@ namespace NezzyBird.Systems
         {
             var parallaxScrolling = entity.getComponent<ParallaxScrolling>();
             var mover = entity.getComponent<Mover>();
-
 
         }
     }

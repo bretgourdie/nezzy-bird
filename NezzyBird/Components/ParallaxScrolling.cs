@@ -3,25 +3,16 @@ using Nez.Sprites;
 
 namespace NezzyBird.Components
 {
-    public class ParallaxScrolling : Component
+    public class ParallaxScrolling : Scrolling
     {
-        public Sprite LeftMostSprite { get; private set; }
-        public Sprite RightMostSprite { get; private set; }
-        private ScrollDirection _scrollDirection;
-        private float _rate;
+        public readonly Entity Other;
 
         public ParallaxScrolling(
             ScrollDirection scrollDirection,
-            float rate)
+            float rate,
+            Entity other) : base(scrollDirection, rate)
         {
-            _scrollDirection = scrollDirection;
-            _rate = rate;
-        }
-
-        public override void onAddedToEntity()
-        {
-            LeftMostSprite = entity.getComponent<Sprite>();
-            RightMostSprite = new Sprite(LeftMostSprite.subtexture);
+            Other = other;
         }
     }
 }
