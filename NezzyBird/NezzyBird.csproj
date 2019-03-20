@@ -49,7 +49,6 @@
     <Compile Include="Components\HasVelocity.cs" />
     <Compile Include="Components\IncreasesScoreWhenPassing.cs" />
     <Compile Include="Components\JumpsOnTap.cs" />
-    <Compile Include="Components\ParallaxScrolling.cs" />
     <Compile Include="Components\ReactsToTap.cs" />
     <Compile Include="Components\ScrollDirection.cs" />
     <Compile Include="Components\Scrolling.cs" />
@@ -69,7 +68,6 @@
     <Compile Include="Systems\ScrollingSystem.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
     <Compile Include="Systems\BirdSpriteRotationSystem.cs" />
-    <Compile Include="Systems\ParallaxScrollingSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

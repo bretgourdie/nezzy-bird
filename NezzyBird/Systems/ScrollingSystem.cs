@@ -1,8 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Nez;
+﻿using Nez;
 using Nez.Sprites;
 using NezzyBird.Components;
-using System;
 
 namespace NezzyBird.Systems
 {
@@ -15,13 +13,11 @@ namespace NezzyBird.Systems
                 typeof(Sprite)
             )
             .one(
-                typeof(SimpleScrolling),
-                typeof(ParallaxScrolling)
+                typeof(SimpleScrolling)
             )) { }
 
         public override void process(Entity entity)
         {
-
             var mover = entity.getComponent<Mover>();
             var sprite = entity.getComponent<Sprite>();
             var scrolling = entity.getComponent<Scrolling>();
@@ -35,23 +31,12 @@ namespace NezzyBird.Systems
                 {
                     handleSimpleScrolling(entity);
                 }
-
-                else if (scrolling is ParallaxScrolling)
-                {
-                    handleParallaxScrolling(entity, (scrolling as ParallaxScrolling).Other, sprite);
-                }
             }
         }
 
         private void handleSimpleScrolling(Entity entity)
         {
             entity.destroy();
-        }
-
-        private void handleParallaxScrolling(Entity current, Entity other, Sprite sprite)
-        {
-            var newPosition = other.position + new Vector2(sprite.width, sprite.height);
-            current.setPosition(newPosition);
         }
     }
 }
