@@ -8,8 +8,9 @@ namespace NezzyBird.Systems
         public LifeSystem() :
             base(
                 new Matcher()
-                .all(typeof(Life))
-            ) { }
+                .all(
+                    typeof(Life)
+            )) { }
 
         public override void process(Entity entity)
         {
