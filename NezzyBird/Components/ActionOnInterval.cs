@@ -1,6 +1,5 @@
 ﻿using Nez;
 using System;
-using System.Collections;
 
 namespace NezzyBird.Components
 {
@@ -8,24 +7,25 @@ namespace NezzyBird.Components
     {
         public bool Active { get; set; }
 
+        public readonly float Interval;
+
+        public float TimeSinceLastAction { get; set; }
+
+        public readonly Action Action;
+
         public ActionOnInterval(
             Action action,
             float interval,
             bool active = true)
         {
+            Action = action;
+            Interval = interval;
             Active = active;
-            Core.startCoroutine(Perform(action, interval));
         }
 
-        public IEnumerator Perform(
-            Action action,
-            float interval)
+        public void InvokeAction()
         {
-            while (Active)
-            {
-                action.Invoke();
-                yield return Coroutine.waitForSeconds(interval);
-            }
+            Action.Invoke();
         }
     }
 }
