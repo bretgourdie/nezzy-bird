@@ -16,17 +16,8 @@ namespace NezzyBird.Systems
         public override void process(Entity entity)
         {
             var gravity = entity.getComponent<AffectedByGravity>();
-            var jump = entity.getComponent<JumpsOnTap>();
             var mover = entity.getComponent<Mover>();
             var velocity = entity.getComponent<HasVelocity>();
-
-            if (jump != null)
-            {
-                if (jump.IsJumping)
-                {
-                    velocity.CurrentVelocity = new Vector2(0, -jump.GetJumpAmount());
-                }
-            }
 
             velocity.CurrentVelocity =
                 new Vector2(
