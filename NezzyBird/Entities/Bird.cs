@@ -24,7 +24,6 @@ namespace NezzyBird.Entities
             addComponent(new ReactsToTap(jumpsOnTap, jumpsOnTap.Jump));
             addComponent(new Mover());
             addComponent(new HasVelocity());
-            addComponent(new Life());
 
             this.scale = GameConstants.GetGameScale();
 
