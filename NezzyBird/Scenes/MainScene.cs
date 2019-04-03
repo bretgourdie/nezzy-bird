@@ -16,6 +16,7 @@ namespace NezzyBird.Scenes
             var background = new Background(textureAtlas);
             var foreground = new Foreground(textureAtlas);
             var bird = new Bird(textureAtlas);
+            var scoreDisplay = new ScoreDisplay(textureAtlas);
 
             this.addEntity(background);
             this.addEntity(foreground);
@@ -30,6 +31,7 @@ namespace NezzyBird.Scenes
             this.addEntityProcessor(new ScrollingSystem());
             this.addEntityProcessor(new ActionOnIntervalSystem());
             this.addEntityProcessor(new JumpSystem());
+            //this.addEntityProcessor(new ScoreDisplaySystem());
 
             addEntity(new PipePairSpawner(textureAtlas));
         }
