@@ -34,6 +34,7 @@ namespace NezzyBird.Scenes
             //this.addEntityProcessor(new ScoreDisplaySystem());
 
             addEntity(new PipePairSpawner(textureAtlas));
+            Nez.Core.debugRenderEnabled = true;
         }
     }
 }

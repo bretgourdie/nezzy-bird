@@ -7,16 +7,15 @@ namespace NezzyBird.Entities
 {
     public class Pipe : Entity
     {
-        public static readonly float SCROLL_SPEED = 1f;
-
         public Pipe(
             TextureAtlas textureAtlas,
             VerticalDirection.MouthOpens mouthOpens)
         {
             addComponent(new VerticalDirection(textureAtlas, mouthOpens));
-            addComponent(new SimpleScrolling(ScrollDirection.Left, SCROLL_SPEED));
+            addComponent(new SimpleScrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
             addComponent(new Mover());
             addComponent(new EndsGameOnCollision());
+            addComponent(new BoxCollider() { isTrigger = true });
 
             this.scale = GameConstants.GetGameScale();
             var startingX = GameConstants.SCREEN_WIDTH + 200;

@@ -61,6 +61,7 @@
     <Compile Include="Entities\PipePair.cs" />
     <Compile Include="Entities\PipePairSpawner.cs" />
     <Compile Include="Entities\ScoreDisplay.cs" />
+    <Compile Include="Entities\ScoreZone.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameConstants.cs" />
     <Compile Include="Program.cs" />

@@ -23,6 +23,7 @@ namespace NezzyBird.Entities
             var jumpsOnTap = new JumpsOnTap(JUMP_HEIGHT);
             addComponent(new ReactsToTap(jumpsOnTap, jumpsOnTap.Jump));
             addComponent(new Mover());
+            addComponent(new BoxCollider() { isTrigger = true });
             addComponent(new HasVelocity());
 
             this.scale = GameConstants.GetGameScale();
