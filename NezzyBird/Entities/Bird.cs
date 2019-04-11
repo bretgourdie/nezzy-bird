@@ -8,8 +8,8 @@ namespace NezzyBird.Entities
 {
     public class Bird : Entity
     {
-        public static readonly float GRAVITY_WEIGHT = 0.25f;
-        public static readonly float JUMP_HEIGHT = 4.5f;
+        public static readonly float GRAVITY_WEIGHT = 0.50f;
+        public static readonly float JUMP_HEIGHT = 9f;
 
         public Bird(TextureAtlas textureAtlas)
         {
