@@ -70,6 +70,7 @@
     <Compile Include="Systems\ActionOnIntervalSystem.cs" />
     <Compile Include="Systems\JumpSystem.cs" />
     <Compile Include="Systems\ScoreDisplaySystem.cs" />
+    <Compile Include="Systems\ScoreZoneCollisionSystem.cs" />
     <Compile Include="Systems\ScrollingSystem.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
     <Compile Include="Systems\BirdSpriteRotationSystem.cs" />
