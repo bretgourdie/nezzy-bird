@@ -15,7 +15,8 @@ namespace NezzyBird.Entities
                 1f,
                 GameConstants.SCREEN_HEIGHT)
             {
-                isTrigger = true
+                isTrigger = true,
+                height = GameConstants.SCREEN_HEIGHT
             };
 
             addComponent(boxCollider);
