@@ -8,13 +8,9 @@ namespace NezzyBird.Systems
     {
         public ScrollingSystem() :
             base(new Matcher()
-            .all(
-                typeof(Mover),
-                typeof(Sprite)
-            )
-            .one(
-                typeof(SimpleScrolling)
-            )) { }
+            .all(typeof(Mover))
+            .one(typeof(SimpleScrolling))
+        ) { }
 
         public override void process(Entity entity)
         {
@@ -25,7 +21,7 @@ namespace NezzyBird.Systems
             CollisionResult collisionResult;
             mover.move(scrolling.Movement, out collisionResult);
 
-            if (entity.position.X < 0 && !sprite.isVisible)
+            if (entity.position.X < 0 && (sprite == null || !sprite.isVisible))
             {
                 if (scrolling is SimpleScrolling)
                 {
