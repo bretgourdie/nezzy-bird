@@ -31,6 +31,7 @@ namespace NezzyBird.Scenes
             this.addEntityProcessor(new ScrollingSystem());
             this.addEntityProcessor(new ActionOnIntervalSystem());
             this.addEntityProcessor(new JumpSystem());
+            this.addEntityProcessor(new ScoreZoneCollisionSystem());
             //this.addEntityProcessor(new ScoreDisplaySystem());
 
             addEntity(new PipePairSpawner(textureAtlas));

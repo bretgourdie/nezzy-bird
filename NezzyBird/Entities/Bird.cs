@@ -25,6 +25,7 @@ namespace NezzyBird.Entities
             addComponent(new Mover());
             addComponent(new BoxCollider() { isTrigger = true });
             addComponent(new HasVelocity());
+            addComponent(new HasScore());
 
             this.scale = GameConstants.GetGameScale();
 

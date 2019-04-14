@@ -46,6 +46,7 @@
     <Compile Include="Components\AffectedByGravity.cs" />
     <Compile Include="Components\DisplaysNumber.cs" />
     <Compile Include="Components\EndsGameOnCollision.cs" />
+    <Compile Include="Components\HasScore.cs" />
     <Compile Include="Components\HasVelocity.cs" />
     <Compile Include="Components\IncreasesScoreWhenPassing.cs" />
     <Compile Include="Components\JumpsOnTap.cs" />
