@@ -9,36 +9,37 @@ namespace NezzyBird.Systems
     {
         public ScoreZoneCollisionSystem() : base(
             new Matcher().all(
-                typeof(IncreasesScoreWhenPassing),
+                typeof(HasScore),
                 typeof(BoxCollider)
             ))
         { }
 
         public override void process(Entity entity)
         {
-            var increasesScoreWhenPassing = entity.getComponent<IncreasesScoreWhenPassing>();
             var boxCollider = entity.getComponent<BoxCollider>();
 
-            var colliders = Physics.boxcastBroadphase(
-                entity.getComponent<Collider>().bounds);
+            var colliders = Physics.boxcastBroadphaseExcludingSelf(boxCollider);
 
-            var entitiesThatMatter = colliders.Where(x => x.entity is Bird);
-
-            foreach (var collider in entitiesThatMatter)
+            foreach (var collider in colliders)
             {
-                CollisionResult collisionResult;
-                if (entity.getComponent<Collider>().collidesWith(collider, out collisionResult))
+                if (isColliding(boxCollider, collider))
                 {
-                    var hasScore = collider.entity.getComponent<HasScore>();
-
-                    if (hasScore != null)
+                    if (collider.entity is ScoreZone)
                     {
+                        var hasScore = entity.getComponent<HasScore>();
                         hasScore.Score += 1;
+                        collider.entity.destroy();
                     }
-
-                    entity.destroy();
                 }
             }
+        }
+
+        private bool isColliding(
+            Collider birdCollider,
+            Collider otherCollider)
+        {
+            CollisionResult collisionResult;
+            return birdCollider.collidesWith(otherCollider, out collisionResult);
         }
     }
 }
