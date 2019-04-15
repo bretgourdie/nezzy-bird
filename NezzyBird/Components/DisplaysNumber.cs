@@ -4,6 +4,23 @@ namespace NezzyBird.Components
 {
     public class DisplaysNumber : Component
     {
-        public int Number { get; set; }
+        private readonly HasScore _hasScore;
+
+        public int Score { get; private set; }
+
+        public bool ScoreNeedsUpdated()
+        {
+            return Score != _hasScore.Score;
+        }
+
+        public void UpdateScore()
+        {
+            Score = _hasScore.Score;
+        }
+
+        public DisplaysNumber(HasScore hasScore)
+        {
+            _hasScore = hasScore;
+        }
     }
 }
