@@ -1,7 +1,6 @@
 ﻿using Nez;
 using NezzyBird.Components;
 using NezzyBird.Entities;
-using System.Linq;
 
 namespace NezzyBird.Systems
 {
