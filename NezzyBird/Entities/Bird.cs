@@ -11,7 +11,9 @@ namespace NezzyBird.Entities
         public static readonly float GRAVITY_WEIGHT = 0.50f;
         public static readonly float JUMP_HEIGHT = 9f;
 
-        public Bird(TextureAtlas textureAtlas)
+        public Bird(
+            TextureAtlas textureAtlas,
+            HasScore hasScore)
         {
             var randomBirdIndex = Random.choose(0, 1, 2);
             var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird{randomBirdIndex}");
@@ -25,7 +27,7 @@ namespace NezzyBird.Entities
             addComponent(new Mover());
             addComponent(new BoxCollider() { isTrigger = true });
             addComponent(new HasVelocity());
-            addComponent(new HasScore());
+            addComponent(hasScore);
 
             this.scale = GameConstants.GetGameScale();
 

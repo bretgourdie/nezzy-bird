@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Nez;
 using Nez.TextureAtlases;
+using NezzyBird.Components;
 using NezzyBird.Entities;
 using NezzyBird.Systems;
 
@@ -15,12 +16,15 @@ namespace NezzyBird.Scenes
 
             var background = new Background(textureAtlas);
             var foreground = new Foreground(textureAtlas);
-            var bird = new Bird(textureAtlas);
-            var scoreDisplay = new ScoreDisplay(textureAtlas);
+
+            var hasScore = new HasScore();
+            var bird = new Bird(textureAtlas, hasScore);
+            var scoreDisplay = new ScoreDisplay(textureAtlas, hasScore);
 
             this.addEntity(background);
             this.addEntity(foreground);
             this.addEntity(bird);
+            this.addEntity(scoreDisplay);
 
             var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
 
@@ -32,7 +36,7 @@ namespace NezzyBird.Scenes
             this.addEntityProcessor(new ActionOnIntervalSystem());
             this.addEntityProcessor(new JumpSystem());
             this.addEntityProcessor(new ScoreZoneCollisionSystem());
-            //this.addEntityProcessor(new ScoreDisplaySystem());
+            this.addEntityProcessor(new ScoreDisplaySystem(textureAtlas));
 
             addEntity(new PipePairSpawner(textureAtlas));
             Nez.Core.debugRenderEnabled = true;

@@ -12,7 +12,9 @@ namespace NezzyBird.Entities
         {
             addComponent(new DisplaysNumber(hasScore));
 
-            this.setPosition(0, GameConstants.SCREEN_HEIGHT / .25f);
+            this.setPosition(
+                GameConstants.SCREEN_WIDTH / 2,
+                GameConstants.SCREEN_HEIGHT / 4);
         }
     }
 }
