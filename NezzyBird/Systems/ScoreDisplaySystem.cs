@@ -2,6 +2,7 @@
 using Nez.Sprites;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
+using NezzyBird.Entities;
 
 namespace NezzyBird.Systems
 {
@@ -26,21 +27,23 @@ namespace NezzyBird.Systems
 
             displaysNumber.UpdateScore();
 
-            var spriteComponents = entity.getComponents<Sprite>();
-            foreach (var component in spriteComponents)
-            {
-                entity.removeComponent(component);
-            }
-
             var score = displaysNumber.Score;
 
             var strScore = score.ToString();
 
-            foreach (var digit in strScore)
+            while (displaysNumber.Numbers.Count < strScore.Length)
             {
+                var newNumber = new Number();
+                displaysNumber.AddNumber(newNumber);
+            }
+
+            for (int ii = 0; ii < strScore.Length; ii++)
+            {
+                var digit = strScore[ii];
                 var digitSubtexture = _textureAtlas.getSubtexture($"l{digit}");
-                entity.addComponent(new Sprite(digitSubtexture));
-                entity.setScale(GameConstants.SPRITE_SCALE_FACTOR);
+                var sprite = new Sprite(digitSubtexture);
+
+                displaysNumber.SetNumber(ii, sprite);
             }
         }
     }

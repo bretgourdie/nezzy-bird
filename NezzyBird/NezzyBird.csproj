@@ -58,6 +58,7 @@
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
     <Compile Include="Entities\Foreground.cs" />
+    <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Entities\PipePair.cs" />
     <Compile Include="Entities\PipePairSpawner.cs" />

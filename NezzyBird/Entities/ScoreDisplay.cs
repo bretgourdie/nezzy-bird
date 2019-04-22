@@ -15,6 +15,8 @@ namespace NezzyBird.Entities
             this.setPosition(
                 GameConstants.SCREEN_WIDTH / 2,
                 GameConstants.SCREEN_HEIGHT / 4);
+
+            this.setScale(GameConstants.SPRITE_SCALE_FACTOR);
         }
     }
 }
