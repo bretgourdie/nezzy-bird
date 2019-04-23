@@ -8,9 +8,10 @@ namespace NezzyBird.Systems
 {
     public class ScoreDisplaySystem : EntityProcessingSystem
     {
-        private TextureAtlas _textureAtlas;
+        private readonly TextureAtlas _textureAtlas;
 
-        public ScoreDisplaySystem(TextureAtlas textureAtlas) : base(
+        public ScoreDisplaySystem(
+            TextureAtlas textureAtlas) : base(
             new Matcher().all(typeof(DisplaysNumber)))
         {
             _textureAtlas = textureAtlas;
@@ -20,14 +21,14 @@ namespace NezzyBird.Systems
         {
             var displaysNumber = entity.getComponent<DisplaysNumber>();
             
-            if (!displaysNumber.ScoreNeedsUpdated())
+            if (!displaysNumber.NumberNeedsToBeUpdated)
             {
                 return;
             }
 
-            displaysNumber.UpdateScore();
+            displaysNumber.HandleUpdatedNumber();
 
-            var score = displaysNumber.Score;
+            var score = displaysNumber.Number;
 
             var strScore = score.ToString();
 
@@ -35,10 +36,10 @@ namespace NezzyBird.Systems
             var rectangle = sampleSprite.sourceRect;
             var spriteWidth = rectangle.Width;
 
-            while (displaysNumber.NumbersCount < strScore.Length)
+            while (displaysNumber.NumberSpriteHoldersCount < strScore.Length)
             {
-                var newNumber = new Number(displaysNumber.NumbersCount, spriteWidth);
-                displaysNumber.AddNumber(newNumber);
+                var newNumber = new Number(displaysNumber.NumberSpriteHoldersCount, spriteWidth);
+                displaysNumber.AddNumberSpriteHolder(newNumber);
                 scene.addEntity(newNumber);
             }
 
@@ -49,7 +50,7 @@ namespace NezzyBird.Systems
                 var sprite = new Sprite(digitSubtexture);
 
                 var reversedIndex = strScore.Length - ii - 1;
-                displaysNumber.SetNumber(reversedIndex, sprite);
+                displaysNumber.SetNumberSprite(reversedIndex, sprite);
             }
         }
     }

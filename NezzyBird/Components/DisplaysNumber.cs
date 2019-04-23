@@ -7,38 +7,38 @@ namespace NezzyBird.Components
 {
     public class DisplaysNumber : Component
     {
-        private readonly HasScore _hasScore;
+        public List<Number> NumberSpriteHolders { get; private set; }
 
-        public List<Number> Numbers { get; private set; }
+        public int NumberSpriteHoldersCount { get { return NumberSpriteHolders.Count; } }
 
-        public int NumbersCount { get { return Numbers.Count; } }
+        public int Number { get; private set; }
 
-        public int Score { get; private set; }
-
-        public bool ScoreNeedsUpdated()
+        public void OnNumberUpdated()
         {
-            return Score != _hasScore.Score;
+            NumberNeedsToBeUpdated = true;
+            Number += 1;
         }
 
-        public void UpdateScore()
+        public bool NumberNeedsToBeUpdated { get; private set; }
+
+        public void HandleUpdatedNumber()
         {
-            Score = _hasScore.Score;
+            NumberNeedsToBeUpdated = false;
         }
 
-        public DisplaysNumber(HasScore hasScore)
+        public DisplaysNumber()
         {
-            _hasScore = hasScore;
-            Numbers = new List<Number>();
+            NumberSpriteHolders = new List<Number>();
         }
 
-        public void AddNumber(Number number)
+        public void AddNumberSpriteHolder(Number number)
         {
-            Numbers.Add(number);
+            NumberSpriteHolders.Add(number);
         }
 
-        public void SetNumber(int index, Sprite sprite)
+        public void SetNumberSprite(int index, Sprite sprite)
         {
-            Numbers[index].SetSprite(sprite);
+            NumberSpriteHolders[index].SetSprite(sprite);
         }
     }
 }

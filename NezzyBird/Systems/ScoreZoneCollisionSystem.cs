@@ -1,4 +1,5 @@
 ﻿using Nez;
+using Nez.Systems;
 using NezzyBird.Components;
 using NezzyBird.Entities;
 
@@ -6,12 +7,18 @@ namespace NezzyBird.Systems
 {
     public class ScoreZoneCollisionSystem : EntityProcessingSystem
     {
-        public ScoreZoneCollisionSystem() : base(
+        private readonly Emitter<NezzyEvents> _emitter;
+
+        public ScoreZoneCollisionSystem(
+            Emitter<NezzyEvents> emitter) : base(
             new Matcher().all(
                 typeof(HasScore),
                 typeof(BoxCollider)
-            ))
-        { }
+            )
+        )
+        {
+            _emitter = emitter;
+        }
 
         public override void process(Entity entity)
         {
@@ -28,6 +35,7 @@ namespace NezzyBird.Systems
                         var hasScore = entity.getComponent<HasScore>();
                         hasScore.Score += 1;
                         collider.entity.destroy();
+                        _emitter.emit(NezzyEvents.BirdScored);
                     }
                 }
             }

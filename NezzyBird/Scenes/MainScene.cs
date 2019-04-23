@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
 using NezzyBird.Entities;
@@ -14,12 +15,15 @@ namespace NezzyBird.Scenes
         {
             var textureAtlas = content.Load<TextureAtlas>("Textures/TextureAtlas");
 
+            var emitter = new Emitter<NezzyEvents>();
+
             var background = new Background(textureAtlas);
             var foreground = new Foreground(textureAtlas);
 
             var hasScore = new HasScore();
             var bird = new Bird(textureAtlas, hasScore);
-            var scoreDisplay = new ScoreDisplay(textureAtlas, hasScore);
+            var scoreDisplay = new ScoreDisplay(textureAtlas);
+            emitter.addObserver(NezzyEvents.BirdScored, scoreDisplay.OnScoreUpdated);
 
             this.addEntity(background);
             this.addEntity(foreground);
@@ -35,7 +39,7 @@ namespace NezzyBird.Scenes
             this.addEntityProcessor(new ScrollingSystem());
             this.addEntityProcessor(new ActionOnIntervalSystem());
             this.addEntityProcessor(new JumpSystem());
-            this.addEntityProcessor(new ScoreZoneCollisionSystem());
+            this.addEntityProcessor(new ScoreZoneCollisionSystem(emitter));
             this.addEntityProcessor(new ScoreDisplaySystem(textureAtlas));
 
             addEntity(new PipePairSpawner(textureAtlas));

@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\MainScene.cs" />
     <Compile Include="Systems\ActionOnIntervalSystem.cs" />
+    <Compile Include="Systems\NezzyEvents.cs" />
     <Compile Include="Systems\JumpSystem.cs" />
     <Compile Include="Systems\ScoreDisplaySystem.cs" />
     <Compile Include="Systems\ScoreZoneCollisionSystem.cs" />
