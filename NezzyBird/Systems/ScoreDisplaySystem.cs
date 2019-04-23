@@ -31,10 +31,15 @@ namespace NezzyBird.Systems
 
             var strScore = score.ToString();
 
-            while (displaysNumber.Numbers.Count < strScore.Length)
+            var sampleSprite = _textureAtlas.getSubtexture("l0");
+            var rectangle = sampleSprite.sourceRect;
+            var spriteWidth = rectangle.Width;
+
+            while (displaysNumber.NumbersCount < strScore.Length)
             {
-                var newNumber = new Number();
+                var newNumber = new Number(displaysNumber.NumbersCount, spriteWidth);
                 displaysNumber.AddNumber(newNumber);
+                scene.addEntity(newNumber);
             }
 
             for (int ii = 0; ii < strScore.Length; ii++)
@@ -43,7 +48,8 @@ namespace NezzyBird.Systems
                 var digitSubtexture = _textureAtlas.getSubtexture($"l{digit}");
                 var sprite = new Sprite(digitSubtexture);
 
-                displaysNumber.SetNumber(ii, sprite);
+                var reversedIndex = strScore.Length - ii - 1;
+                displaysNumber.SetNumber(reversedIndex, sprite);
             }
         }
     }

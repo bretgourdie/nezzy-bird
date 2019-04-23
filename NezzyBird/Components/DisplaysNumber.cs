@@ -11,6 +11,8 @@ namespace NezzyBird.Components
 
         public List<Number> Numbers { get; private set; }
 
+        public int NumbersCount { get { return Numbers.Count; } }
+
         public int Score { get; private set; }
 
         public bool ScoreNeedsUpdated()
