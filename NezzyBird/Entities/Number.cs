@@ -13,7 +13,7 @@ namespace NezzyBird.Entities
             const int spritePadding = 2;
             var x =
                 GameConstants.SCREEN_WIDTH * .5f
-                - position * spriteWidth * GameConstants.GetGameScale().X
+                - position * spriteWidth * GameConstants.SPRITE_SCALE_FACTOR
                 + spritePadding;
             const float percentageFromTopOfScreen = .10f;
 
