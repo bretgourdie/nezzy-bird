@@ -12,6 +12,7 @@ namespace NezzyBird.Entities
             TextureAtlas textureAtlas)
         {
             _textureAtlas = textureAtlas;
+            addComponent(new CaresAboutLife());
         }
 
         public override void onAddedToScene()
