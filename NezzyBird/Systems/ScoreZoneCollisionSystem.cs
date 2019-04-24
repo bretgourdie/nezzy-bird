@@ -8,6 +8,7 @@ namespace NezzyBird.Systems
     public class ScoreZoneCollisionSystem : EntityProcessingSystem
     {
         private readonly Emitter<NezzyEvents> _emitter;
+        private readonly EntityProcessingSystem _collisionStrategy;
 
         public ScoreZoneCollisionSystem(
             Emitter<NezzyEvents> emitter) : base(
@@ -18,35 +19,20 @@ namespace NezzyBird.Systems
         )
         {
             _emitter = emitter;
+            _collisionStrategy = new CollisionSystem(typeof(ScoreZone), onCollision);
         }
 
         public override void process(Entity entity)
         {
-            var boxCollider = entity.getComponent<BoxCollider>();
-
-            var colliders = Physics.boxcastBroadphaseExcludingSelf(boxCollider);
-
-            foreach (var collider in colliders)
-            {
-                if (isColliding(boxCollider, collider))
-                {
-                    if (collider.entity is ScoreZone)
-                    {
-                        var hasScore = entity.getComponent<HasScore>();
-                        hasScore.Score += 1;
-                        collider.entity.destroy();
-                        _emitter.emit(NezzyEvents.BirdScored);
-                    }
-                }
-            }
+            _collisionStrategy.process(entity);
         }
 
-        private bool isColliding(
-            Collider birdCollider,
-            Collider otherCollider)
+        private void onCollision(Entity entity, Collider collidedWith)
         {
-            CollisionResult collisionResult;
-            return birdCollider.collidesWith(otherCollider, out collisionResult);
+            var hasScore = entity.getComponent<HasScore>();
+            hasScore.Score += 1;
+            collidedWith.entity.destroy();
+            _emitter.emit(NezzyEvents.BirdScored);
         }
     }
 }
