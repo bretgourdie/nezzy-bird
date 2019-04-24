@@ -5,26 +5,36 @@ namespace NezzyBird.Systems
 {
     public class LifeDependentActionOnIntervalSystem : EntityProcessingSystem
     {
-        private readonly EntityProcessingSystem _actionOnIntervalStrategy;
-
-        public LifeDependentActionOnIntervalSystem(
-            EntityProcessingSystem actionOnIntervalStrategy) :
+        public LifeDependentActionOnIntervalSystem() :
             base(new Matcher()
             .all(
                 typeof(ActionOnInterval),
                 typeof(CaresAboutLife))
             )
-        {
-            _actionOnIntervalStrategy = actionOnIntervalStrategy;
-        }
+        { }
 
         public override void process(Entity entity)
         {
             var caresAboutLife = entity.getComponent<CaresAboutLife>();
 
-            if (caresAboutLife.ImportantLifeIsAlive)
+            if (!caresAboutLife.ImportantLifeIsAlive)
             {
-                _actionOnIntervalStrategy.process(entity);
+                return;
+            }
+
+            var actionOnInterval = entity.getComponent<ActionOnInterval>();
+
+            if (!actionOnInterval.Active)
+            {
+                return;
+            }
+
+            actionOnInterval.TimeSinceLastAction += Time.deltaTime;
+
+            if (actionOnInterval.TimeSinceLastAction >= actionOnInterval.Interval)
+            {
+                actionOnInterval.InvokeAction();
+                actionOnInterval.TimeSinceLastAction = 0f;
             }
         }
     }

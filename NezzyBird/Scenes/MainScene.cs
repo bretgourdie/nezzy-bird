@@ -34,13 +34,10 @@ namespace NezzyBird.Scenes
 
             this.addRenderer(new DefaultRenderer());
 
-            var actionOnIntervalStrategy = new ActionOnIntervalStrategy();
-
             this.addEntityProcessor(new GravitySystem());
             this.addEntityProcessor(new BirdSpriteRotationSystem());
             this.addEntityProcessor(new ScrollingSystem());
-            this.addEntityProcessor(new UnconditionalActionOnIntervalSystem(actionOnIntervalStrategy));
-            this.addEntityProcessor(new LifeDependentActionOnIntervalSystem(actionOnIntervalStrategy));
+            this.addEntityProcessor(new LifeDependentActionOnIntervalSystem());
             this.addEntityProcessor(new JumpSystem());
             this.addEntityProcessor(new ScoreZoneCollisionSystem(emitter));
             this.addEntityProcessor(new ScoreDisplaySystem(textureAtlas));
