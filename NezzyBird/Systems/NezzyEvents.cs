@@ -1,11 +1,11 @@
-﻿using Nez;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace NezzyBird.Systems
 {
     public enum NezzyEvents
     {
-        BirdScored = 1
+        BirdScored = 1,
+        BirdDied = 2,
     }
 
     public struct NezzyEventsComparer : IEqualityComparer<NezzyEvents>
