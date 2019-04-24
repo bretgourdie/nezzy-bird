@@ -8,12 +8,22 @@ namespace NezzyBird.Systems
     {
         public ScrollingSystem() :
             base(new Matcher()
-            .all(typeof(Mover))
+            .all(
+                typeof(Mover),
+                typeof(CaresAboutLife)
+            )
             .one(typeof(SimpleScrolling))
         ) { }
 
         public override void process(Entity entity)
         {
+            var caresAboutLife = entity.getComponent<CaresAboutLife>();
+
+            if (!caresAboutLife.ImportantLifeIsAlive)
+            {
+                return;
+            }
+
             var mover = entity.getComponent<Mover>();
             var sprite = entity.getComponent<Sprite>();
             var scrolling = entity.getComponent<Scrolling>();
