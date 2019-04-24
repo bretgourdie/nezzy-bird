@@ -3,10 +3,9 @@ using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
-    public class ActionOnIntervalSystem : EntityProcessingSystem
+    public class ActionOnIntervalStrategy : EntityProcessingSystem
     {
-        public ActionOnIntervalSystem() :
-            base(new Matcher().all(typeof(ActionOnInterval))) { }
+        public ActionOnIntervalStrategy() : base(Matcher.empty()) { }
 
         public override void process(Entity entity)
         {
