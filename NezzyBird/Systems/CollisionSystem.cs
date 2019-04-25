@@ -6,14 +6,13 @@ namespace NezzyBird.Systems
     public class CollisionSystem : EntityProcessingSystem
     {
         private readonly Type _targetType;
-        private readonly Action<Entity, Collider> _onCollisionAction;
+
+        public event EventHandler<CollisionEventArgs> OnCollision;
 
         public CollisionSystem(
-            Type targetType,
-            Action<Entity, Collider> onCollisionAction) : base(Matcher.empty())
+            Type targetType) : base(Matcher.empty())
         {
             _targetType = targetType;
-            _onCollisionAction = onCollisionAction;
         }
 
         public override void process(Entity entity)
@@ -28,7 +27,7 @@ namespace NezzyBird.Systems
                 {
                     if (collider.entity.GetType().Equals(_targetType))
                     {
-                        _onCollisionAction.Invoke(entity, collider);
+                        OnCollision(this, new CollisionEventArgs(entity, collider));
                     }
                 }
             }
