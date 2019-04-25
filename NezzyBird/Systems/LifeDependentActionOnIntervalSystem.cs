@@ -33,7 +33,7 @@ namespace NezzyBird.Systems
 
             if (actionOnInterval.TimeSinceLastAction >= actionOnInterval.Interval)
             {
-                actionOnInterval.InvokeAction();
+                actionOnInterval.IntervalHasLapsed();
                 actionOnInterval.TimeSinceLastAction = 0f;
             }
         }

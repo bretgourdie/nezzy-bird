@@ -9,23 +9,21 @@ namespace NezzyBird.Components
 
         public readonly float Interval;
 
+        public event EventHandler OnIntervalLapsed;
+
         public float TimeSinceLastAction { get; set; }
 
-        public readonly Action Action;
-
         public ActionOnInterval(
-            Action action,
             float interval,
             bool active = true)
         {
-            Action = action;
             Interval = interval;
             Active = active;
         }
 
-        public void InvokeAction()
+        public void IntervalHasLapsed()
         {
-            Action.Invoke();
+            OnIntervalLapsed(this, EventArgs.Empty);
         }
     }
 }

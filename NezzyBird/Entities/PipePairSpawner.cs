@@ -17,10 +17,12 @@ namespace NezzyBird.Entities
 
         public override void onAddedToScene()
         {
-            addComponent(new ActionOnInterval(SpawnPipePair, 1.75f));
+            var actionOnInterval = new ActionOnInterval(1.75f);
+            actionOnInterval.OnIntervalLapsed += SpawnPipePair;
+            addComponent(actionOnInterval);
         }
 
-        public void SpawnPipePair()
+        public void SpawnPipePair(object sender, System.EventArgs e)
         {
             var topVerticalMargin = 147 * GameConstants.SPRITE_SCALE_FACTOR;
             var bottomVerticalMargin = GameConstants.SCREEN_HEIGHT;
