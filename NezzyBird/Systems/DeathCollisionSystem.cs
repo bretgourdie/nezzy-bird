@@ -34,6 +34,7 @@ namespace NezzyBird.Systems
             }
 
             hasLife.Kill();
+            _emitter.emit(NezzyEvents.BirdDied);
         }
 
         public override void process(Entity entity)
