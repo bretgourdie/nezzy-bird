@@ -13,19 +13,16 @@ namespace NezzyBird.Scenes
         public MainScene(ContentManager content)
         {
             var textureAtlas = content.Load<TextureAtlas>("Textures/TextureAtlas");
+            var emitter = new Emitter<NezzyEvents>();
 
-            var scoreDisplay = new ScoreDisplay(textureAtlas);
             var initialEntities = new Entity[]
             {
                 new Background(textureAtlas),
                 new Foreground(textureAtlas),
                 new Bird(textureAtlas),
                 new PipePairSpawner(textureAtlas),
-                scoreDisplay
+                new ScoreDisplay(textureAtlas, emitter)
             };
-
-            var emitter = new Emitter<NezzyEvents>();
-            emitter.addObserver(NezzyEvents.BirdScored, scoreDisplay.OnScoreUpdated);
 
             foreach (var entity in initialEntities)
             {

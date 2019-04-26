@@ -1,16 +1,16 @@
 ﻿using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
-using System;
+using NezzyBird.Systems;
 
 namespace NezzyBird.Entities
 {
     public class ScoreDisplay : Entity
     {
-        public Action OnScoreUpdated { get; private set; }
-
         public ScoreDisplay(
-            TextureAtlas textureAtlas)
+            TextureAtlas textureAtlas,
+            Emitter<NezzyEvents> emitter)
         {
             var displaysNumber = new DisplaysNumber();
             addComponent(displaysNumber);
@@ -21,7 +21,7 @@ namespace NezzyBird.Entities
 
             this.setScale(GameConstants.SPRITE_SCALE_FACTOR);
 
-            OnScoreUpdated = displaysNumber.OnNumberUpdated;
+            emitter.addObserver(NezzyEvents.BirdScored, displaysNumber.OnNumberUpdated);
         }
     }
 }
