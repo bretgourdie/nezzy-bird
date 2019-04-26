@@ -16,6 +16,7 @@ namespace NezzyBird.Entities
             sprite.renderLayer = GameConstants.RenderingLevels.Foreground;
             addComponent(sprite);
             addComponent(new EndsGameOnCollision());
+            addComponent(new BoxCollider() { isTrigger = true });
 
             this.scale = GameConstants.GetGameScale();
             this.position = new Vector2(

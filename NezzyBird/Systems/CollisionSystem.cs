@@ -25,9 +25,15 @@ namespace NezzyBird.Systems
             {
                 if (isColliding(boxCollider, collider))
                 {
-                    if (collider.entity.GetType().Equals(_targetType))
+                    var components = collider.entity.components;
+                    for (int ii = 0; ii < components.count; ii++)
                     {
-                        OnCollision(this, new CollisionEventArgs(entity, collider));
+                        var currentComponent = components[ii];
+
+                        if (currentComponent.GetType().Equals(_targetType))
+                        {
+                            OnCollision(this, new CollisionEventArgs(entity, collider));
+                        }
                     }
                 }
             }

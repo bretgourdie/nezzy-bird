@@ -1,7 +1,6 @@
 ﻿using Nez;
 using Nez.Systems;
 using NezzyBird.Components;
-using NezzyBird.Entities;
 
 namespace NezzyBird.Systems
 {
@@ -19,11 +18,11 @@ namespace NezzyBird.Systems
         )
         {
             _emitter = emitter;
-            _collisionSystem = new CollisionSystem(typeof(ScoreZone));
-            _collisionSystem.OnCollision += _collisionSystem_OnCollision;
+            _collisionSystem = new CollisionSystem(typeof(IncreasesScoreWhenPassing));
+            _collisionSystem.OnCollision += onScoreZoneCollision;
         }
 
-        private void _collisionSystem_OnCollision(object sender, CollisionEventArgs e)
+        private void onScoreZoneCollision(object sender, CollisionEventArgs e)
         {
             var entity = e.Entity;
             var hasScore = entity.getComponent<HasScore>();

@@ -40,6 +40,7 @@ namespace NezzyBird.Scenes
             this.addEntityProcessor(new LifeDependentActionOnIntervalSystem());
             this.addEntityProcessor(new JumpSystem());
             this.addEntityProcessor(new ScoreZoneCollisionSystem(emitter));
+            this.addEntityProcessor(new DeathCollisionSystem(emitter));
             this.addEntityProcessor(new ScoreDisplaySystem(textureAtlas));
 
             addEntity(new PipePairSpawner(textureAtlas));
