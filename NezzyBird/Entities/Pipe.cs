@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
+using NezzyBird.Systems;
 
 namespace NezzyBird.Entities
 {
@@ -9,10 +11,15 @@ namespace NezzyBird.Entities
     {
         public Pipe(
             TextureAtlas textureAtlas,
+            Emitter<NezzyEvents> emitter,
             VerticalDirection.MouthOpens mouthOpens)
         {
             addComponent(new VerticalDirection(textureAtlas, mouthOpens));
-            addComponent(new SimpleScrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
+            addComponent(
+                new SimpleScrolling(
+                    ScrollDirection.Left,
+                    GameConstants.PIPE_SCROLL_SPEED,
+                    emitter));
             addComponent(new Mover());
             addComponent(new EndsGameOnCollision());
             addComponent(new BoxCollider() { isTrigger = true });

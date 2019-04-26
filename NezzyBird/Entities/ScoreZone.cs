@@ -1,15 +1,21 @@
 ﻿using Nez;
+using Nez.Systems;
 using NezzyBird.Components;
+using NezzyBird.Systems;
 
 namespace NezzyBird.Entities
 {
     public class ScoreZone : Entity
     {
-        public ScoreZone()
+        public ScoreZone(Emitter<NezzyEvents> emitter)
         {
             addComponent(new Mover());
             addComponent(new IncreasesScoreWhenPassing());
-            addComponent(new SimpleScrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
+            addComponent(
+                new SimpleScrolling(
+                    ScrollDirection.Left,
+                    GameConstants.PIPE_SCROLL_SPEED,
+                    emitter));
 
             var boxCollider = new BoxCollider(
                 1f,
