@@ -20,7 +20,7 @@ namespace NezzyBird.Scenes
                 new Background(textureAtlas),
                 new Foreground(textureAtlas),
                 new Bird(textureAtlas),
-                new PipePairSpawner(textureAtlas),
+                new PipePairSpawner(textureAtlas, emitter),
                 new ScoreDisplay(textureAtlas, emitter)
             };
 

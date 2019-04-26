@@ -1,6 +1,8 @@
 ﻿using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
+using NezzyBird.Systems;
 
 namespace NezzyBird.Entities
 {
@@ -9,10 +11,14 @@ namespace NezzyBird.Entities
         private readonly TextureAtlas _textureAtlas;
 
         public PipePairSpawner(
-            TextureAtlas textureAtlas)
+            TextureAtlas textureAtlas,
+            Emitter<NezzyEvents> emitter)
         {
             _textureAtlas = textureAtlas;
-            addComponent(new CaresAboutLife());
+
+            var caresAboutLife = new CaresAboutLife();
+            emitter.addObserver(NezzyEvents.BirdDied, caresAboutLife.OnDeath);
+            addComponent(caresAboutLife);
         }
 
         public override void onAddedToScene()
