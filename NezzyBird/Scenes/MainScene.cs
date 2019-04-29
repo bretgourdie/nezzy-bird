@@ -31,7 +31,7 @@ namespace NezzyBird.Scenes
 
             var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
 
-            this.addRenderer(new DefaultRenderer());
+            this.addRenderer(renderer);
 
             this.addEntityProcessor(new GravitySystem());
             this.addEntityProcessor(new BirdSpriteRotationSystem());
