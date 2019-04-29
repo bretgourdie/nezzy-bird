@@ -45,6 +45,7 @@
     <Compile Include="Components\ActionOnInterval.cs" />
     <Compile Include="Components\AffectedByGravity.cs" />
     <Compile Include="Components\CaresAboutLife.cs" />
+    <Compile Include="Components\ChangeSceneOnTap.cs" />
     <Compile Include="Components\DisplaysNumber.cs" />
     <Compile Include="Components\EndsGameOnCollision.cs" />
     <Compile Include="Components\HasLife.cs" />
