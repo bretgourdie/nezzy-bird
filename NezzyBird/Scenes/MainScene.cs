@@ -33,14 +33,22 @@ namespace NezzyBird.Scenes
 
             this.addRenderer(renderer);
 
-            this.addEntityProcessor(new GravitySystem());
-            this.addEntityProcessor(new BirdSpriteRotationSystem());
-            this.addEntityProcessor(new ScrollingSystem());
-            this.addEntityProcessor(new LifeDependentActionOnIntervalSystem());
-            this.addEntityProcessor(new JumpSystem(emitter));
-            this.addEntityProcessor(new ScoreZoneCollisionSystem(emitter));
-            this.addEntityProcessor(new DeathCollisionSystem(emitter));
-            this.addEntityProcessor(new ScoreDisplaySystem(textureAtlas));
+            var initialSystems = new EntitySystem[]
+            {
+                new GravitySystem(),
+                new BirdSpriteRotationSystem(),
+                new ScrollingSystem(),
+                new LifeDependentActionOnIntervalSystem(),
+                new JumpSystem(emitter),
+                new ScoreZoneCollisionSystem(emitter),
+                new DeathCollisionSystem(emitter),
+                new ScoreDisplaySystem(textureAtlas)
+            };
+
+            foreach (var system in initialSystems)
+            {
+                this.addEntityProcessor(system);
+            }
 
             Nez.Core.debugRenderEnabled = true;
         }
