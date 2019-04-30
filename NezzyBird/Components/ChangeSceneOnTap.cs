@@ -1,16 +1,17 @@
 ﻿using Nez;
+using System;
 
 namespace NezzyBird.Components
 {
     public class ChangeSceneOnTap : Component
     {
-        public readonly Scene TransitionToScene;
+        public readonly Func<Scene> TheNextScene;
 
         public bool IsRequestingSceneChange { get; private set; }
 
-        public ChangeSceneOnTap(Scene transitionToScene)
+        public ChangeSceneOnTap(Func<Scene> theNextScene)
         {
-            TransitionToScene = transitionToScene;
+            TheNextScene = theNextScene;
         }
 
         public void RequestSceneChange(bool request)

@@ -9,10 +9,9 @@ namespace NezzyBird.Entities
     public class StartButton : Entity
     {
         public StartButton(
-            TextureAtlas textureAtlas,
-            ContentManager contentManager)
+            TextureAtlas textureAtlas)
         {
-            var changeSceneOnTap = new ChangeSceneOnTap(new MainScene(contentManager));
+            var changeSceneOnTap = new ChangeSceneOnTap(() => new MainScene(Core.content));
 
             addComponent(
                 new ReactsToTap(

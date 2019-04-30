@@ -83,6 +83,7 @@
     <Compile Include="Systems\LifeDependentActionOnIntervalSystem.cs" />
     <Compile Include="Systems\NezzyEvents.cs" />
     <Compile Include="Systems\JumpSystem.cs" />
+    <Compile Include="Systems\SceneTransitionSystem.cs" />
     <Compile Include="Systems\ScoreDisplaySystem.cs" />
     <Compile Include="Systems\ScoreZoneCollisionSystem.cs" />
     <Compile Include="Systems\ScrollingSystem.cs" />

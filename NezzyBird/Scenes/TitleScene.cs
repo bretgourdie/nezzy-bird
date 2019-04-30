@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Nez;
 using Nez.TextureAtlases;
 using NezzyBird.Entities;
+using NezzyBird.Systems;
 
 namespace NezzyBird.Scenes
 {
@@ -30,6 +31,16 @@ namespace NezzyBird.Scenes
             var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
 
             this.addRenderer(renderer);
+
+            var initialSystems = new EntitySystem[]
+            {
+                new SceneTransitionSystem()
+            };
+
+            foreach (var system in initialSystems)
+            {
+                this.addEntityProcessor(system);
+            }
         }
     }
 }
