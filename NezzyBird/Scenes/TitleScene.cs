@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Content;
 using Nez;
 using Nez.TextureAtlases;
 using NezzyBird.Entities;
-using NezzyBird.Systems;
 
 namespace NezzyBird.Scenes
 {
@@ -13,14 +12,11 @@ namespace NezzyBird.Scenes
         {
             var textureAtlas = content.Load<TextureAtlas>("Textures/TextureAtlas");
 
+            var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
+
             var initialEntities = new Entity[]
             {
-                new Background(textureAtlas),
-                new Foreground(textureAtlas),
-                new TitleDisplay(textureAtlas),
-                new TitleScreenBird(textureAtlas),
-                new StartButton(textureAtlas),
-                new RankingButton(textureAtlas)
+                new TitleSceneUI(textureAtlas)
             };
 
             foreach (var entity in initialEntities)
@@ -28,19 +24,9 @@ namespace NezzyBird.Scenes
                 this.addEntity(entity);
             }
 
-            var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
-
             this.addRenderer(renderer);
 
-            var initialSystems = new EntitySystem[]
-            {
-                new SceneTransitionSystem()
-            };
-
-            foreach (var system in initialSystems)
-            {
-                this.addEntityProcessor(system);
-            }
+            Nez.Core.debugRenderEnabled = true;
         }
     }
 }

@@ -14,9 +14,12 @@ namespace NezzyBird
         {
             base.Initialize();
 
-            var mainScene = new MainScene(Content);
+            //var mainScene = new MainScene(Content);
 
-            Core.scene = mainScene;
+            //Core.scene = mainScene;
+            var titleScene = new TitleScene(Content);
+
+            Core.scene = titleScene;
         }
 
     }
