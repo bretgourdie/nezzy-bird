@@ -19,7 +19,7 @@ namespace NezzyBird.Entities
             var gameScale = GameConstants.GetGameScale();
             titleImage.setScale(gameScale.X, gameScale.Y);
             table.add(titleImage)
-                .setPadBottom(300);
+                .setPadBottom(365);
             table.row();
 
             var playButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("PlayButton"));
