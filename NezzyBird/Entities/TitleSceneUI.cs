@@ -15,9 +15,6 @@ namespace NezzyBird.Entities
 
             var table = stage.addElement(new Table()).setFillParent(true);
 
-            var background = new SubtextureDrawable(textureAtlas.getSubtexture("Day"));
-            table.setBackground(background);
-
             var titleImage = new Image(textureAtlas.getSubtexture("Title"));
             var gameScale = GameConstants.GetGameScale();
             titleImage.setScale(gameScale.X, gameScale.Y);
