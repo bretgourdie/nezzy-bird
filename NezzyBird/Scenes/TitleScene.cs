@@ -17,7 +17,8 @@ namespace NezzyBird.Scenes
             var initialEntities = new Entity[]
             {
                 new Background(textureAtlas),
-                new TitleSceneUI(textureAtlas)
+                new TitleSceneUI(textureAtlas),
+                new Foreground(textureAtlas)
             };
 
             foreach (var entity in initialEntities)
