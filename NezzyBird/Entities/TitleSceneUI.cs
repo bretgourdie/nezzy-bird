@@ -21,28 +21,30 @@ namespace NezzyBird.Entities
             var titleImage = new Image(textureAtlas.getSubtexture("Title"));
             var gameScale = GameConstants.GetGameScale();
             titleImage.setScale(gameScale.X, gameScale.Y);
-            table.add(titleImage);
+            table.add(titleImage)
+                .setPadBottom(300);
             table.row();
 
             var playButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("PlayButton"));
             var playButton = new Button(playButtonDrawable);
-            table.add(playButton);
+            playButton.shouldUseExplicitFocusableControl = true;
 
             var rankingButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("RankingButton"));
             var rankingButton = new Button(rankingButtonDrawable);
-            table.add(rankingButton);
-            table.row();
+            rankingButton.shouldUseExplicitFocusableControl = true;
 
-            var bar = new ProgressBar(0, 1, 0.1f, false, ProgressBarStyle.create(Color.Black, Color.White));
-            table.add(bar);
-            table.row();
+            playButton.gamepadRightElement = rankingButton;
+            rankingButton.gamepadLeftElement = playButton;
 
-            var slider = new Slider(0, 1, 0.1f, false, SliderStyle.create(Color.DarkGray, Color.LightYellow));
-            table.add(slider);
+            table.add(playButton)
+                .setMinWidth(playButtonDrawable.minWidth * gameScale.X)
+                .setMinHeight(playButtonDrawable.minHeight * gameScale.Y)
+                .setPadRight(10);
+            table.add(rankingButton)
+                .setMinWidth(rankingButtonDrawable.minWidth * gameScale.X)
+                .setMinHeight(rankingButtonDrawable.minHeight * gameScale.Y)
+                .setPadLeft(10);
             table.row();
-
-            var button = new Button(ButtonStyle.create(Color.Black, Color.DarkGray, Color.Green));
-            table.add(button).setMinWidth(100).setMinHeight(30);
 
             this.addComponent(canvas);
         }
