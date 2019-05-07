@@ -9,6 +9,8 @@ namespace NezzyBird.Entities
     {
         public TitleSceneUI(TextureAtlas textureAtlas)
         {
+            var gameScale = GameConstants.GetGameScale();
+
             var canvas = new UICanvas();
 
             var stage = canvas.stage;
@@ -16,10 +18,10 @@ namespace NezzyBird.Entities
             var table = stage.addElement(new Table()).setFillParent(true);
 
             var titleImage = new Image(textureAtlas.getSubtexture("Title"));
-            var gameScale = GameConstants.GetGameScale();
+
             titleImage.setScale(gameScale.X, gameScale.Y);
             table.add(titleImage)
-                .setPadBottom(365);
+                .setPadBottom(400);
             table.row();
 
             var playButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("PlayButton"));
@@ -33,15 +35,24 @@ namespace NezzyBird.Entities
             playButton.gamepadRightElement = rankingButton;
             rankingButton.gamepadLeftElement = playButton;
 
+            const int actionButtonMiddlePad = 10;
+            const int actionButtonBottomPad = 100;
+
             table.add(playButton)
                 .setMinWidth(playButtonDrawable.minWidth * gameScale.X)
                 .setMinHeight(playButtonDrawable.minHeight * gameScale.Y)
-                .setPadRight(10);
+                .setPadRight(actionButtonMiddlePad)
+                .setPadBottom(actionButtonBottomPad);
             table.add(rankingButton)
                 .setMinWidth(rankingButtonDrawable.minWidth * gameScale.X)
                 .setMinHeight(rankingButtonDrawable.minHeight * gameScale.Y)
-                .setPadLeft(10);
+                .setPadLeft(actionButtonMiddlePad)
+                .setPadBottom(actionButtonBottomPad);
             table.row();
+
+            var copyrightImage = new Image(textureAtlas.getSubtexture("Copyright"));
+            copyrightImage.setScale(gameScale.X, gameScale.Y);
+            table.add(copyrightImage);
 
             this.addComponent(canvas);
         }
