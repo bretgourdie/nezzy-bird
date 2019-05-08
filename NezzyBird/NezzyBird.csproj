@@ -65,12 +65,8 @@
     <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Entities\PipePair.cs" />
     <Compile Include="Entities\PipePairSpawner.cs" />
-    <Compile Include="Entities\RankingButton.cs" />
     <Compile Include="Entities\ScoreDisplay.cs" />
     <Compile Include="Entities\ScoreZone.cs" />
-    <Compile Include="Entities\StartButton.cs" />
-    <Compile Include="Entities\TitleDisplay.cs" />
-    <Compile Include="Entities\TitleScreenBird.cs" />
     <Compile Include="Entities\TitleSceneUI.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameConstants.cs" />
