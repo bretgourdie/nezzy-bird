@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Nez;
+﻿using Nez;
 using Nez.TextureAtlases;
 using Nez.UI;
 using NezzyBird.Scenes;
-using System;
 
 namespace NezzyBird.Entities
 {
