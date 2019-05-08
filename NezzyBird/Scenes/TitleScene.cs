@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Nez;
 using Nez.TextureAtlases;
 using NezzyBird.Entities;
@@ -8,7 +7,7 @@ namespace NezzyBird.Scenes
 {
     public class TitleScene : Scene
     {
-        public TitleScene(ContentManager content)
+        public TitleScene()
         {
             var textureAtlas = content.Load<TextureAtlas>("Textures/TextureAtlas");
 

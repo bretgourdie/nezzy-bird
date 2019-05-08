@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Nez;
 using Nez.Systems;
 using Nez.TextureAtlases;
@@ -10,7 +9,7 @@ namespace NezzyBird.Scenes
 {
     public class MainScene : Scene
     {
-        public MainScene(ContentManager content)
+        public MainScene()
         {
             var textureAtlas = content.Load<TextureAtlas>("Textures/TextureAtlas");
             var emitter = new Emitter<NezzyEvents>();
