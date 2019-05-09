@@ -17,7 +17,8 @@ namespace NezzyBird.Scenes
             {
                 new Background(textureAtlas),
                 new TitleSceneUI(textureAtlas),
-                new Foreground(textureAtlas)
+                new Foreground(textureAtlas),
+                new TitleScreenBird().GetBird(textureAtlas)
             };
 
             foreach (var entity in initialEntities)
@@ -26,8 +27,6 @@ namespace NezzyBird.Scenes
             }
 
             this.addRenderer(renderer);
-
-            Nez.Core.debugRenderEnabled = true;
         }
     }
 }
