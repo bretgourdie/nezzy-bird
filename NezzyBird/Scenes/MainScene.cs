@@ -37,7 +37,7 @@ namespace NezzyBird.Scenes
                 new GravitySystem(),
                 new BirdSpriteRotationSystem(),
                 new ScrollingSystem(),
-                new LifeDependentActionOnIntervalSystem(emitter),
+                new PipePairSpawningSystem(emitter),
                 new JumpSystem(emitter),
                 new ScoreZoneCollisionSystem(emitter),
                 new DeathCollisionSystem(emitter),

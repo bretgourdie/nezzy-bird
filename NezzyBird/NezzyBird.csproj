@@ -79,7 +79,7 @@
     <Compile Include="Systems\CollisionEventArgs.cs" />
     <Compile Include="Systems\CollisionSystem.cs" />
     <Compile Include="Systems\DeathCollisionSystem.cs" />
-    <Compile Include="Systems\LifeDependentActionOnIntervalSystem.cs" />
+    <Compile Include="Systems\PipePairSpawningSystem.cs" />
     <Compile Include="Systems\NezzyEvents.cs" />
     <Compile Include="Systems\JumpSystem.cs" />
     <Compile Include="Systems\SceneTransitionSystem.cs" />

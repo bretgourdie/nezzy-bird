@@ -4,11 +4,11 @@ using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
-    public class LifeDependentActionOnIntervalSystem : EntityProcessingSystem
+    public class PipePairSpawningSystem : EntityProcessingSystem
     {
         private bool _hasBirdJumped = false;
 
-        public LifeDependentActionOnIntervalSystem(Emitter<NezzyEvents> emitter) :
+        public PipePairSpawningSystem(Emitter<NezzyEvents> emitter) :
             base(new Matcher()
             .all(
                 typeof(ActionOnInterval),
