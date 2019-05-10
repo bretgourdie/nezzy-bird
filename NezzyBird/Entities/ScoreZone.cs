@@ -12,10 +12,9 @@ namespace NezzyBird.Entities
             addComponent(new Mover());
             addComponent(new IncreasesScoreWhenPassing());
             addComponent(
-                new SimpleScrolling(
+                new Scrolling(
                     ScrollDirection.Left,
-                    GameConstants.PIPE_SCROLL_SPEED,
-                    emitter));
+                    GameConstants.PIPE_SCROLL_SPEED));
 
             var boxCollider = new BoxCollider(
                 1f,

@@ -4,7 +4,7 @@ using Nez;
 
 namespace NezzyBird.Components
 {
-    public abstract class Scrolling : Component
+    public class Scrolling : Component
     {
         public readonly Vector2 Movement;
 

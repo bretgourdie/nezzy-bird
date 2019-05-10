@@ -1,48 +1,50 @@
 ﻿using Nez;
 using Nez.Sprites;
+using Nez.Systems;
 using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
     public class ScrollingSystem : EntityProcessingSystem
     {
-        public ScrollingSystem() :
+        private bool _birdIsAlive = true;
+
+        public ScrollingSystem(Emitter<NezzyEvents> emitter) :
             base(new Matcher()
             .all(
                 typeof(Mover),
-                typeof(CaresAboutLife)
+                typeof(Scrolling)
             )
-            .one(typeof(SimpleScrolling))
-        ) { }
+        )
+        {
+            emitter.addObserver(NezzyEvents.BirdDied, _onBirdDied);
+        }
 
         public override void process(Entity entity)
         {
-            var caresAboutLife = entity.getComponent<CaresAboutLife>();
-
-            if (!caresAboutLife.ImportantLifeIsAlive)
+            if (!_birdIsAlive)
             {
                 return;
             }
 
             var mover = entity.getComponent<Mover>();
-            var sprite = entity.getComponent<Sprite>();
+            var optionalSprite = entity.getComponent<Sprite>();
             var scrolling = entity.getComponent<Scrolling>();
 
             CollisionResult collisionResult;
             mover.move(scrolling.Movement, out collisionResult);
 
-            if (entity.position.X < 0 && (sprite == null || !sprite.isVisible))
+            var spriteIsNullOrOffscreen = optionalSprite == null || !optionalSprite.isVisible;
+
+            if (entity.position.X < 0 && spriteIsNullOrOffscreen)
             {
-                if (scrolling is SimpleScrolling)
-                {
-                    handleSimpleScrolling(entity);
-                }
+                entity.destroy();
             }
         }
 
-        private void handleSimpleScrolling(Entity entity)
+        private void _onBirdDied()
         {
-            entity.destroy();
+            _birdIsAlive = false;
         }
     }
 }

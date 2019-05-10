@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Components\SpawnsPipePair.cs" />
     <Compile Include="Components\AffectedByGravity.cs" />
-    <Compile Include="Components\CaresAboutLife.cs" />
     <Compile Include="Components\ChangeSceneOnTap.cs" />
     <Compile Include="Components\DisplaysNumber.cs" />
     <Compile Include="Components\EndsGameOnCollision.cs" />
@@ -56,7 +55,6 @@
     <Compile Include="Components\ReactsToTap.cs" />
     <Compile Include="Components\ScrollDirection.cs" />
     <Compile Include="Components\Scrolling.cs" />
-    <Compile Include="Components\SimpleScrolling.cs" />
     <Compile Include="Components\VerticalDirection.cs" />
     <Compile Include="Components\WaitsForFirstTap.cs" />
     <Compile Include="Entities\Background.cs" />
