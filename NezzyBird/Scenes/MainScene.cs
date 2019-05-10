@@ -19,7 +19,7 @@ namespace NezzyBird.Scenes
                 new Background(textureAtlas),
                 new Foreground(textureAtlas),
                 new Bird(textureAtlas),
-                new PipePairSpawner(textureAtlas, emitter),
+                new PipePairSpawner(),
                 new ScoreDisplay(textureAtlas, emitter)
             };
 
@@ -37,7 +37,7 @@ namespace NezzyBird.Scenes
                 new GravitySystem(),
                 new BirdSpriteRotationSystem(),
                 new ScrollingSystem(),
-                new PipePairSpawningSystem(emitter),
+                new PipePairSpawningSystem(emitter, textureAtlas),
                 new JumpSystem(emitter),
                 new ScoreZoneCollisionSystem(emitter),
                 new DeathCollisionSystem(emitter),
