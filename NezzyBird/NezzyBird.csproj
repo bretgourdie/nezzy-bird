@@ -58,6 +58,7 @@
     <Compile Include="Components\Scrolling.cs" />
     <Compile Include="Components\SimpleScrolling.cs" />
     <Compile Include="Components\VerticalDirection.cs" />
+    <Compile Include="Components\WaitsForFirstTap.cs" />
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
     <Compile Include="Entities\Foreground.cs" />

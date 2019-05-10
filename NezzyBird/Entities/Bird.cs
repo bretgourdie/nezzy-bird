@@ -27,6 +27,7 @@ namespace NezzyBird.Entities
             addComponent(new HasVelocity());
             addComponent(new HasScore());
             addComponent(new HasLife());
+            addComponent(new WaitsForFirstTap());
 
             this.scale = GameConstants.GetGameScale();
 

@@ -9,12 +9,20 @@ namespace NezzyBird.Systems
         public GravitySystem() :
             base(new Matcher().all(
                 typeof(AffectedByGravity),
+                typeof(WaitsForFirstTap),
                 typeof(Mover),
                 typeof(HasVelocity)
             )) { }
 
         public override void process(Entity entity)
         {
+            var waitsForFirstTap = entity.getComponent<WaitsForFirstTap>();
+
+            if (!waitsForFirstTap.HasTapped)
+            {
+                return;
+            }
+
             var gravity = entity.getComponent<AffectedByGravity>();
             var mover = entity.getComponent<Mover>();
             var velocity = entity.getComponent<HasVelocity>();

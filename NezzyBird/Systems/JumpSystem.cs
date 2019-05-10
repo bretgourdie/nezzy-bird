@@ -8,11 +8,18 @@ namespace NezzyBird.Systems
     public class JumpSystem : EntityProcessingSystem
     {
         private bool _canJump = true;
+        private Emitter<NezzyEvents> _emitter;
 
         public JumpSystem(Emitter<NezzyEvents> emitter) : base(
-            new Matcher().all(typeof(JumpsOnTap)))
+            new Matcher().all(
+                typeof(JumpsOnTap),
+                typeof(WaitsForFirstTap),
+                typeof(HasVelocity)
+            )
+        )
         {
-            emitter.addObserver(NezzyEvents.BirdDied, _onBirdDied);
+            _emitter = emitter;
+            _emitter.addObserver(NezzyEvents.BirdDied, _onBirdDied);
         }
 
         public override void process(Entity entity)
@@ -24,10 +31,13 @@ namespace NezzyBird.Systems
 
             var jump = entity.getComponent<JumpsOnTap>();
             var velocity = entity.getComponent<HasVelocity>();
+            var waitsForFirstTap = entity.getComponent<WaitsForFirstTap>();
 
             if (jump.IsJumping)
             {
                 velocity.CurrentVelocity = new Vector2(0, -jump.GetJumpAmount());
+                waitsForFirstTap.RecordTap();
+                _emitter.emit(NezzyEvents.BirdJumped);
             }
         }
 
