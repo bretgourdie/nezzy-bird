@@ -20,8 +20,7 @@ namespace NezzyBird.Entities
             sprite.renderLayer = GameConstants.RenderingLevels.Bird;
             addComponent(sprite);
             addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
-            var jumpsOnTap = new JumpsOnTap(JUMP_HEIGHT);
-            addComponent(new ReactsToTap(jumpsOnTap, jumpsOnTap.Jump));
+            addComponent(new JumpsOnTap(JUMP_HEIGHT));
             addComponent(new Mover());
             addComponent(new BoxCollider() { isTrigger = true });
             addComponent(new HasVelocity());

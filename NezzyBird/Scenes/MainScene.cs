@@ -35,7 +35,7 @@ namespace NezzyBird.Scenes
             var initialSystems = new EntitySystem[]
             {
                 new GravitySystem(),
-                new BirdSpriteRotationSystem(),
+                new BirdSpriteRotationSystem(emitter),
                 new ScrollingSystem(emitter),
                 new PipePairSpawningSystem(emitter, textureAtlas),
                 new JumpSystem(emitter),

@@ -1,26 +1,30 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Sprites;
+using Nez.Systems;
 using Nez.Tweens;
 using NezzyBird.Components;
-using NezzyBird.Entities;
-using System;
 
 namespace NezzyBird.Systems
 {
     public class BirdSpriteRotationSystem : EntityProcessingSystem
     {
-        public BirdSpriteRotationSystem() : base(
+        private bool _birdHasJumped;
+
+        public BirdSpriteRotationSystem(Emitter<NezzyEvents> emitter) : base(
             new Matcher()
             .all(
                 typeof(JumpsOnTap),
-                typeof(Sprite))) { }
+                typeof(Sprite)))
+        {
+            emitter.addObserver(NezzyEvents.BirdJumped, () => _birdHasJumped = true);
+        }
 
         public override void process(Entity entity)
         {
             var jump = entity.getComponent<JumpsOnTap>();
 
-            if (!jump.IsJumping)
+            if (!_birdHasJumped)
             {
                 return;
             }
@@ -35,6 +39,8 @@ namespace NezzyBird.Systems
             var completeAnimation = jumpBegin.setNextTween(descentBegin);
 
             completeAnimation.start();
+
+            _birdHasJumped = false;
         }
     }
 }

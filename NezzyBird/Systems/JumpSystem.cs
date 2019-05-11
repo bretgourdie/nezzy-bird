@@ -1,14 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Nez;
 using Nez.Systems;
 using NezzyBird.Components;
+using System;
 
 namespace NezzyBird.Systems
 {
-    public class JumpSystem : EntityProcessingSystem
+    public class JumpSystem : EntityProcessingSystem, IDisposable
     {
         private bool _canJump = true;
-        private Emitter<NezzyEvents> _emitter;
+        private readonly Emitter<NezzyEvents> _emitter;
+        private readonly VirtualButton _tapButton;
 
         public JumpSystem(Emitter<NezzyEvents> emitter) : base(
             new Matcher().all(
@@ -19,7 +22,9 @@ namespace NezzyBird.Systems
         )
         {
             _emitter = emitter;
-            _emitter.addObserver(NezzyEvents.BirdDied, _onBirdDied);
+            _emitter.addObserver(NezzyEvents.BirdDied, () => _canJump = false);
+
+            _tapButton = _addTappingButton();
         }
 
         public override void process(Entity entity)
@@ -29,21 +34,30 @@ namespace NezzyBird.Systems
                 return;
             }
 
+            if (!_tapButton.isPressed)
+            {
+                return;
+            }
+
             var jump = entity.getComponent<JumpsOnTap>();
             var velocity = entity.getComponent<HasVelocity>();
             var waitsForFirstTap = entity.getComponent<WaitsForFirstTap>();
 
-            if (jump.IsJumping)
-            {
-                velocity.CurrentVelocity = new Vector2(0, -jump.GetJumpAmount());
-                waitsForFirstTap.RecordTap();
-                _emitter.emit(NezzyEvents.BirdJumped);
-            }
+            velocity.CurrentVelocity = new Vector2(0, -jump.JumpAmount);
+            waitsForFirstTap.RecordTap();
+            _emitter.emit(NezzyEvents.BirdJumped);
         }
 
-        private void _onBirdDied()
+        private VirtualButton _addTappingButton()
         {
-            _canJump = false;
+            var tapButton = new VirtualButton();
+            tapButton.addKeyboardKey(Keys.Space);
+            tapButton.addMouseLeftButton();
+            tapButton.addGamePadButton((int)PlayerIndex.One, Buttons.A);
+
+            return tapButton;
         }
+
+        public void Dispose() => _tapButton.deregister();
     }
 }
