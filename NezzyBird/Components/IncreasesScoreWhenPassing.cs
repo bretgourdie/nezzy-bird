@@ -2,8 +2,5 @@
 
 namespace NezzyBird.Components
 {
-    public class IncreasesScoreWhenPassing : Component
-    {
-        private const int scoreIncreaseAmount = 1;
-    }
+    public class IncreasesScoreWhenPassing : Component { }
 }
