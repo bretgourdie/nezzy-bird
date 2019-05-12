@@ -42,6 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\ParallaxScrolling.cs" />
     <Compile Include="Components\SpawnsPipePair.cs" />
     <Compile Include="Components\AffectedByGravity.cs" />
     <Compile Include="Components\ChangeSceneOnTap.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Systems\CollisionEventArgs.cs" />
     <Compile Include="Systems\CollisionSystem.cs" />
     <Compile Include="Systems\DeathCollisionSystem.cs" />
+    <Compile Include="Systems\ParallaxScrollingSystem.cs" />
     <Compile Include="Systems\PipePairSpawningSystem.cs" />
     <Compile Include="Systems\NezzyEvents.cs" />
     <Compile Include="Systems\JumpSystem.cs" />
