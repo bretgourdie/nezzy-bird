@@ -1,4 +1,5 @@
 ﻿using Nez;
+using Nez.Sprites;
 
 namespace NezzyBird.Components
 {
@@ -6,6 +7,7 @@ namespace NezzyBird.Components
     {
         public readonly ScrollDirection ScrollDirection;
         public readonly float Rate;
+        public Sprite[] ParallaxSprites { get; set; }
 
         public ParallaxScrolling(
             ScrollDirection scrollDirection,

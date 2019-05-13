@@ -2,6 +2,7 @@
 using Nez;
 using Nez.TextureAtlases;
 using NezzyBird.Entities;
+using NezzyBird.Systems;
 
 namespace NezzyBird.Scenes
 {
@@ -24,6 +25,18 @@ namespace NezzyBird.Scenes
             foreach (var entity in initialEntities)
             {
                 this.addEntity(entity);
+            }
+
+            var scrollingMovement = new ScrollingMovement();
+
+            var initialSystems = new EntitySystem[]
+            {
+                new ParallaxScrollingSystem(scrollingMovement)
+            };
+
+            foreach (var system in initialSystems)
+            {
+                this.addEntityProcessor(system);
             }
 
             this.addRenderer(renderer);
