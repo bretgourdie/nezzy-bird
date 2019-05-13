@@ -84,6 +84,7 @@
     <Compile Include="Systems\SceneTransitionSystem.cs" />
     <Compile Include="Systems\ScoreDisplaySystem.cs" />
     <Compile Include="Systems\ScoreZoneCollisionSystem.cs" />
+    <Compile Include="Systems\ScrollingMovement.cs" />
     <Compile Include="Systems\ScrollingSystem.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
     <Compile Include="Systems\BirdSpriteRotationSystem.cs" />

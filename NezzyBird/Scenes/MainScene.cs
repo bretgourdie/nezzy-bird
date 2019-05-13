@@ -32,11 +32,13 @@ namespace NezzyBird.Scenes
 
             this.addRenderer(renderer);
 
+            var scrollingMovement = new ScrollingMovement();
+
             var initialSystems = new EntitySystem[]
             {
                 new GravitySystem(),
                 new BirdSpriteRotationSystem(emitter),
-                new ScrollingSystem(emitter),
+                new ScrollingSystem(scrollingMovement, emitter),
                 new PipePairSpawningSystem(emitter, textureAtlas),
                 new JumpSystem(emitter),
                 new ScoreZoneCollisionSystem(emitter),
