@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using NezzyBird.Entities;
 using NezzyBird.Systems;
@@ -28,10 +29,12 @@ namespace NezzyBird.Scenes
             }
 
             var scrollingMovement = new ScrollingMovement();
+            var emitter = new Emitter<NezzyEvents>();
 
             var initialSystems = new EntitySystem[]
             {
-                new ParallaxScrollingSystem(scrollingMovement)
+                new ParallaxScrollingSystem(),
+                new ScrollingSystem(scrollingMovement, emitter)
             };
 
             foreach (var system in initialSystems)

@@ -17,7 +17,9 @@ namespace NezzyBird.Entities
             addComponent(sprite);
             addComponent(new EndsGameOnCollision());
             addComponent(new BoxCollider() { isTrigger = true });
-            addComponent(new ParallaxScrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
+            addComponent(new Mover());
+            addComponent(new Scrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
+            addComponent(new ParallaxScrolling());
 
             this.scale = GameConstants.GetGameScale();
             this.position = new Vector2(

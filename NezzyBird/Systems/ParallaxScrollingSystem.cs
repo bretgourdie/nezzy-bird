@@ -7,15 +7,11 @@ namespace NezzyBird.Systems
 {
     public class ParallaxScrollingSystem : EntityProcessingSystem
     {
-        private readonly ScrollingMovement _scrollingMovement;
-
-        public ParallaxScrollingSystem(ScrollingMovement scrollingMovement) : base(
+        public ParallaxScrollingSystem() : base(
             new Matcher().all(
                 typeof(ParallaxScrolling)
             ))
-        {
-            _scrollingMovement = scrollingMovement;
-        }
+        { }
 
         public override void onAdded(Entity entity)
         {
@@ -28,22 +24,22 @@ namespace NezzyBird.Systems
 
             var secondarySprite = (Sprite)sprite.clone();
 
-
-            secondarySprite.transform.localPosition = _getSpaceToRightOfNextSprite(sprite);
-
             var parallaxScrolling = entity.getComponent<ParallaxScrolling>();
-
-            parallaxScrolling.ParallaxSprites = new Sprite[]
-            {
-                sprite,
-                secondarySprite
-            };
+            parallaxScrolling.AddSprite(secondarySprite);
+            parallaxScrolling.OtherEntity.position =
+                new Vector2(
+                    entity.position.X + sprite.width,
+                    entity.position.Y);
         }
 
         public override void process(Entity entity)
         {
+            var sprite = entity.getComponent<Sprite>();
             var parallaxScrolling = entity.getComponent<ParallaxScrolling>();
-            var sprites = parallaxScrolling.ParallaxSprites;
+
+            var otherSprite = parallaxScrolling.OtherSprite;
+
+            var sprites = new Sprite[] { sprite, otherSprite };
 
             for (int ii = 0; ii < sprites.Length; ii++)
             {

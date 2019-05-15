@@ -5,16 +5,22 @@ namespace NezzyBird.Components
 {
     public class ParallaxScrolling : Component
     {
-        public readonly ScrollDirection ScrollDirection;
-        public readonly float Rate;
-        public Sprite[] ParallaxSprites { get; set; }
+        public readonly Entity OtherEntity;
+        public Sprite OtherSprite => OtherEntity.getComponent<Sprite>();
 
-        public ParallaxScrolling(
-            ScrollDirection scrollDirection,
-            float rate)
+        public ParallaxScrolling()
         {
-            ScrollDirection = scrollDirection;
-            Rate = rate;
+            OtherEntity = new Entity();
+        }
+
+        public override void onAddedToEntity()
+        {
+            entity.scene.addEntity(OtherEntity);
+        }
+
+        public void AddSprite(Sprite sprite)
+        {
+            OtherEntity.addComponent(sprite);
         }
     }
 }
