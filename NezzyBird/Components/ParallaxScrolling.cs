@@ -1,26 +1,15 @@
-﻿using Nez;
-using Nez.Sprites;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 
 namespace NezzyBird.Components
 {
     public class ParallaxScrolling : Component
     {
-        public readonly Entity OtherEntity;
-        public Sprite OtherSprite => OtherEntity.getComponent<Sprite>();
+        public readonly Vector2 OriginalPosition;
 
-        public ParallaxScrolling()
+        public ParallaxScrolling(Vector2 originalPosition)
         {
-            OtherEntity = new Entity();
-        }
-
-        public override void onAddedToEntity()
-        {
-            entity.scene.addEntity(OtherEntity);
-        }
-
-        public void AddSprite(Sprite sprite)
-        {
-            OtherEntity.addComponent(sprite);
+            OriginalPosition = originalPosition;
         }
     }
 }

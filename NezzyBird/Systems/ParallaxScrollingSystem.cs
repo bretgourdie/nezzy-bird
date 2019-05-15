@@ -13,52 +13,17 @@ namespace NezzyBird.Systems
             ))
         { }
 
-        public override void onAdded(Entity entity)
-        {
-            var sprite = entity.getComponent<Sprite>();
-
-            if (sprite == null)
-            {
-                throw new System.InvalidOperationException("Entity has no sprite to clone");
-            }
-
-            var secondarySprite = (Sprite)sprite.clone();
-
-            var parallaxScrolling = entity.getComponent<ParallaxScrolling>();
-            parallaxScrolling.AddSprite(secondarySprite);
-            parallaxScrolling.OtherEntity.position =
-                new Vector2(
-                    entity.position.X + sprite.width,
-                    entity.position.Y);
-        }
-
         public override void process(Entity entity)
         {
             var sprite = entity.getComponent<Sprite>();
             var parallaxScrolling = entity.getComponent<ParallaxScrolling>();
 
-            var otherSprite = parallaxScrolling.OtherSprite;
+            var originalPosition = parallaxScrolling.OriginalPosition;
 
-            var sprites = new Sprite[] { sprite, otherSprite };
-
-            for (int ii = 0; ii < sprites.Length; ii++)
+            if (entity.position.X == originalPosition.X - sprite.width / 2)
             {
-                var currentSprite = sprites[ii];
-
-                if (!currentSprite.isVisible)
-                {
-                    var nextSpriteIndex = (ii + 1) % sprites.Length;
-                    var nextSprite = sprites[nextSpriteIndex];
-
-                    currentSprite.transform.localPosition = _getSpaceToRightOfNextSprite(nextSprite);
-                }
+                entity.position = originalPosition;
             }
-        }
-
-        private Vector2 _getSpaceToRightOfNextSprite(
-            Sprite nextSprite)
-        {
-            return nextSprite.transform.localPosition + new Vector2(nextSprite.width, 0);
         }
     }
 }
