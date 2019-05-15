@@ -8,9 +8,18 @@ namespace NezzyBird.Entities
 {
     public class Background : Entity
     {
-        public Background(TextureAtlas atlas)
+        public Background(TextureAtlas atlas, bool onlyUseDay = false)
         {
-            var selectedBackground = Random.choose("Day", "Night");
+            string selectedBackground;
+
+            if (onlyUseDay)
+            {
+                selectedBackground = "Day";
+            }
+            else
+            {
+                selectedBackground = Random.choose("Day", "Night");
+            }
             var backgroundSubtexture = atlas.getSubtexture(selectedBackground);
             var backgroundSprite = new Sprite(backgroundSubtexture);
             backgroundSprite.renderLayer = GameConstants.RenderingLevels.Background;
@@ -19,11 +28,11 @@ namespace NezzyBird.Entities
             this.scale = GameConstants.GetGameScale();
 
             var originalPosition = new Vector2(
-                GameConstants.SOURCE_SCREEN_WIDTH,
+                GameConstants.SOURCE_SCREEN_WIDTH / 2,
                 GameConstants.SOURCE_SCREEN_HEIGHT / 2)
                 * GameConstants.GetGameScale();
 
-            addComponent(new ParallaxScrolling(originalPosition));
+            addComponent(new ParallaxScrolling(originalPosition, -138 / 3));
             addComponent(new Scrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
             addComponent(new Mover());
             addComponent(new BoxCollider() { isTrigger = true });
