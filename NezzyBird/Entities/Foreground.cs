@@ -26,7 +26,7 @@ namespace NezzyBird.Entities
                 GameConstants.SOURCE_SCREEN_WIDTH,
                 GameConstants.SOURCE_SCREEN_HEIGHT - sprite.height / 8)
                 * GameConstants.GetGameScale();
-            addComponent(new ParallaxScrolling(originalPosition));
+            addComponent(new ParallaxScrolling(originalPosition, (int)(originalPosition.X - sprite.width / 2) ));
 
             this.position = originalPosition;
 

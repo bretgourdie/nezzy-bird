@@ -17,7 +17,7 @@ namespace NezzyBird.Scenes
 
             var initialEntities = new Entity[]
             {
-                new Background(textureAtlas),
+                new Background(textureAtlas, onlyUseDay: true),
                 new TitleSceneUI(textureAtlas),
                 new Foreground(textureAtlas),
                 new TitleScreenBird().GetBird(textureAtlas)

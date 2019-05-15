@@ -18,11 +18,9 @@ namespace NezzyBird.Systems
             var sprite = entity.getComponent<Sprite>();
             var parallaxScrolling = entity.getComponent<ParallaxScrolling>();
 
-            var originalPosition = parallaxScrolling.OriginalPosition;
-
-            if (entity.position.X == originalPosition.X - sprite.width / 2)
+            if (entity.position.X <= parallaxScrolling.LeftOffscreenAmount)
             {
-                entity.position = originalPosition;
+                entity.position = parallaxScrolling.OriginalPosition;
             }
         }
     }
