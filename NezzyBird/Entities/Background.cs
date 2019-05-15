@@ -1,6 +1,8 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 using Nez.Sprites;
 using Nez.TextureAtlases;
+using NezzyBird.Components;
 
 namespace NezzyBird.Entities
 {
@@ -16,8 +18,17 @@ namespace NezzyBird.Entities
 
             this.scale = GameConstants.GetGameScale();
 
-            var middleOfScreen = GameConstants.GetScreenBounds() / 2;
-            this.setPosition(middleOfScreen);
+            var originalPosition = new Vector2(
+                GameConstants.SOURCE_SCREEN_WIDTH,
+                GameConstants.SOURCE_SCREEN_HEIGHT / 2)
+                * GameConstants.GetGameScale();
+
+            addComponent(new ParallaxScrolling(originalPosition));
+            addComponent(new Scrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
+            addComponent(new Mover());
+            addComponent(new BoxCollider() { isTrigger = true });
+
+            this.setPosition(originalPosition);
         }
     }
 }
