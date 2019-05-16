@@ -11,9 +11,18 @@ namespace NezzyBird.Entities
         public static readonly float GRAVITY_WEIGHT = 0.50f;
         public static readonly float JUMP_HEIGHT = 9f;
 
-        public Bird(TextureAtlas textureAtlas)
+        public Bird(TextureAtlas textureAtlas, bool onlyUseBird0 = false)
         {
-            var randomBirdIndex = Random.choose(0, 1, 2);
+            int randomBirdIndex;
+            if (onlyUseBird0)
+            {
+                randomBirdIndex = 0;
+            }
+            else
+            {
+                randomBirdIndex = Random.choose(0, 1, 2);
+            }
+
             var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird{randomBirdIndex}");
             var birdIdleSprite = birdFlapAnimation.frames.lastItem();
             var sprite = new Sprite(birdIdleSprite);
