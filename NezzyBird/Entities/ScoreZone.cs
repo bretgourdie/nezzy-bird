@@ -14,7 +14,7 @@ namespace NezzyBird.Entities
             addComponent(
                 new Scrolling(
                     ScrollDirection.Left,
-                    GameConstants.PIPE_SCROLL_SPEED));
+                    GameConstants.FOREGROUND_SCROLL_SPEED));
 
             var boxCollider = new BoxCollider(
                 1f,

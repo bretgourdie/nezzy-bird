@@ -20,7 +20,7 @@ namespace NezzyBird.Entities
             addComponent(new EndsGameOnCollision());
             addComponent(new BoxCollider() { isTrigger = true });
             addComponent(new Mover());
-            addComponent(new Scrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
+            addComponent(new Scrolling(ScrollDirection.Left, GameConstants.FOREGROUND_SCROLL_SPEED));
 
             var originalPosition = new Vector2(
                 GameConstants.SOURCE_SCREEN_WIDTH,

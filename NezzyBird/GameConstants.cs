@@ -12,7 +12,7 @@ namespace NezzyBird
         public const int SCREEN_WIDTH = SOURCE_SCREEN_WIDTH * SPRITE_SCALE_FACTOR;
         public const int SCREEN_HEIGHT = SOURCE_SCREEN_HEIGHT * SPRITE_SCALE_FACTOR;
 
-        public const float PIPE_SCROLL_SPEED = 2f;
+        public const float FOREGROUND_SCROLL_SPEED = 2f;
 
         public static Vector2 GetGameScale() =>
             new Vector2(SPRITE_SCALE_FACTOR, SPRITE_SCALE_FACTOR);
