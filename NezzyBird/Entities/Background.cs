@@ -28,12 +28,12 @@ namespace NezzyBird.Entities
             this.scale = GameConstants.GetGameScale();
 
             var originalPosition = new Vector2(
-                GameConstants.SOURCE_SCREEN_WIDTH / 2,
+                GameConstants.SOURCE_SCREEN_WIDTH,
                 GameConstants.SOURCE_SCREEN_HEIGHT / 2)
                 * GameConstants.GetGameScale();
 
-            addComponent(new ParallaxScrolling(originalPosition, -138 / 3));
-            addComponent(new Scrolling(ScrollDirection.Left, GameConstants.PIPE_SCROLL_SPEED));
+            addComponent(new ParallaxScrolling(originalPosition, 6 * GameConstants.SPRITE_SCALE_FACTOR));
+            addComponent(new Scrolling(ScrollDirection.Left, GameConstants.FOREGROUND_SCROLL_SPEED / 4));
             addComponent(new Mover());
             addComponent(new BoxCollider() { isTrigger = true });
 
