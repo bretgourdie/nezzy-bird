@@ -1,24 +1,41 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Sprites;
 using NezzyBird.Components;
+using NezzyBird.Entities;
 
 namespace NezzyBird.Systems
 {
     public class GravitySystem : EntityProcessingSystem
     {
-        public GravitySystem() :
+        private readonly float _floorY;
+
+        public GravitySystem(Foreground foreground) :
             base(new Matcher().all(
                 typeof(AffectedByGravity),
                 typeof(WaitsForFirstTap),
                 typeof(Mover),
-                typeof(HasVelocity)
-            )) { }
+                typeof(HasVelocity),
+                typeof(Sprite)
+            ))
+        {
+            var foregroundSprite = foreground.getComponent<Sprite>();
+            _floorY = foreground.position.Y - foregroundSprite.height / 2;
+        }
 
         public override void process(Entity entity)
         {
             var waitsForFirstTap = entity.getComponent<WaitsForFirstTap>();
 
             if (!waitsForFirstTap.HasTapped)
+            {
+                return;
+            }
+
+            var position = entity.position;
+            var sprite = entity.getComponent<Sprite>();
+
+            if (position.Y + sprite.height / 2 >= _floorY)
             {
                 return;
             }
@@ -32,7 +49,7 @@ namespace NezzyBird.Systems
                     velocity.CurrentVelocity.X,
                     velocity.CurrentVelocity.Y + gravity.GravitationalPull);
 
-            var collisionResult = new CollisionResult();
+            CollisionResult collisionResult;
             mover.move(velocity.CurrentVelocity, out collisionResult);
         }
     }

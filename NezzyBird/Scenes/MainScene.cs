@@ -14,10 +14,12 @@ namespace NezzyBird.Scenes
             var textureAtlas = content.Load<TextureAtlas>("Textures/TextureAtlas");
             var emitter = new Emitter<NezzyEvents>();
 
+            var foreground = new Foreground(textureAtlas);
+
             var initialEntities = new Entity[]
             {
                 new Background(textureAtlas),
-                new Foreground(textureAtlas),
+                foreground,
                 new Bird(textureAtlas),
                 new PipePairSpawner(),
                 new ScoreDisplay(textureAtlas, emitter)
@@ -36,7 +38,7 @@ namespace NezzyBird.Scenes
 
             var initialSystems = new EntitySystem[]
             {
-                new GravitySystem(),
+                new GravitySystem(foreground),
                 new BirdSpriteRotationSystem(emitter),
                 new ScrollingSystem(scrollingMovement, emitter),
                 new PipePairSpawningSystem(emitter, textureAtlas),
