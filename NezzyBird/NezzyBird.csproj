@@ -42,7 +42,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\GameOverState.cs" />
     <Compile Include="Components\ParallaxScrolling.cs" />
+    <Compile Include="Components\ScreenFlash.cs" />
     <Compile Include="Components\SpawnsPipePair.cs" />
     <Compile Include="Components\AffectedByGravity.cs" />
     <Compile Include="Components\ChangeSceneOnTap.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Entities\PipePairSpawner.cs" />
     <Compile Include="Entities\ScoreDisplay.cs" />
     <Compile Include="Entities\ScoreZone.cs" />
+    <Compile Include="Entities\ScreenFlasher.cs" />
     <Compile Include="Entities\TitleSceneUI.cs" />
     <Compile Include="Entities\TitleScreenBird.cs" />
     <Compile Include="Game1.cs" />
@@ -77,6 +80,7 @@
     <Compile Include="Systems\CollisionEventArgs.cs" />
     <Compile Include="Systems\CollisionSystem.cs" />
     <Compile Include="Systems\DeathCollisionSystem.cs" />
+    <Compile Include="Systems\GameOverSystem.cs" />
     <Compile Include="Systems\ParallaxScrollingSystem.cs" />
     <Compile Include="Systems\PipePairSpawningSystem.cs" />
     <Compile Include="Systems\NezzyEvents.cs" />
