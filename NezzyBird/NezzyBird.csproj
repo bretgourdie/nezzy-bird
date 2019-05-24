@@ -68,7 +68,6 @@
     <Compile Include="Entities\PipePairSpawner.cs" />
     <Compile Include="Entities\ScoreDisplay.cs" />
     <Compile Include="Entities\ScoreZone.cs" />
-    <Compile Include="Entities\ScreenFlasher.cs" />
     <Compile Include="Entities\TitleSceneUI.cs" />
     <Compile Include="Entities\TitleScreenBird.cs" />
     <Compile Include="Game1.cs" />
@@ -88,6 +87,7 @@
     <Compile Include="Systems\SceneTransitionSystem.cs" />
     <Compile Include="Systems\ScoreDisplaySystem.cs" />
     <Compile Include="Systems\ScoreZoneCollisionSystem.cs" />
+    <Compile Include="Systems\ScreenFlashSystem.cs" />
     <Compile Include="Systems\ScrollingMovement.cs" />
     <Compile Include="Systems\ScrollingSystem.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
