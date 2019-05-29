@@ -6,13 +6,9 @@ namespace NezzyBird.Components
 {
     public class ScreenFlash : SceneComponent
     {
-        public const float TotalDuration = 2f;
-
-        public float TimePassed { get; private set; }
-
         public Texture2D Overlay { get; private set; }
 
-        private IScreenFlashState _state { get; set; }
+        private ScreenFlashState _state { get; set; }
 
         public ScreenFlash()
         {
@@ -21,41 +17,113 @@ namespace NezzyBird.Components
                 GameConstants.SCREEN_WIDTH,
                 GameConstants.SCREEN_HEIGHT);
 
-            var clearWhite = Color.White;
-            clearWhite.A = 0;
-
-            Overlay.SetData(new[] { clearWhite });
+            _setOverlayColor(Color.Transparent);
 
             _state = new RaisingInOpacity();
         }
 
-        public void HandleState()
+        public override void update()
         {
-            _state = _state.Handle();
+            _handleState(Time.deltaTime);
+            _updateRectangleOpacity();
         }
 
-        public void AddTime(float deltaTime)
+        public bool IsFinished()
         {
-            TimePassed += deltaTime;
-        }
-        private interface IScreenFlashState
-        {
-            IScreenFlashState Handle();
+            return _state.FlashIsFinished;
         }
 
-        private class RaisingInOpacity : IScreenFlashState
+        private void _handleState(float deltaTime)
         {
-            public IScreenFlashState Handle()
+            _state = _state.Handle(deltaTime);
+        }
+
+        private void _updateRectangleOpacity()
+        {
+            var opacityPercentage = _state.GetOpacityPercentage();
+
+            var overlayColor = Color.Lerp(Color.Transparent, Color.White, opacityPercentage);
+        }
+
+        private void _setOverlayColor(Color color)
+        {
+            Overlay.SetData(new[] { color });
+        }
+
+        private abstract class ScreenFlashState
+        {
+            protected float timePassed;
+            protected const float totalTime = 1f;
+
+            public abstract bool FlashIsFinished { get; }
+
+            public virtual ScreenFlashState Handle(float deltaTime)
             {
-                throw new System.NotImplementedException();
+                timePassed += deltaTime;
+
+                if (StepIsFinished())
+                {
+                    return newStateAfterFinished();
+                }
+
+                return this;
+            }
+
+            protected abstract ScreenFlashState newStateAfterFinished();
+
+            public virtual bool StepIsFinished()
+            {
+                return timePassed >= totalTime;
+            }
+
+            public virtual float GetOpacityPercentage()
+            {
+                return MathHelper.Clamp(timePassed / totalTime, 0f, 1f);
             }
         }
 
-        private class LoweringInOpacity : IScreenFlashState
+        private class RaisingInOpacity : ScreenFlashState
         {
-            public IScreenFlashState Handle()
+            public override bool FlashIsFinished => false;
+
+            protected override ScreenFlashState newStateAfterFinished()
             {
-                throw new System.NotImplementedException();
+                return new LoweringInOpacity();
+            }
+        }
+
+        private class LoweringInOpacity : ScreenFlashState
+        {
+            public override bool FlashIsFinished => false;
+
+            protected override ScreenFlashState newStateAfterFinished()
+            {
+                return new Finished();
+            }
+        }
+
+        private class Finished : ScreenFlashState
+        {
+            public override bool FlashIsFinished => true;
+
+            public override ScreenFlashState Handle(float deltaTime)
+            {
+                return this;
+            }
+
+            public override bool IsFinished()
+            {
+                return true;
+            }
+
+            public override float GetOpacityPercentage()
+            {
+                return 0f;
+            }
+
+            protected override ScreenFlashState newStateAfterFinished()
+            {
+                return null;
             }
         }
     }

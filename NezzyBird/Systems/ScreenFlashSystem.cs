@@ -13,6 +13,11 @@ namespace NezzyBird.Systems
             {
                 return;
             }
+
+            if (screenFlash.IsFinished())
+            {
+                scene.removeSceneComponent<ScreenFlash>();
+            }
         }
     }
 }
