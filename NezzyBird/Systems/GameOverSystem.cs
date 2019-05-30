@@ -1,5 +1,6 @@
 ﻿using Nez;
 using Nez.Systems;
+using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
@@ -19,6 +20,7 @@ namespace NezzyBird.Systems
                 return;
             }
 
+            scene.addSceneComponent(new ScreenFlash());
             scene.removeEntityProcessor(this);
         }
     }

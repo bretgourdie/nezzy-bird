@@ -1,25 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
+using Nez.Sprites;
+using System.Linq;
 
 namespace NezzyBird.Components
 {
     public class ScreenFlash : SceneComponent
     {
-        public Texture2D Overlay { get; private set; }
+        public readonly Sprite Overlay;
+
+        private Texture2D _overlayTexture;
 
         private ScreenFlashState _state { get; set; }
 
         public ScreenFlash()
         {
-            Overlay = new Texture2D(
+            _overlayTexture = new Texture2D(
                 Core.graphicsDevice,
                 GameConstants.SCREEN_WIDTH,
                 GameConstants.SCREEN_HEIGHT);
 
-            _setOverlayColor(Color.Transparent);
+            var sprite = new Sprite(_overlayTexture);
+
+            _setOverlayTextureColor(Color.Transparent);
 
             _state = new RaisingInOpacity();
+        }
+
+        public override void onEnabled()
+        {
+            base.onEnabled();
         }
 
         public override void update()
@@ -45,9 +56,11 @@ namespace NezzyBird.Components
             var overlayColor = Color.Lerp(Color.Transparent, Color.White, opacityPercentage);
         }
 
-        private void _setOverlayColor(Color color)
+        private void _setOverlayTextureColor(Color color)
         {
-            Overlay.SetData(new[] { color });
+            var totalPixels = _overlayTexture.Height * _overlayTexture.Width;
+            var pixels = Enumerable.Range(0, totalPixels).Select(x => color).ToArray();
+            _overlayTexture.SetData(pixels);
         }
 
         private abstract class ScreenFlashState
@@ -109,11 +122,6 @@ namespace NezzyBird.Components
             public override ScreenFlashState Handle(float deltaTime)
             {
                 return this;
-            }
-
-            public override bool IsFinished()
-            {
-                return true;
             }
 
             public override float GetOpacityPercentage()
