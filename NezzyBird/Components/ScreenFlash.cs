@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace NezzyBird.Components
 {
-    public class ScreenFlash : SceneComponent
+    public class ScreenFlash : Component, IUpdatable
     {
         public readonly Sprite Overlay;
 
@@ -33,7 +33,7 @@ namespace NezzyBird.Components
             base.onEnabled();
         }
 
-        public override void update()
+        public void update()
         {
             _handleState(Time.deltaTime);
             _updateRectangleOpacity();

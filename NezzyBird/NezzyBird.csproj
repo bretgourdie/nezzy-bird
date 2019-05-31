@@ -42,6 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\GameOverState.cs" />
     <Compile Include="Components\ParallaxScrolling.cs" />
     <Compile Include="Components\ScreenFlash.cs" />
     <Compile Include="Components\SpawnsPipePair.cs" />
@@ -61,12 +62,15 @@
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
     <Compile Include="Entities\Foreground.cs" />
+    <Compile Include="Entities\GameOver.cs" />
+    <Compile Include="Entities\GameOverMenu.cs" />
     <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Entities\PipePair.cs" />
     <Compile Include="Entities\PipePairSpawner.cs" />
     <Compile Include="Entities\ScoreDisplay.cs" />
     <Compile Include="Entities\ScoreZone.cs" />
+    <Compile Include="Entities\ScreenFlasher.cs" />
     <Compile Include="Entities\TitleSceneUI.cs" />
     <Compile Include="Entities\TitleScreenBird.cs" />
     <Compile Include="Game1.cs" />

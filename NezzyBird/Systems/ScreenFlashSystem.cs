@@ -3,20 +3,23 @@ using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
-    public class ScreenFlashSystem : ProcessingSystem
+    public class ScreenFlashSystem : EntityProcessingSystem
     {
-        public override void process()
-        {
-            var screenFlash = scene.getSceneComponent<ScreenFlash>();
+        public ScreenFlashSystem() : base(
+            new Matcher().all(
+                typeof(ScreenFlash)
+        ))
+        { }
 
-            if (screenFlash == null)
-            {
-                return;
-            }
+        public override void process(Entity entity)
+        {
+            var screenFlash = entity.getComponent<ScreenFlash>();
+
+            screenFlash.update();
 
             if (screenFlash.IsFinished())
             {
-                scene.removeSceneComponent<ScreenFlash>();
+                entity.setEnabled(false);
             }
         }
     }
