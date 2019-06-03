@@ -6,38 +6,31 @@ namespace NezzyBird.Components
 {
     public class GameOverState : Component, IUpdatable
     {
-        public readonly Entities.ScreenFlasher ScreenFlasher;
-        public readonly GameOverMenu GameOverMenu;
+        private readonly ScreenFlasher _screenFlasher;
+        private readonly GameOverMenu _gameOverMenu;
 
-        public LinkedListNode<Entity> CurrentEntityNode { get; private set; }
+        private LinkedListNode<Entity> _currentEntityNode;
 
         public GameOverState(
-            Entities.ScreenFlasher screenFlasher,
+            ScreenFlasher screenFlasher,
             GameOverMenu gameOverMenu)
         {
-            ScreenFlasher = screenFlasher;
-            GameOverMenu = gameOverMenu;
+            _screenFlasher = screenFlasher;
+            _gameOverMenu = gameOverMenu;
 
             var list = new LinkedList<Entity>();
-            list.AddLast(ScreenFlasher);
-            list.AddLast(GameOverMenu);
+            list.AddLast(_screenFlasher);
+            list.AddLast(_gameOverMenu);
 
-            CurrentEntityNode = list.First;
+            _currentEntityNode = list.First;
         }
 
-        public void update()
-        {
-            CurrentEntityNode.Value.update();
-        }
+        public void update() => _currentEntityNode.Value.update();
 
-        public Entity GetCurrentEntity()
-        {
-            return CurrentEntityNode.Value;
-        }
+        public Entity GetCurrentEntity() => _currentEntityNode.Value;
 
-        public void AdvanceToNextEntity()
-        {
-            CurrentEntityNode = CurrentEntityNode.Next;
-        }
+        public void AdvanceToNextEntity() => _currentEntityNode = _currentEntityNode.Next;
+
+        public bool CurrentEntityIsComplete => !_currentEntityNode.Value.enabled;
     }
 }
