@@ -62,7 +62,6 @@
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
     <Compile Include="Entities\Foreground.cs" />
-    <Compile Include="Entities\GameOver.cs" />
     <Compile Include="Entities\GameOverMenu.cs" />
     <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pipe.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Systems\CollisionEventArgs.cs" />
     <Compile Include="Systems\CollisionSystem.cs" />
     <Compile Include="Systems\DeathCollisionSystem.cs" />
-    <Compile Include="Systems\GameOverSystem.cs" />
     <Compile Include="Systems\ParallaxScrollingSystem.cs" />
     <Compile Include="Systems\PipePairSpawningSystem.cs" />
     <Compile Include="Systems\NezzyEvents.cs" />
