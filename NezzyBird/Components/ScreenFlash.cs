@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace NezzyBird.Components
 {
-    public class ScreenFlash : Component, IUpdatable
+    public class ScreenFlash : Component
     {
-        public readonly Sprite Overlay;
+        private readonly Sprite _overlay;
 
         private Texture2D _overlayTexture;
 
@@ -21,16 +21,16 @@ namespace NezzyBird.Components
                 GameConstants.SCREEN_WIDTH,
                 GameConstants.SCREEN_HEIGHT);
 
-            var sprite = new Sprite(_overlayTexture);
+            _overlay = new Sprite(_overlayTexture);
 
             _setOverlayTextureColor(Color.Transparent);
 
             _state = new RaisingInOpacity();
         }
 
-        public override void onEnabled()
+        public override void onAddedToEntity()
         {
-            base.onEnabled();
+            entity.addComponent(_overlay);
         }
 
         public void update()
@@ -53,7 +53,9 @@ namespace NezzyBird.Components
         {
             var opacityPercentage = _state.GetOpacityPercentage();
 
-            var overlayColor = Color.Lerp(Color.Transparent, Color.White, opacityPercentage);
+            var overlayColor = Color.Lerp(_state.FromColor, _state.ToColor, opacityPercentage);
+
+            _setOverlayTextureColor(overlayColor);
         }
 
         private void _setOverlayTextureColor(Color color)
@@ -66,9 +68,12 @@ namespace NezzyBird.Components
         private abstract class ScreenFlashState
         {
             protected float timePassed;
-            protected const float totalTime = 1f;
+            protected abstract float totalTime { get; }
 
             public abstract bool FlashIsFinished { get; }
+
+            public abstract Color FromColor { get; }
+            public abstract Color ToColor { get; }
 
             public virtual ScreenFlashState Handle(float deltaTime)
             {
@@ -99,6 +104,12 @@ namespace NezzyBird.Components
         {
             public override bool FlashIsFinished => false;
 
+            public override Color FromColor => Color.Transparent;
+
+            public override Color ToColor => Color.White;
+
+            protected override float totalTime => 0.25f;
+
             protected override ScreenFlashState newStateAfterFinished()
             {
                 return new LoweringInOpacity();
@@ -109,6 +120,12 @@ namespace NezzyBird.Components
         {
             public override bool FlashIsFinished => false;
 
+            public override Color FromColor => Color.White;
+
+            public override Color ToColor => Color.Transparent;
+
+            protected override float totalTime => 0.25f;
+
             protected override ScreenFlashState newStateAfterFinished()
             {
                 return new Finished();
@@ -118,6 +135,12 @@ namespace NezzyBird.Components
         private class Finished : ScreenFlashState
         {
             public override bool FlashIsFinished => true;
+
+            public override Color FromColor => Color.Transparent;
+
+            public override Color ToColor => Color.Transparent;
+
+            protected override float totalTime => 0f;
 
             public override ScreenFlashState Handle(float deltaTime)
             {

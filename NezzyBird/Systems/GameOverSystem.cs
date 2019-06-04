@@ -11,6 +11,13 @@ namespace NezzyBird.Systems
         ))
         { }
 
+        public override void onAdded(Entity entity)
+        {
+            var gameOverState = entity.getComponent<GameOverState>();
+
+            gameOverState.CurrentEntity.setEnabled(true);
+        }
+
         public override void process(Entity entity)
         {
             var gameOverState = entity.getComponent<GameOverState>();
@@ -18,9 +25,10 @@ namespace NezzyBird.Systems
             if (gameOverState.CurrentEntityIsComplete)
             {
                 gameOverState.AdvanceToNextEntity();
+                gameOverState.CurrentEntity.setEnabled(true);
             }
 
-            var currentEntity = gameOverState.GetCurrentEntity();
+            var currentEntity = gameOverState.CurrentEntity;
 
             currentEntity.update();
         }

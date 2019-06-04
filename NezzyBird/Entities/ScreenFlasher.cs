@@ -8,6 +8,9 @@ namespace NezzyBird.Entities
         public ScreenFlasher()
         {
             addComponent(new ScreenFlash());
+            this.setPosition(
+                GameConstants.SCREEN_WIDTH / 2,
+                GameConstants.SCREEN_HEIGHT / 2);
         }
     }
 }

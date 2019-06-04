@@ -16,7 +16,9 @@ namespace NezzyBird.Components
             GameOverMenu gameOverMenu)
         {
             _screenFlasher = screenFlasher;
+            _screenFlasher.setEnabled(false);
             _gameOverMenu = gameOverMenu;
+            _gameOverMenu.setEnabled(false);
 
             var list = new LinkedList<Entity>();
             list.AddLast(_screenFlasher);
@@ -25,9 +27,15 @@ namespace NezzyBird.Components
             _currentEntityNode = list.First;
         }
 
+        public override void onAddedToEntity()
+        {
+            entity.scene.addEntity(_screenFlasher);
+            entity.scene.addEntity(_gameOverMenu);
+        }
+
         public void update() => _currentEntityNode.Value.update();
 
-        public Entity GetCurrentEntity() => _currentEntityNode.Value;
+        public Entity CurrentEntity => _currentEntityNode.Value;
 
         public void AdvanceToNextEntity() => _currentEntityNode = _currentEntityNode.Next;
 
