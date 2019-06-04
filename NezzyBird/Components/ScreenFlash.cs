@@ -68,7 +68,7 @@ namespace NezzyBird.Components
         private abstract class ScreenFlashState
         {
             protected float timePassed;
-            protected abstract float totalTime { get; }
+            protected virtual float totalTime => 0.0625f;
 
             public abstract bool FlashIsFinished { get; }
 
@@ -108,8 +108,6 @@ namespace NezzyBird.Components
 
             public override Color ToColor => Color.White;
 
-            protected override float totalTime => 0.25f;
-
             protected override ScreenFlashState newStateAfterFinished()
             {
                 return new LoweringInOpacity();
@@ -123,8 +121,6 @@ namespace NezzyBird.Components
             public override Color FromColor => Color.White;
 
             public override Color ToColor => Color.Transparent;
-
-            protected override float totalTime => 0.25f;
 
             protected override ScreenFlashState newStateAfterFinished()
             {
