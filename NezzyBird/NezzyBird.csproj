@@ -96,6 +96,9 @@
     <Compile Include="Systems\ScrollingSystem.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
     <Compile Include="Systems\BirdSpriteRotationSystem.cs" />
+    <Compile Include="UI\PlayAndRankButtonRow.cs" />
+    <Compile Include="UI\PlayButtonFactory.cs" />
+    <Compile Include="UI\RankingButtonFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

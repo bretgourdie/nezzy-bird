@@ -2,6 +2,7 @@
 using Nez.TextureAtlases;
 using Nez.UI;
 using NezzyBird.Scenes;
+using NezzyBird.UI;
 
 namespace NezzyBird.Entities
 {
@@ -24,32 +25,7 @@ namespace NezzyBird.Entities
                 .setPadBottom(400);
             table.row();
 
-            var playButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("PlayButton"));
-            var playButton = new Button(playButtonDrawable);
-            playButton.shouldUseExplicitFocusableControl = true;
-            playButton.onClicked += PlayButton_onClicked;
-
-            var rankingButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("RankingButton"));
-            var rankingButton = new Button(rankingButtonDrawable);
-            rankingButton.shouldUseExplicitFocusableControl = true;
-            rankingButton.onClicked += RankingButton_onClicked;
-
-            playButton.gamepadRightElement = rankingButton;
-            rankingButton.gamepadLeftElement = playButton;
-
-            const int actionButtonMiddlePad = 10;
-            const int actionButtonBottomPad = 100;
-
-            table.add(playButton)
-                .setMinWidth(playButtonDrawable.minWidth * gameScale.X)
-                .setMinHeight(playButtonDrawable.minHeight * gameScale.Y)
-                .setPadRight(actionButtonMiddlePad)
-                .setPadBottom(actionButtonBottomPad);
-            table.add(rankingButton)
-                .setMinWidth(rankingButtonDrawable.minWidth * gameScale.X)
-                .setMinHeight(rankingButtonDrawable.minHeight * gameScale.Y)
-                .setPadLeft(actionButtonMiddlePad)
-                .setPadBottom(actionButtonBottomPad);
+            PlayAndRankButtonRow.AddToTable(textureAtlas, table);
             table.row();
 
             var copyrightImage = new Image(textureAtlas.getSubtexture("Copyright"));
@@ -57,16 +33,6 @@ namespace NezzyBird.Entities
             table.add(copyrightImage);
 
             this.addComponent(canvas);
-        }
-
-        private void RankingButton_onClicked(Button obj)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void PlayButton_onClicked(Button obj)
-        {
-            Core.startSceneTransition(new FadeTransition(() => new MainScene()));
         }
     }
 }
