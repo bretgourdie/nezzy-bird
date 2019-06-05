@@ -49,7 +49,7 @@ namespace NezzyBird.Scenes
                 new ParallaxScrollingSystem(),
                 new ScreenFlashSystem(),
                 new GameOverSystem(),
-                new GameOverTriggeringSystem(emitter),
+                new GameOverTriggeringSystem(emitter, textureAtlas),
             };
 
             foreach (var system in initialSystems)

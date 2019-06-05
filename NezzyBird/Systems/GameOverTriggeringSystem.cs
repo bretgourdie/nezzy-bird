@@ -1,5 +1,6 @@
 ﻿using Nez;
 using Nez.Systems;
+using Nez.TextureAtlases;
 using NezzyBird.Entities;
 
 namespace NezzyBird.Systems
@@ -7,10 +8,14 @@ namespace NezzyBird.Systems
     public class GameOverTriggeringSystem : PassiveSystem
     {
         private bool _gameOverWasTriggered;
+        private readonly TextureAtlas _textureAtlas;
 
-        public GameOverTriggeringSystem(Emitter<NezzyEvents> emitter)
+        public GameOverTriggeringSystem(
+            Emitter<NezzyEvents> emitter,
+            TextureAtlas textureAtlas)
         {
             emitter.addObserver(NezzyEvents.BirdDied, _handleGameOverTriggering);
+            _textureAtlas = textureAtlas;
         }
 
         private void _handleGameOverTriggering()
@@ -23,7 +28,7 @@ namespace NezzyBird.Systems
             _gameOverWasTriggered = true;
             var gameOver = new GameOver(
                 new ScreenFlasher(),
-                new GameOverMenu());
+                new GameOverMenu(_textureAtlas));
             scene.addEntity(gameOver);
         }
     }
