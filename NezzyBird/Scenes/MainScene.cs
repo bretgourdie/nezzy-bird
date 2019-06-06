@@ -48,6 +48,7 @@ namespace NezzyBird.Scenes
                 new ScoreDisplaySystem(textureAtlas),
                 new ParallaxScrollingSystem(),
                 new ScreenFlashSystem(),
+                new PausingSystem(),
                 new GameOverSystem(),
                 new GameOverTriggeringSystem(emitter, textureAtlas),
             };

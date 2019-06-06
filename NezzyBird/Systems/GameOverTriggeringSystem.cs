@@ -26,10 +26,15 @@ namespace NezzyBird.Systems
             }
 
             _gameOverWasTriggered = true;
-            var gameOver = new GameOver(
+
+            var gameOverStateEntities = new Entity[]
+            {
                 new ScreenFlasher(),
-                new GameOverMenu(_textureAtlas));
-            scene.addEntity(gameOver);
+                new Pauser(),
+                new GameOverMenu(_textureAtlas)
+            };
+
+            scene.addEntity(new GameOver(gameOverStateEntities));
         }
     }
 }

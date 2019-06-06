@@ -6,39 +6,29 @@ namespace NezzyBird.Components
 {
     public class GameOverState : Component, IUpdatable
     {
-        private readonly ScreenFlasher _screenFlasher;
-        private readonly GameOverMenu _gameOverMenu;
+        private int _currentEntityIndex;
+        private readonly IList<Entity> _childEntities;
 
-        private LinkedListNode<Entity> _currentEntityNode;
-
-        public GameOverState(
-            ScreenFlasher screenFlasher,
-            GameOverMenu gameOverMenu)
+        public GameOverState(IList<Entity> childEntities)
         {
-            _screenFlasher = screenFlasher;
-            _screenFlasher.setEnabled(false);
-            _gameOverMenu = gameOverMenu;
-            _gameOverMenu.setEnabled(false);
-
-            var list = new LinkedList<Entity>();
-            list.AddLast(_screenFlasher);
-            list.AddLast(_gameOverMenu);
-
-            _currentEntityNode = list.First;
+            _childEntities = childEntities;
         }
 
         public override void onAddedToEntity()
         {
-            entity.scene.addEntity(_screenFlasher);
-            entity.scene.addEntity(_gameOverMenu);
+            foreach (var childEntity in _childEntities)
+            {
+                childEntity.setEnabled(false);
+                entity.scene.addEntity(childEntity);
+            }
         }
 
-        public void update() => _currentEntityNode.Value.update();
+        public void update() => _childEntities[_currentEntityIndex].update();
 
-        public Entity CurrentEntity => _currentEntityNode.Value;
+        public Entity CurrentEntity => _childEntities[_currentEntityIndex];
 
-        public void AdvanceToNextEntity() => _currentEntityNode = _currentEntityNode.Next;
+        public void AdvanceToNextEntity() => _currentEntityIndex++;
 
-        public bool CurrentEntityIsComplete => !_currentEntityNode.Value.enabled;
+        public bool CurrentEntityIsComplete => !_childEntities[_currentEntityIndex].enabled;
     }
 }
