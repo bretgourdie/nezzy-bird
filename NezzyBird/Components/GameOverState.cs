@@ -1,5 +1,4 @@
 ﻿using Nez;
-using NezzyBird.Entities;
 using System.Collections.Generic;
 
 namespace NezzyBird.Components
@@ -20,6 +19,11 @@ namespace NezzyBird.Components
             {
                 childEntity.setEnabled(false);
                 entity.scene.addEntity(childEntity);
+            }
+
+            if (_childEntities.Count > 0)
+            {
+                _childEntities[0].setEnabled(true);
             }
         }
 

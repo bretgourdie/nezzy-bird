@@ -11,13 +11,6 @@ namespace NezzyBird.Systems
         ))
         { }
 
-        public override void onAdded(Entity entity)
-        {
-            var gameOverState = entity.getComponent<GameOverState>();
-
-            gameOverState.CurrentEntity.setEnabled(true);
-        }
-
         public override void process(Entity entity)
         {
             var gameOverState = entity.getComponent<GameOverState>();
