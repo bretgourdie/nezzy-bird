@@ -34,13 +34,11 @@ namespace NezzyBird.Scenes
 
             this.addRenderer(renderer);
 
-            var scrollingMovement = new ScrollingMovement();
-
             var initialSystems = new EntitySystem[]
             {
                 new GravitySystem(foreground),
                 new BirdSpriteRotationSystem(emitter),
-                new ScrollingSystem(scrollingMovement, emitter),
+                new ScrollingSystem(new ScrollingMovement(), emitter),
                 new PipePairSpawningSystem(emitter, textureAtlas),
                 new JumpSystem(emitter),
                 new ScoreZoneCollisionSystem(emitter),
@@ -57,8 +55,6 @@ namespace NezzyBird.Scenes
             {
                 this.addEntityProcessor(system);
             }
-
-            Nez.Core.debugRenderEnabled = true;
         }
     }
 }
