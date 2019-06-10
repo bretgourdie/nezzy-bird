@@ -7,16 +7,16 @@ namespace NezzyBird.UI
 {
     public class PlayAndRankButtonRow
     {
-        public static void AddToTable(
+        public void AddToTable(
             TextureAtlas textureAtlas,
             Table table)
         {
             var gameScale = GameConstants.GetGameScale();
 
-            var playButton = PlayButtonFactory.Get(textureAtlas);
+            var playButton = new PlayButtonFactory().Get(textureAtlas);
             playButton.onClicked += PlayButton_onClicked;
 
-            var rankingButton = RankingButtonFactory.Get(textureAtlas);
+            var rankingButton = new RankingButtonFactory().Get(textureAtlas);
             rankingButton.onClicked += RankingButton_onClicked;
 
             playButton.gamepadRightElement = rankingButton;
@@ -37,13 +37,14 @@ namespace NezzyBird.UI
                 .setPadBottom(actionButtonBottomPad);
         }
 
-        private static void RankingButton_onClicked(Button obj)
+        private void RankingButton_onClicked(Button obj)
         {
             throw new System.NotImplementedException();
         }
 
-        private static void PlayButton_onClicked(Button obj)
+        private void PlayButton_onClicked(Button obj)
         {
+            obj.onClicked -= PlayButton_onClicked;
             Core.startSceneTransition(new FadeTransition(() => new MainScene()));
         }
     }

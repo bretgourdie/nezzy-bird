@@ -5,7 +5,7 @@ namespace NezzyBird.UI
 {
     public class PlayButtonFactory
     {
-        public static Button Get(TextureAtlas textureAtlas)
+        public Button Get(TextureAtlas textureAtlas)
         {
             var playButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("PlayButton"));
             var playButton = new Button(playButtonDrawable);

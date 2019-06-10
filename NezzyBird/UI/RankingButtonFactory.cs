@@ -5,7 +5,7 @@ namespace NezzyBird.UI
 {
     public class RankingButtonFactory
     {
-        public static Button Get(TextureAtlas textureAtlas)
+        public Button Get(TextureAtlas textureAtlas)
         {
             var rankingButtonDrawable = new SubtextureDrawable(textureAtlas.getSubtexture("RankingButton"));
             var rankingButton = new Button(rankingButtonDrawable);

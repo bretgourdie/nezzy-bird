@@ -17,7 +17,7 @@ namespace NezzyBird.Entities
 
             var table = stage.addElement(new Table()).setFillParent(true);
 
-            PlayAndRankButtonRow.AddToTable(textureAtlas, table);
+            new PlayAndRankButtonRow().AddToTable(textureAtlas, table);
 
             this.addComponent(canvas);
         }
