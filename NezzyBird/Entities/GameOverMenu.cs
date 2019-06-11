@@ -1,6 +1,7 @@
 ﻿using Nez;
 using Nez.TextureAtlases;
 using Nez.UI;
+using NezzyBird.Scenes;
 using NezzyBird.UI;
 
 namespace NezzyBird.Entities
@@ -17,7 +18,7 @@ namespace NezzyBird.Entities
 
             var table = stage.addElement(new Table()).setFillParent(true);
 
-            new PlayAndRankButtonRow().AddToTable(textureAtlas, table);
+            new PlayAndRankButtonRow<TitleScene>().AddToTable(textureAtlas, table);
 
             this.addComponent(canvas);
         }

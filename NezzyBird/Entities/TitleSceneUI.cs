@@ -1,6 +1,7 @@
 ﻿using Nez;
 using Nez.TextureAtlases;
 using Nez.UI;
+using NezzyBird.Scenes;
 using NezzyBird.UI;
 
 namespace NezzyBird.Entities
@@ -24,7 +25,7 @@ namespace NezzyBird.Entities
                 .setPadBottom(400);
             table.row();
 
-            new PlayAndRankButtonRow().AddToTable(textureAtlas, table);
+            new PlayAndRankButtonRow<MainScene>().AddToTable(textureAtlas, table);
             table.row();
 
             var copyrightImage = new Image(textureAtlas.getSubtexture("Copyright"));
