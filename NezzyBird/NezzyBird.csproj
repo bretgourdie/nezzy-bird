@@ -43,6 +43,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\Fades.cs" />
     <Compile Include="Components\GameOverState.cs" />
     <Compile Include="Components\ParallaxScrolling.cs" />
     <Compile Include="Components\Pause.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Entities\Foreground.cs" />
     <Compile Include="Entities\GameOver.cs" />
     <Compile Include="Entities\GameOverMenu.cs" />
+    <Compile Include="Entities\Instructions.cs" />
     <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pauser.cs" />
     <Compile Include="Entities\Pipe.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Systems\CollisionEventArgs.cs" />
     <Compile Include="Systems\CollisionSystem.cs" />
     <Compile Include="Systems\DeathCollisionSystem.cs" />
+    <Compile Include="Systems\FadeOutSystem.cs" />
     <Compile Include="Systems\GameOverSystem.cs" />
     <Compile Include="Systems\GameOverTriggeringSystem.cs" />
     <Compile Include="Systems\ParallaxScrollingSystem.cs" />
