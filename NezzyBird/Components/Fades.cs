@@ -8,6 +8,8 @@ namespace NezzyBird.Components
 
         public float TotalTime { get; private set; }
 
+        public float TimeElapsed { get; private set; }
+
         public bool IsFadingOut { get; private set; }
 
         public FadeDirection FadeDirection { get; private set; }
@@ -25,6 +27,11 @@ namespace NezzyBird.Components
         public void ToggleFadeOut()
         {
             IsFadingOut = !IsFadingOut;
+        }
+
+        public void update(float deltaTime)
+        {
+            TimeElapsed += deltaTime;
         }
     }
 

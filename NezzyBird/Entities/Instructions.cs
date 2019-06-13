@@ -15,7 +15,6 @@ namespace NezzyBird.Entities
             var sprite = new Sprite(instructionsSubtexture);
 
             addComponent(sprite);
-            addComponent(new FadesOut());
 
             this.position = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
