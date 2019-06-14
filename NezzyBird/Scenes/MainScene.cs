@@ -22,7 +22,8 @@ namespace NezzyBird.Scenes
                 foreground,
                 new Bird(textureAtlas),
                 new PipePairSpawner(),
-                new ScoreDisplay(textureAtlas, emitter)
+                new ScoreDisplay(textureAtlas, emitter),
+                new Instructions(textureAtlas)
             };
 
             foreach (var entity in initialEntities)
@@ -49,6 +50,7 @@ namespace NezzyBird.Scenes
                 new PausingSystem(),
                 new GameOverSystem(),
                 new GameOverTriggeringSystem(emitter, textureAtlas),
+                new FadeSystem()
             };
 
             foreach (var system in initialSystems)
