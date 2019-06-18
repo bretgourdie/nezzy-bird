@@ -308,7 +308,7 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Atlas/Nonplay/Gold.png
 
-#begin Textures/Atlas/Nonplay/Instruction.png
+#begin Textures/Atlas/Nonplay/Instructions.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -318,7 +318,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/Atlas/Nonplay/Instruction.png
+/build:Textures/Atlas/Nonplay/Instructions.png
 
 #begin Textures/Atlas/Nonplay/MedalBoard.png
 /importer:TextureImporter
