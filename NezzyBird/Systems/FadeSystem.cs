@@ -6,61 +6,57 @@ namespace NezzyBird.Systems
 {
     public class FadeSystem : EntityProcessingSystem
     {
-        public readonly SpriteAlphaTestEffect _spriteAlphaTestEffect;
         public FadeSystem() : base(
             new Matcher().all(
                 typeof(Fades)
             ))
-        {
-            _spriteAlphaTestEffect = Core.content.loadNezEffect<SpriteAlphaTestEffect>();
-        }
+        { }
 
         public override void process(Entity entity)
         {
             var fades = entity.getComponent<Fades>();
             var sprite = entity.getComponent<Sprite>();
 
-            if (sprite.material.effect == null)
+            var startingOpacity = _getStartingOpacity(fades.FadeDirection);
+            var endingOpacity = _getEndingOpacity(fades.FadeDirection);
+
+            if (!fades.InitialOpacitySet)
             {
-                var localEffect = _spriteAlphaTestEffect.Clone();
-                sprite.material.effect = localEffect;
+                sprite.color.A = startingOpacity;
+                fades.DeclareInitialOpacitySet();
             }
 
             fades.update(Time.deltaTime);
 
-            var startingOpacity = _getStartingOpacity(fades.FadeDirection);
-            var endingOpacity = _getEndingOpacity(fades.FadeDirection);
-
             var totalTime = fades.TotalTime;
             var timeElapsed = fades.TimeElapsed;
 
-            var opacity = Mathf.lerp(startingOpacity, endingOpacity, timeElapsed / totalTime);
+            var opacity = (byte)Mathf.lerp(startingOpacity, endingOpacity, timeElapsed / totalTime);
 
-            var alphaEffect = sprite.material.effect as SpriteAlphaTestEffect;
-            alphaEffect.referenceAlpha = opacity;
+            sprite.color.A = opacity;
         }
 
-        private float _getEndingOpacity(FadeDirection fadeDirection)
+        private byte _getEndingOpacity(FadeDirection fadeDirection)
         {
             switch (fadeDirection)
             {
                 case FadeDirection.In:
-                    return 100f;
+                    return byte.MaxValue;
                 case FadeDirection.Out:
-                    return 0f;
+                    return byte.MinValue;
                 default:
                     throw new System.NotImplementedException();
             }
         }
 
-        private float _getStartingOpacity(FadeDirection fadeDirection)
+        private byte _getStartingOpacity(FadeDirection fadeDirection)
         {
             switch (fadeDirection)
             {
                 case FadeDirection.In:
-                    return 0f;
+                    return byte.MinValue;
                 case FadeDirection.Out:
-                    return 100f;
+                    return byte.MaxValue;
                 default:
                     throw new System.NotImplementedException();
             }
