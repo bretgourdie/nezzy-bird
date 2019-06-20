@@ -13,10 +13,9 @@ namespace NezzyBird.Entities
         {
             var instructionsSubtexture = textureAtlas.getSubtexture("Instructions");
             var sprite = new Sprite(instructionsSubtexture);
-            sprite.setMaterial(Material.defaultMaterial);
 
             addComponent(sprite);
-            addComponent(new Fades(FadeDirection.In, 14.5f));
+            addComponent(new Fades(FadeDirection.In, 2.5f));
 
             this.position = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,

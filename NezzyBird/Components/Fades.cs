@@ -10,8 +10,6 @@ namespace NezzyBird.Components
 
         public FadeDirection FadeDirection { get; private set; }
 
-        public bool InitialOpacitySet { get; private set; }
-
         public Fades(
             FadeDirection fadeDirection,
             float totalTime)
@@ -23,11 +21,6 @@ namespace NezzyBird.Components
         public void update(float deltaTime)
         {
             TimeElapsed += deltaTime;
-        }
-
-        public void DeclareInitialOpacitySet()
-        {
-            InitialOpacitySet = true;
         }
     }
 

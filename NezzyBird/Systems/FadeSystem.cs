@@ -1,4 +1,5 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 using Nez.Sprites;
 using NezzyBird.Components;
 
@@ -6,6 +7,8 @@ namespace NezzyBird.Systems
 {
     public class FadeSystem : EntityProcessingSystem
     {
+        private readonly Color _opaque = Color.White;
+
         public FadeSystem() : base(
             new Matcher().all(
                 typeof(Fades)
@@ -17,46 +20,40 @@ namespace NezzyBird.Systems
             var fades = entity.getComponent<Fades>();
             var sprite = entity.getComponent<Sprite>();
 
-            var startingOpacity = _getStartingOpacity(fades.FadeDirection);
-            var endingOpacity = _getEndingOpacity(fades.FadeDirection);
-
-            if (!fades.InitialOpacitySet)
-            {
-                sprite.color.A = startingOpacity;
-                fades.DeclareInitialOpacitySet();
-            }
+            var startingColor = _getStartingColor(sprite.color, fades.FadeDirection);
+            var endingColor = _getEndingColor(sprite.color, fades.FadeDirection);
 
             fades.update(Time.deltaTime);
 
             var totalTime = fades.TotalTime;
             var timeElapsed = fades.TimeElapsed;
 
-            var opacity = (byte)Mathf.lerp(startingOpacity, endingOpacity, timeElapsed / totalTime);
+            var lerpedColor = Color.Lerp(startingColor, endingColor, timeElapsed / totalTime);
 
-            sprite.color.A = opacity;
+            sprite.color = lerpedColor;
         }
 
-        private byte _getEndingOpacity(FadeDirection fadeDirection)
+        private Color _getStartingColor(Color spriteColor, FadeDirection fadeDirection)
         {
             switch (fadeDirection)
             {
                 case FadeDirection.In:
-                    return byte.MaxValue;
+                    return _opaque;
                 case FadeDirection.Out:
-                    return byte.MinValue;
+                    return spriteColor;
                 default:
                     throw new System.NotImplementedException();
             }
         }
 
-        private byte _getStartingOpacity(FadeDirection fadeDirection)
+        private Color _getEndingColor(Color spriteColor, FadeDirection fadeDirection)
         {
             switch (fadeDirection)
             {
                 case FadeDirection.In:
-                    return byte.MinValue;
+                    return _opaque;
                 case FadeDirection.Out:
-                    return byte.MaxValue;
+                    return Color.Transparent;
                 default:
                     throw new System.NotImplementedException();
             }
