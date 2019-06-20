@@ -15,7 +15,9 @@ namespace NezzyBird.Entities
             var sprite = new Sprite(instructionsSubtexture);
 
             addComponent(sprite);
-            addComponent(new Fades(FadeDirection.In, 2.5f));
+            addComponent(new Fades(FadeDirection.In, 4f));
+
+            this.scale = GameConstants.GetGameScale();
 
             this.position = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
