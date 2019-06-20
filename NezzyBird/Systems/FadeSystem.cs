@@ -20,8 +20,8 @@ namespace NezzyBird.Systems
             var fades = entity.getComponent<Fades>();
             var sprite = entity.getComponent<Sprite>();
 
-            var startingColor = _getStartingColor(sprite.color, fades.FadeDirection);
-            var endingColor = _getEndingColor(sprite.color, fades.FadeDirection);
+            var startingColor = _getStartingColor(fades.FadeDirection);
+            var endingColor = _getEndingColor(fades.FadeDirection);
 
             fades.update(Time.deltaTime);
 
@@ -33,20 +33,20 @@ namespace NezzyBird.Systems
             sprite.color = lerpedColor;
         }
 
-        private Color _getStartingColor(Color spriteColor, FadeDirection fadeDirection)
+        private Color _getStartingColor(FadeDirection fadeDirection)
         {
             switch (fadeDirection)
             {
                 case FadeDirection.In:
-                    return _opaque;
+                    return Color.Transparent;
                 case FadeDirection.Out:
-                    return spriteColor;
+                    return _opaque;
                 default:
                     throw new System.NotImplementedException();
             }
         }
 
-        private Color _getEndingColor(Color spriteColor, FadeDirection fadeDirection)
+        private Color _getEndingColor(FadeDirection fadeDirection)
         {
             switch (fadeDirection)
             {
