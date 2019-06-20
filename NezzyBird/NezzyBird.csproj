@@ -88,6 +88,7 @@
     <Compile Include="Systems\CollisionSystem.cs" />
     <Compile Include="Systems\DeathCollisionSystem.cs" />
     <Compile Include="Systems\FadeSystem.cs" />
+    <Compile Include="Systems\FirstJumpSystem.cs" />
     <Compile Include="Systems\GameOverSystem.cs" />
     <Compile Include="Systems\GameOverTriggeringSystem.cs" />
     <Compile Include="Systems\ParallaxScrollingSystem.cs" />
