@@ -1,11 +1,11 @@
 ﻿using Nez;
 using Nez.Systems;
+using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
     public class FirstJumpSystem : PassiveSystem
     {
-        private bool _sawFirstJump = false;
         private readonly Emitter<NezzyEvents> _emitter;
 
         public FirstJumpSystem(
@@ -18,7 +18,14 @@ namespace NezzyBird.Systems
         private void _handleFirstJump()
         {
             _emitter.removeObserver(NezzyEvents.BirdJumped, _handleFirstJump);
-            _sawFirstJump = true;
+            var fadesOnFirstJumpComponents = scene.findComponentsOfType<FadesOnFirstJump>();
+
+            foreach (var fadesOnFirstJump in fadesOnFirstJumpComponents)
+            {
+                fadesOnFirstJump.entity.addComponent(fadesOnFirstJump.FirstJumpFade);
+            }
+
+            this.scene.removeEntityProcessor(this);
         }
     }
 }

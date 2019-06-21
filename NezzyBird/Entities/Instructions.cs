@@ -16,6 +16,11 @@ namespace NezzyBird.Entities
 
             addComponent(sprite);
             addComponent(new Fades(FadeDirection.In, 1f));
+            addComponent(
+                new FadesOnFirstJump(
+                    new Fades(FadeDirection.Out, 1.5f)
+                )
+            );
 
             this.scale = GameConstants.GetGameScale();
 
