@@ -27,6 +27,8 @@ namespace NezzyBird.Entities
             this.position = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
                 GameConstants.SCREEN_HEIGHT / 2);
+
+            this.name = this.GetType().Name;
         }
     }
 }

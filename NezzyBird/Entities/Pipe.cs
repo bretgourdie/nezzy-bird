@@ -26,6 +26,8 @@ namespace NezzyBird.Entities
             this.scale = GameConstants.GetGameScale();
             var startingX = GameConstants.SCREEN_WIDTH + 200;
             this.position = new Vector2(startingX, this.position.Y);
+
+            this.name = $"{this.GetType().Name} {Time.timeSinceSceneLoad}";
         }
     }
 }

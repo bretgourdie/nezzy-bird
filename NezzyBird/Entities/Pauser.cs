@@ -8,6 +8,7 @@ namespace NezzyBird.Entities
         public Pauser()
         {
             addComponent(new Pause());
+            this.name = this.GetType().Name;
         }
     }
 }

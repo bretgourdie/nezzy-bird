@@ -8,6 +8,7 @@ namespace NezzyBird.Entities
         public PipePairSpawner()
         {
             addComponent(new SpawnsPipePair(1.75f));
+            this.name = this.GetType().Name;
         }
     }
 }

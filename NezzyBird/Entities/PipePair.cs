@@ -34,6 +34,8 @@ namespace NezzyBird.Entities
 
             _scoreZone = new ScoreZone(emitter);
             _scoreZone.setLocalPosition(new Vector2(_scoreZone.position.X, startingYCenter));
+
+            this.name = $"{this.GetType().Name} {Time.timeSinceSceneLoad}";
         }
 
         public override void onAddedToScene()

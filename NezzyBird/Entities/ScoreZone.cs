@@ -28,6 +28,8 @@ namespace NezzyBird.Entities
 
             var startingX = GameConstants.SCREEN_WIDTH + 200;
             this.position = new Microsoft.Xna.Framework.Vector2(startingX, this.position.Y);
+
+            this.name = $"{this.GetType().Name} {Time.timeSinceSceneLoad}";
         }
     }
 }

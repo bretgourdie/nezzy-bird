@@ -21,6 +21,8 @@ namespace NezzyBird.Entities
                 x,
                 GameConstants.SCREEN_HEIGHT * percentageFromTopOfScreen);
             this.scale = GameConstants.GetGameScale();
+
+            this.name = $"{this.GetType().Name} {Time.timeSinceSceneLoad}";
         }
 
         public void SetSprite(Sprite sprite)

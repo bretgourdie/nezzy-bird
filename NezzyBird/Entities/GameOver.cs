@@ -9,6 +9,7 @@ namespace NezzyBird.Entities
         public GameOver(IList<Entity> gameOverStateEntities)
         {
             addComponent(new GameOverState(gameOverStateEntities));
+            this.name = this.GetType().Name;
         }
     }
 }

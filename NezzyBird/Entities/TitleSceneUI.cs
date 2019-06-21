@@ -33,6 +33,8 @@ namespace NezzyBird.Entities
             table.add(copyrightImage);
 
             this.addComponent(canvas);
+
+            this.name = this.GetType().Name;
         }
     }
 }

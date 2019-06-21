@@ -38,6 +38,8 @@ namespace NezzyBird.Entities
             addComponent(new BoxCollider() { isTrigger = true });
 
             this.setPosition(originalPosition);
+
+            this.name = this.GetType().Name;
         }
     }
 }

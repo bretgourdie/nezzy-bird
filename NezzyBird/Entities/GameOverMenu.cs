@@ -21,6 +21,8 @@ namespace NezzyBird.Entities
             new PlayAndRankButtonRow<TitleScene>().AddToTable(textureAtlas, table);
 
             this.addComponent(canvas);
+
+            this.name = this.GetType().Name;
         }
     }
 }

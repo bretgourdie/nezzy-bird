@@ -40,6 +40,8 @@ namespace NezzyBird.Entities
             this.scale = GameConstants.GetGameScale();
 
             this.position = new Vector2(125, 400);
+
+            this.name = this.GetType().Name;
         }
     }
 }

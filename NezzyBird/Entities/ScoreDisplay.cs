@@ -22,6 +22,8 @@ namespace NezzyBird.Entities
             this.setScale(GameConstants.SPRITE_SCALE_FACTOR);
 
             emitter.addObserver(NezzyEvents.BirdScored, displaysNumber.OnNumberUpdated);
+
+            this.name = this.GetType().Name;
         }
     }
 }
