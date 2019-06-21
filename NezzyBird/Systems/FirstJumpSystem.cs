@@ -22,6 +22,7 @@ namespace NezzyBird.Systems
 
             foreach (var fadesOnFirstJump in fadesOnFirstJumpComponents)
             {
+                fadesOnFirstJump.entity.removeComponent<Fades>();
                 fadesOnFirstJump.entity.addComponent(fadesOnFirstJump.FirstJumpFade);
             }
 
