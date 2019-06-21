@@ -31,6 +31,11 @@ namespace NezzyBird.Systems
             var lerpedColor = Color.Lerp(startingColor, endingColor, timeElapsed / totalTime);
 
             sprite.color = lerpedColor;
+
+            if (fades.TimeElapsed >= fades.TotalTime)
+            {
+                entity.removeComponent(fades);
+            }
         }
 
         private Color _getStartingColor(FadeDirection fadeDirection)
