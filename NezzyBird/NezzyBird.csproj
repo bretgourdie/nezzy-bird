@@ -68,6 +68,7 @@
     <Compile Include="Entities\Foreground.cs" />
     <Compile Include="Entities\GameOver.cs" />
     <Compile Include="Entities\GameOverMenu.cs" />
+    <Compile Include="Entities\GetReady.cs" />
     <Compile Include="Entities\Instructions.cs" />
     <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pauser.cs" />

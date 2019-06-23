@@ -6,15 +6,16 @@ using NezzyBird.Components;
 
 namespace NezzyBird.Entities
 {
-    public class Instructions : Entity
+    public class GetReady : Entity
     {
-        public Instructions(TextureAtlas textureAtlas)
+        public GetReady(TextureAtlas textureAtlas)
         {
-            var instructionsSubtexture = textureAtlas.getSubtexture("Instructions");
-            var sprite = new Sprite(instructionsSubtexture);
-
+            var subtexture = textureAtlas.getSubtexture("GetReady");
+            var sprite = new Sprite(subtexture);
             addComponent(sprite);
+
             addComponent(new Fades(FadeDirection.In, 1f));
+
             addComponent(
                 new FadesOnFirstJump(
                     new Fades(FadeDirection.Out, 1.5f)
@@ -25,7 +26,7 @@ namespace NezzyBird.Entities
 
             this.position = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
-                GameConstants.SCREEN_HEIGHT / 2);
+                GameConstants.SCREEN_HEIGHT / 4);
 
             this.name = this.GetType().Name;
         }

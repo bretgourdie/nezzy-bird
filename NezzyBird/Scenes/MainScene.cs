@@ -23,7 +23,8 @@ namespace NezzyBird.Scenes
                 new Bird(textureAtlas),
                 new PipePairSpawner(),
                 new ScoreDisplay(textureAtlas, emitter),
-                new Instructions(textureAtlas)
+                new Instructions(textureAtlas),
+                new GetReady(textureAtlas)
             };
 
             foreach (var entity in initialEntities)
