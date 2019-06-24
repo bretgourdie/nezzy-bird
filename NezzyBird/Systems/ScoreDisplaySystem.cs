@@ -1,5 +1,6 @@
 ﻿using Nez;
 using Nez.Sprites;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
 using NezzyBird.Entities;
@@ -9,18 +10,27 @@ namespace NezzyBird.Systems
     public class ScoreDisplaySystem : EntityProcessingSystem
     {
         private readonly TextureAtlas _textureAtlas;
+        private bool _birdDied;
 
         public ScoreDisplaySystem(
+            Emitter<NezzyEvents> emitter,
             TextureAtlas textureAtlas) : base(
             new Matcher().all(typeof(DisplaysNumber)))
         {
             _textureAtlas = textureAtlas;
+            emitter.addObserver(NezzyEvents.BirdDied, () => _birdDied = true);
         }
 
         public override void process(Entity entity)
         {
+            if (_birdDied)
+            {
+                entity.destroy();
+                return;
+            }
+
             var displaysNumber = entity.getComponent<DisplaysNumber>();
-            
+
             if (!displaysNumber.NumberNeedsToBeUpdated)
             {
                 return;

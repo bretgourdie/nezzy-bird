@@ -41,5 +41,10 @@ namespace NezzyBird.Components
         {
             NumberSpriteHolders[index].SetSprite(sprite);
         }
+
+        public override void onRemovedFromEntity()
+        {
+            NumberSpriteHolders.ForEach(numberSprite => numberSprite.destroy());
+        }
     }
 }

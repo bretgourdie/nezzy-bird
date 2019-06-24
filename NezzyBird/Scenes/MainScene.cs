@@ -45,7 +45,7 @@ namespace NezzyBird.Scenes
                 new JumpSystem(emitter),
                 new ScoreZoneCollisionSystem(emitter),
                 new DeathCollisionSystem(emitter),
-                new ScoreDisplaySystem(textureAtlas),
+                new ScoreDisplaySystem(emitter, textureAtlas),
                 new ParallaxScrollingSystem(),
                 new ScreenFlashSystem(),
                 new PausingSystem(),
