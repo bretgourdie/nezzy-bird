@@ -13,22 +13,23 @@ namespace NezzyBird.Components
 
         public int Number { get; private set; }
 
+        public bool NumberNeedsToBeUpdated { get; private set; }
+
+        public DisplaysNumber()
+        {
+            NumberSpriteHolders = new List<Number>();
+            NumberNeedsToBeUpdated = true;
+        }
+
         public void OnNumberUpdated()
         {
             NumberNeedsToBeUpdated = true;
             Number += 1;
         }
 
-        public bool NumberNeedsToBeUpdated { get; private set; }
-
         public void HandleUpdatedNumber()
         {
             NumberNeedsToBeUpdated = false;
-        }
-
-        public DisplaysNumber()
-        {
-            NumberSpriteHolders = new List<Number>();
         }
 
         public void AddNumberSpriteHolder(Number number)
