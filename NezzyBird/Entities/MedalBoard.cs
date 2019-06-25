@@ -1,0 +1,47 @@
+﻿using Microsoft.Xna.Framework;
+using Nez;
+using Nez.Sprites;
+using Nez.TextureAtlases;
+using NezzyBird.Components;
+
+namespace NezzyBird.Entities
+{
+    public class MedalBoard : Entity, IGameOverState
+    {
+        public MedalBoard(TextureAtlas textureAtlas)
+        {
+            var subtexture = textureAtlas.getSubtexture("MedalBoard");
+            var sprite = new Sprite(subtexture);
+            addComponent(sprite);
+
+            var startPosition = new Vector2(
+                GameConstants.SCREEN_WIDTH / 2,
+                -GameConstants.SCREEN_HEIGHT / 2);
+
+            var endPosition = new Vector2(
+                GameConstants.SCREEN_WIDTH / 2,
+                GameConstants.SCREEN_WIDTH / 4);
+
+            var floatInFromTop = new FloatInFromTop(
+                startPosition,
+                endPosition);
+
+            addComponent(floatInFromTop);
+        }
+
+        public Entity Get()
+        {
+            return this;
+        }
+
+        public bool IsFinished()
+        {
+            return this.getComponent<FloatInFromTop>() == null;
+        }
+
+        public bool RemoveAfterFinished()
+        {
+            return false;
+        }
+    }
+}

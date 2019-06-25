@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Components\Fades.cs" />
     <Compile Include="Components\FadesOnFirstJump.cs" />
+    <Compile Include="Components\FloatInFromTop.cs" />
     <Compile Include="Components\GameOverState.cs" />
     <Compile Include="Components\ParallaxScrolling.cs" />
     <Compile Include="Components\Pause.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Entities\GetReady.cs" />
     <Compile Include="Entities\IGameOverState.cs" />
     <Compile Include="Entities\Instructions.cs" />
+    <Compile Include="Entities\MedalBoard.cs" />
     <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pauser.cs" />
     <Compile Include="Entities\Pipe.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Systems\DeathCollisionSystem.cs" />
     <Compile Include="Systems\FadeSystem.cs" />
     <Compile Include="Systems\FirstJumpSystem.cs" />
+    <Compile Include="Systems\FloatInFromTopSystem.cs" />
     <Compile Include="Systems\GameOverSystem.cs" />
     <Compile Include="Systems\GameOverTriggeringSystem.cs" />
     <Compile Include="Systems\ParallaxScrollingSystem.cs" />

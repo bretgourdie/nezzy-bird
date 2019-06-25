@@ -32,6 +32,7 @@ namespace NezzyBird.Systems
                 new ScreenFlasher(),
                 new Pauser(),
                 new GameOverGraphic(_textureAtlas),
+                new MedalBoard(_textureAtlas),
                 new GameOverMenu(_textureAtlas)
             };
 
