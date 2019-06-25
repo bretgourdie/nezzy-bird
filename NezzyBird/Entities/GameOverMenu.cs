@@ -6,7 +6,7 @@ using NezzyBird.UI;
 
 namespace NezzyBird.Entities
 {
-    public class GameOverMenu : Entity
+    public class GameOverMenu : Entity, IGameOverState
     {
         public GameOverMenu(TextureAtlas textureAtlas)
         {
@@ -23,6 +23,21 @@ namespace NezzyBird.Entities
             this.addComponent(canvas);
 
             this.name = this.GetType().Name;
+        }
+
+        public Entity Get()
+        {
+            return this;
+        }
+
+        public bool IsFinished()
+        {
+            return false;
+        }
+
+        public bool RemoveAfterFinished()
+        {
+            return false;
         }
     }
 }

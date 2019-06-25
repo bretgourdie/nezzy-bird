@@ -67,8 +67,10 @@
     <Compile Include="Entities\Bird.cs" />
     <Compile Include="Entities\Foreground.cs" />
     <Compile Include="Entities\GameOverContainer.cs" />
+    <Compile Include="Entities\GameOverGraphic.cs" />
     <Compile Include="Entities\GameOverMenu.cs" />
     <Compile Include="Entities\GetReady.cs" />
+    <Compile Include="Entities\IGameOverState.cs" />
     <Compile Include="Entities\Instructions.cs" />
     <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pauser.cs" />

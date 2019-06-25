@@ -17,8 +17,12 @@ namespace NezzyBird.Systems
 
             if (gameOverState.CurrentEntityIsComplete)
             {
+                if (gameOverState.RemoveEntityAfterFinished)
+                {
+                    gameOverState.CurrentEntity.setEnabled(false);
+                }
+
                 gameOverState.AdvanceToNextEntity();
-                gameOverState.CurrentEntity.setEnabled(true);
             }
 
             var currentEntity = gameOverState.CurrentEntity;

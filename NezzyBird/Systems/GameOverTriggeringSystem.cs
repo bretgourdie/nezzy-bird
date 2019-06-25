@@ -27,10 +27,11 @@ namespace NezzyBird.Systems
 
             _gameOverWasTriggered = true;
 
-            var gameOverStateEntities = new Entity[]
+            var gameOverStateEntities = new IGameOverState[]
             {
                 new ScreenFlasher(),
                 new Pauser(),
+                new GameOverGraphic(_textureAtlas),
                 new GameOverMenu(_textureAtlas)
             };
 
