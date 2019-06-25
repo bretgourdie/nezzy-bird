@@ -66,7 +66,7 @@
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
     <Compile Include="Entities\Foreground.cs" />
-    <Compile Include="Entities\GameOver.cs" />
+    <Compile Include="Entities\GameOverContainer.cs" />
     <Compile Include="Entities\GameOverMenu.cs" />
     <Compile Include="Entities\GetReady.cs" />
     <Compile Include="Entities\Instructions.cs" />

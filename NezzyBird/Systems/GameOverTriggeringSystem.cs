@@ -34,7 +34,7 @@ namespace NezzyBird.Systems
                 new GameOverMenu(_textureAtlas)
             };
 
-            scene.addEntity(new GameOver(gameOverStateEntities));
+            scene.addEntity(new GameOverContainer(gameOverStateEntities));
         }
     }
 }

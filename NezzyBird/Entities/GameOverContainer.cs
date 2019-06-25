@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace NezzyBird.Entities
 {
-    public class GameOver : Entity
+    public class GameOverContainer : Entity
     {
-        public GameOver(IList<Entity> gameOverStateEntities)
+        public GameOverContainer(IList<Entity> gameOverStateEntities)
         {
             addComponent(new GameOverState(gameOverStateEntities));
             this.name = this.GetType().Name;
