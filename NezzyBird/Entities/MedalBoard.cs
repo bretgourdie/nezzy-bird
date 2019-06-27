@@ -17,7 +17,7 @@ namespace NezzyBird.Entities
 
             var startPosition = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
-                GameConstants.SCREEN_HEIGHT * 2);
+                GameConstants.SCREEN_HEIGHT * 1.25f);
 
             var endPosition = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
