@@ -23,7 +23,7 @@ namespace NezzyBird.Entities
                 GameConstants.SCREEN_WIDTH / 2,
                 GameConstants.SCREEN_HEIGHT / 2);
 
-            var floatInFromTop = new FloatInFromTop(
+            var floatInFromTop = new FloatIn(
                 startPosition,
                 endPosition,
                 EaseType.Linear,
@@ -45,7 +45,7 @@ namespace NezzyBird.Entities
 
         public bool IsFinished()
         {
-            return this.getComponent<FloatInFromTop>() == null;
+            return this.getComponent<FloatIn>() == null;
         }
 
         public bool RemoveAfterFinished()

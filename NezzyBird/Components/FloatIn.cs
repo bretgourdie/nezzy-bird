@@ -4,7 +4,7 @@ using Nez.Tweens;
 
 namespace NezzyBird.Components
 {
-    public class FloatInFromTop : Component
+    public class FloatIn : Component
     {
         public float TimePassed { get; private set; }
 
@@ -16,7 +16,7 @@ namespace NezzyBird.Components
 
         public readonly EaseType EaseType;
 
-        public FloatInFromTop(
+        public FloatIn(
             Vector2 startPosition,
             Vector2 endPosition,
             EaseType easeType,

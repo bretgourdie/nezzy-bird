@@ -26,7 +26,7 @@ namespace NezzyBird.Entities
                 GameConstants.SCREEN_HEIGHT / 4);
 
             addComponent(
-                new FloatInFromTop(
+                new FloatIn(
                     startPosition,
                     endPosition,
                     EaseType.BackOut,

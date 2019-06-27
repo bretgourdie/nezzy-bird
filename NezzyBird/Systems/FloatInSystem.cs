@@ -5,17 +5,17 @@ using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
-    public class FloatInFromTopSystem : EntityProcessingSystem
+    public class FloatInSystem : EntityProcessingSystem
     {
-        public FloatInFromTopSystem() : base(
+        public FloatInSystem() : base(
             new Matcher().all(
-                typeof(FloatInFromTop)
+                typeof(FloatIn)
             ))
         { }
 
         public override void process(Entity entity)
         {
-            var floatInFromTop = entity.getComponent<FloatInFromTop>();
+            var floatInFromTop = entity.getComponent<FloatIn>();
 
             floatInFromTop.PassTime(Time.deltaTime);
 
@@ -37,7 +37,7 @@ namespace NezzyBird.Systems
 
             if (timePassed >= totalTime)
             {
-                entity.removeComponent<FloatInFromTop>();
+                entity.removeComponent<FloatIn>();
             }
         }
     }
