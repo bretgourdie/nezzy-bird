@@ -2,6 +2,7 @@
 using Nez;
 using Nez.Sprites;
 using Nez.TextureAtlases;
+using Nez.Tweens;
 using NezzyBird.Components;
 
 namespace NezzyBird.Entities
@@ -24,7 +25,9 @@ namespace NezzyBird.Entities
 
             var floatInFromTop = new FloatInFromTop(
                 startPosition,
-                endPosition);
+                endPosition,
+                EaseType.Linear,
+                1f);
 
             addComponent(floatInFromTop);
 

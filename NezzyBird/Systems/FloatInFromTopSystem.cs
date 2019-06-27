@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Tweens;
 using NezzyBird.Components;
 
 namespace NezzyBird.Systems
@@ -22,8 +23,9 @@ namespace NezzyBird.Systems
             var endY = floatInFromTop.EndPosition.Y;
             var timePassed = floatInFromTop.TimePassed;
             var totalTime = floatInFromTop.TotalTime;
+            var easeType = floatInFromTop.EaseType;
 
-            var newY = Mathf.lerp(startY, endY, timePassed / totalTime);
+            var newY = Lerps.ease(easeType, startY, endY, timePassed, totalTime);
 
             var currentX = entity.position.X;
 

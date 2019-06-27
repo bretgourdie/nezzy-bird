@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Tweens;
 
 namespace NezzyBird.Components
 {
@@ -7,20 +8,25 @@ namespace NezzyBird.Components
     {
         public float TimePassed { get; private set; }
 
-        public float TotalTime { get; private set; }
+        public readonly float TotalTime;
 
         public readonly Vector2 StartPosition;
 
         public readonly Vector2 EndPosition;
 
+        public readonly EaseType EaseType;
+
         public FloatInFromTop(
             Vector2 startPosition,
-            Vector2 endPosition)
+            Vector2 endPosition,
+            EaseType easeType,
+            float totalTime)
         {
             StartPosition = startPosition;
             EndPosition = endPosition;
+            EaseType = easeType;
 
-            TotalTime = 1.5f;
+            TotalTime = totalTime;
         }
 
         public void PassTime(float deltaTime)
