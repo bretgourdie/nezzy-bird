@@ -20,7 +20,7 @@ namespace NezzyBird.Entities
 
             var endPosition = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
-                GameConstants.SCREEN_WIDTH / 4);
+                GameConstants.SCREEN_HEIGHT / 2);
 
             var floatInFromTop = new FloatInFromTop(
                 startPosition,
