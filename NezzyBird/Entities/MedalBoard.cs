@@ -16,7 +16,7 @@ namespace NezzyBird.Entities
 
             var startPosition = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
-                -GameConstants.SCREEN_HEIGHT / 2);
+                -GameConstants.SCREEN_HEIGHT / 4);
 
             var endPosition = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
@@ -27,6 +27,8 @@ namespace NezzyBird.Entities
                 endPosition);
 
             addComponent(floatInFromTop);
+
+            this.position = startPosition;
 
             this.scale = GameConstants.GetGameScale();
 

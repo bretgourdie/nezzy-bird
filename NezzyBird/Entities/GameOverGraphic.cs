@@ -16,11 +16,22 @@ namespace NezzyBird.Entities
 
             addComponent(new Fades(FadeDirection.In, 1f));
 
-            this.scale = GameConstants.GetGameScale();
+            var startPosition = new Vector2(
+                GameConstants.SCREEN_WIDTH / 2,
+                -GameConstants.SCREEN_HEIGHT / 8);
 
-            this.position = new Vector2(
+            var endPosition = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
                 GameConstants.SCREEN_HEIGHT / 4);
+
+            addComponent(
+                new FloatInFromTop(
+                    startPosition,
+                    endPosition));
+
+            this.position = startPosition;
+
+            this.scale = GameConstants.GetGameScale();
 
             this.name = this.GetType().Name;
         }
