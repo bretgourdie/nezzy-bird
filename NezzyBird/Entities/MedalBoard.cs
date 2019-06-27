@@ -27,6 +27,10 @@ namespace NezzyBird.Entities
                 endPosition);
 
             addComponent(floatInFromTop);
+
+            this.scale = GameConstants.GetGameScale();
+
+            this.name = this.GetType().Name;
         }
 
         public Entity Get()
