@@ -15,30 +15,47 @@ namespace NezzyBird.Systems
 
         public override void process(Entity entity)
         {
-            var floatInFromTop = entity.getComponent<FloatIn>();
+            var floatIn = entity.getComponent<FloatIn>();
 
-            floatInFromTop.PassTime(Time.deltaTime);
+            floatIn.PassTime(Time.deltaTime);
 
-            var startY = floatInFromTop.StartPosition.Y;
-            var endY = floatInFromTop.EndPosition.Y;
-            var timePassed = floatInFromTop.TimePassed;
-            var totalTime = floatInFromTop.TotalTime;
-            var easeType = floatInFromTop.EaseType;
+            var start = floatIn.StartPosition;
+            var end = floatIn.EndPosition;
+            var timePassed = floatIn.TimePassed;
+            var totalTime = floatIn.TotalTime;
+            var easeType = floatIn.EaseType;
 
-            var newY = Lerps.ease(easeType, startY, endY, timePassed, totalTime);
+            var newLerpedPosition = lerpedPosition(start, end, timePassed, totalTime, easeType);
 
-            var currentX = entity.position.X;
-
-            entity.setPosition(
-                new Vector2(
-                    currentX,
-                    newY)
-            );
+            entity.setPosition(newLerpedPosition);
 
             if (timePassed >= totalTime)
             {
                 entity.removeComponent<FloatIn>();
             }
+        }
+
+        private Vector2 lerpedPosition(
+            Vector2 start,
+            Vector2 end,
+            float timePassed,
+            float totalTime,
+            EaseType easeType)
+        {
+            return new Vector2(
+                lerpedCoordinate(start.X, end.X, timePassed, totalTime, easeType),
+                lerpedCoordinate(start.Y, end.Y, timePassed, totalTime, easeType)
+            );
+        }
+
+        private float lerpedCoordinate(
+            float start,
+            float end,
+            float timePassed,
+            float totalTime,
+            EaseType easeType)
+        {
+            return Lerps.ease(easeType, start, end, timePassed, totalTime);
         }
     }
 }
