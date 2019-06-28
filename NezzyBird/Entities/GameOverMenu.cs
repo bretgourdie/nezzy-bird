@@ -17,6 +17,7 @@ namespace NezzyBird.Entities
             var stage = canvas.stage;
 
             var table = stage.addElement(new Table()).setFillParent(true);
+            table.padTop(GameConstants.SCREEN_HEIGHT * 3 / 4);
 
             new PlayAndRankButtonRow<TitleScene>().AddToTable(textureAtlas, table);
 
