@@ -49,6 +49,7 @@
     <Compile Include="Components\GameOverState.cs" />
     <Compile Include="Components\ParallaxScrolling.cs" />
     <Compile Include="Components\Pause.cs" />
+    <Compile Include="Components\ScoreCounting.cs" />
     <Compile Include="Components\ScreenFlash.cs" />
     <Compile Include="Components\SpawnsPipePair.cs" />
     <Compile Include="Components\AffectedByGravity.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Entities\PipePair.cs" />
     <Compile Include="Entities\PipePairSpawner.cs" />
+    <Compile Include="Entities\ScoreCounter.cs" />
     <Compile Include="Entities\ScoreDisplay.cs" />
     <Compile Include="Entities\ScoreZone.cs" />
     <Compile Include="Entities\ScreenFlasher.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Systems\NezzyEvents.cs" />
     <Compile Include="Systems\JumpSystem.cs" />
     <Compile Include="Systems\SceneTransitionSystem.cs" />
+    <Compile Include="Systems\ScoreCountingSystem.cs" />
     <Compile Include="Systems\ScoreDisplaySystem.cs" />
     <Compile Include="Systems\ScoreZoneCollisionSystem.cs" />
     <Compile Include="Systems\ScreenFlashSystem.cs" />
