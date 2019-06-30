@@ -6,7 +6,7 @@ namespace NezzyBird.Components
     {
         public readonly int CountTo;
 
-        public int CurrentNumber { get; private set; }
+        public int CurrentNumber { get; set; }
 
         public float TimeSinceLastDisplay { get; private set; }
 

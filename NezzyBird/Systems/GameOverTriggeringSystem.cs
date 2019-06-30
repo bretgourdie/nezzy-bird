@@ -1,6 +1,7 @@
 ﻿using Nez;
 using Nez.Systems;
 using Nez.TextureAtlases;
+using NezzyBird.Components;
 using NezzyBird.Entities;
 
 namespace NezzyBird.Systems
@@ -25,6 +26,9 @@ namespace NezzyBird.Systems
                 return;
             }
 
+            var bird = scene.findEntity("Bird");
+            var hasScore = bird.getComponent<HasScore>();
+
             _gameOverWasTriggered = true;
 
             var gameOverStateEntities = new IGameOverState[]
@@ -33,6 +37,7 @@ namespace NezzyBird.Systems
                 new Pauser(),
                 new GameOverGraphic(_textureAtlas),
                 new MedalBoard(_textureAtlas),
+                new ScoreCounter(hasScore.Score),
                 new GameOverMenu(_textureAtlas)
             };
 

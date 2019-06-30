@@ -53,7 +53,8 @@ namespace NezzyBird.Scenes
                 new GameOverTriggeringSystem(emitter, textureAtlas),
                 new FadeSystem(),
                 new FirstJumpSystem(emitter),
-                new FloatInSystem()
+                new FloatInSystem(),
+                new ScoreCountingSystem(textureAtlas)
             };
 
             foreach (var system in initialSystems)

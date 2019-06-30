@@ -1,4 +1,5 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 using NezzyBird.Components;
 
 namespace NezzyBird.Entities
@@ -8,6 +9,11 @@ namespace NezzyBird.Entities
         public ScoreCounter(int score)
         {
             addComponent(new ScoreCounting(score));
+            addComponent(new DisplaysNumber());
+
+            this.position = new Vector2(
+                GameConstants.SCREEN_WIDTH,
+                GameConstants.SCREEN_HEIGHT);
         }
 
         public Entity Get()

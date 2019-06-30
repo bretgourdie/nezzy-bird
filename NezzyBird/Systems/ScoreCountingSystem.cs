@@ -1,21 +1,36 @@
 ﻿using Nez;
+using Nez.TextureAtlases;
 using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
     public class ScoreCountingSystem : EntityProcessingSystem
     {
-        public ScoreCountingSystem() : base(
+        private readonly ScoreSpriteHandler _scoreSpriteHandler;
+
+        public ScoreCountingSystem(TextureAtlas textureAtlas) : base(
             new Matcher().all(
                 typeof(ScoreCounting),
                 typeof(DisplaysNumber)
             ))
-        { }
+        {
+            _scoreSpriteHandler = new ScoreSpriteHandler(
+                ScoreSpriteHandler.SpriteSize.Small,
+                textureAtlas);
+        }
 
         public override void process(Entity entity)
         {
             var scoreCounting = entity.getComponent<ScoreCounting>();
             var displaysNumber = entity.getComponent<DisplaysNumber>();
+
+            if (scoreCounting.CurrentNumber < scoreCounting.CountTo)
+            {
+                displaysNumber.OnNumberUpdated();
+                scoreCounting.CurrentNumber = displaysNumber.Number;
+            }
+
+            _scoreSpriteHandler.HandleSprite(entity);
         }
     }
 }
