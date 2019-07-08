@@ -24,13 +24,14 @@ namespace NezzyBird.Systems
 
         public override void process(Entity entity)
         {
-            if (_birdDied)
+            var displaysNumber = entity.getComponent<DisplaysNumber>();
+
+            if (_birdDied && displaysNumber.RemoveAfterBirdDies)
             {
                 entity.destroy();
                 return;
             }
 
-            var displaysNumber = entity.getComponent<DisplaysNumber>();
 
             if (!displaysNumber.NumberNeedsToBeUpdated)
             {

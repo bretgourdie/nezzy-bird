@@ -12,7 +12,7 @@ namespace NezzyBird.Entities
             TextureAtlas textureAtlas,
             Emitter<NezzyEvents> emitter)
         {
-            var displaysNumber = new DisplaysNumber();
+            var displaysNumber = new DisplaysNumber(removeAfterBirdDies: true);
             addComponent(displaysNumber);
 
             this.setPosition(

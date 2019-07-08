@@ -15,10 +15,13 @@ namespace NezzyBird.Components
 
         public bool NumberNeedsToBeUpdated { get; private set; }
 
-        public DisplaysNumber()
+        public bool RemoveAfterBirdDies { get; private set; }
+
+        public DisplaysNumber(bool removeAfterBirdDies)
         {
             NumberSpriteHolders = new List<Number>();
             NumberNeedsToBeUpdated = true;
+            RemoveAfterBirdDies = removeAfterBirdDies;
         }
 
         public void OnNumberUpdated()
