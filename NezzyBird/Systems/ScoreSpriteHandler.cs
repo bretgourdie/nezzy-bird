@@ -1,4 +1,5 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 using Nez.Sprites;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
@@ -30,15 +31,15 @@ namespace NezzyBird.Systems
 
             var strScore = score.ToString();
 
-            var spriteSizePrefix = getSpriteSizePrefix(_spriteSize);
 
-            var sampleSprite = _textureAtlas.getSubtexture($"{spriteSizePrefix}0");
-            var rectangle = sampleSprite.sourceRect;
-            var spriteWidth = rectangle.Width;
 
             while (displaysNumber.NumberSpriteHoldersCount < strScore.Length)
             {
-                var newNumber = new Number(displaysNumber.NumberSpriteHoldersCount, spriteWidth);
+                var newNumber = new Number();
+                var digitPosition = displaysNumber.NumberSpriteHoldersCount;
+                newNumber.position = new Vector2(
+                    getXCoordinate(digitPosition),
+                    getYCoordinate());
                 displaysNumber.AddNumberSpriteHolder(newNumber);
                 entity.scene.addEntity(newNumber);
             }
@@ -46,7 +47,7 @@ namespace NezzyBird.Systems
             for (int ii = 0; ii < strScore.Length; ii++)
             {
                 var digit = strScore[ii];
-                var digitSubtexture = _textureAtlas.getSubtexture($"{spriteSizePrefix}{digit}");
+                var digitSubtexture = _textureAtlas.getSubtexture($"{getSpriteSizePrefix()}{digit}");
                 var sprite = new Sprite(digitSubtexture);
 
                 var reversedIndex = strScore.Length - ii - 1;
@@ -54,9 +55,9 @@ namespace NezzyBird.Systems
             }
         }
 
-        private string getSpriteSizePrefix(SpriteSize spriteSize)
+        private string getSpriteSizePrefix()
         {
-            switch (spriteSize)
+            switch (_spriteSize)
             {
                 case SpriteSize.Large:
                     return "l";
@@ -65,6 +66,54 @@ namespace NezzyBird.Systems
                 default:
                     throw new System.NotImplementedException();
             }
+        }
+
+        private float getXCoordinate(int digitPosition)
+        {
+            var sampleSprite = _textureAtlas.getSubtexture($"{getSpriteSizePrefix()}0");
+            var rectangle = sampleSprite.sourceRect;
+            var spriteWidth = rectangle.Width;
+
+            float startingXCoordinate;
+
+            switch (_spriteSize)
+            {
+                case SpriteSize.Large:
+                    startingXCoordinate = GameConstants.SCREEN_WIDTH * .5f;
+                    break;
+                case SpriteSize.Small:
+                    startingXCoordinate = GameConstants.SCREEN_WIDTH * .5f;
+                    break;
+                default:
+                    throw new System.NotImplementedException();
+            }
+
+            const int spritePadding = 2;
+            var x =
+                startingXCoordinate
+                - digitPosition * spriteWidth * GameConstants.SPRITE_SCALE_FACTOR
+                + spritePadding;
+
+            return x;
+        }
+
+        private float getYCoordinate()
+        {
+            switch (_spriteSize)
+            {
+                case SpriteSize.Large:
+                    return getMainScoreYCoordinate();
+                case SpriteSize.Small:
+                    return getMainScoreYCoordinate();
+                default:
+                    throw new System.NotImplementedException();
+            }
+        }
+
+        private float getMainScoreYCoordinate()
+        {
+            const float percentageFromTopOfScreen = .10f;
+            return GameConstants.SCREEN_HEIGHT * percentageFromTopOfScreen;
         }
 
         public enum SpriteSize
