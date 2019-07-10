@@ -24,10 +24,17 @@ namespace NezzyBird.Systems
             var scoreCounting = entity.getComponent<ScoreCounting>();
             var displaysNumber = entity.getComponent<DisplaysNumber>();
 
-            if (scoreCounting.CurrentNumber < scoreCounting.CountTo)
+            scoreCounting.updateDisplayTime(Time.deltaTime);
+
+            if (scoreCounting.TimeSinceLastDisplay >= scoreCounting.TimeBetweenDisplays)
             {
-                displaysNumber.OnNumberUpdated();
-                scoreCounting.CurrentNumber = displaysNumber.Number;
+                scoreCounting.resetDisplayTime();
+
+                if (scoreCounting.CurrentNumber < scoreCounting.CountTo)
+                {
+                    displaysNumber.OnNumberUpdated();
+                    scoreCounting.CurrentNumber = displaysNumber.Number;
+                }
             }
 
             _scoreSpriteHandler.HandleSprite(entity);
