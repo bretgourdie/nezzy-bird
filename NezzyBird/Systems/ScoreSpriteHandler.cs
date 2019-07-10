@@ -13,12 +13,15 @@ namespace NezzyBird.Systems
 
         private readonly SpriteSize _spriteSize;
 
+        private readonly Rectangle _sampleRectangle;
+
         public ScoreSpriteHandler(
             SpriteSize spriteSize,
             TextureAtlas textureAtlas)
         {
             _spriteSize = spriteSize;
             _textureAtlas = textureAtlas;
+            _sampleRectangle = getSampleSpriteRectangle();
         }
 
         public void HandleSprite(Entity entity)
@@ -70,10 +73,6 @@ namespace NezzyBird.Systems
 
         private float getXCoordinate(int digitPosition)
         {
-            var sampleSprite = _textureAtlas.getSubtexture($"{getSpriteSizePrefix()}0");
-            var rectangle = sampleSprite.sourceRect;
-            var spriteWidth = rectangle.Width;
-
             float startingXCoordinate;
 
             switch (_spriteSize)
@@ -82,7 +81,7 @@ namespace NezzyBird.Systems
                     startingXCoordinate = GameConstants.SCREEN_WIDTH * .5f;
                     break;
                 case SpriteSize.Small:
-                    startingXCoordinate = GameConstants.SCREEN_WIDTH * .5f;
+                    startingXCoordinate = GameConstants.SCREEN_WIDTH * .75f + (_sampleRectangle.Width * GameConstants.SPRITE_SCALE_FACTOR);
                     break;
                 default:
                     throw new System.NotImplementedException();
@@ -91,7 +90,7 @@ namespace NezzyBird.Systems
             const int spritePadding = 2;
             var x =
                 startingXCoordinate
-                - digitPosition * spriteWidth * GameConstants.SPRITE_SCALE_FACTOR
+                - digitPosition * (_sampleRectangle.Width * GameConstants.SPRITE_SCALE_FACTOR)
                 + spritePadding;
 
             return x;
@@ -104,16 +103,32 @@ namespace NezzyBird.Systems
                 case SpriteSize.Large:
                     return getMainScoreYCoordinate();
                 case SpriteSize.Small:
-                    return getMainScoreYCoordinate();
+                    return getMedalBoardYCoordinate();
                 default:
                     throw new System.NotImplementedException();
             }
+        }
+
+        private float getMedalBoardYCoordinate()
+        {
+            const float padding = 2;
+            return
+                GameConstants.SCREEN_HEIGHT * 0.5f
+                - (_sampleRectangle.Height * GameConstants.SPRITE_SCALE_FACTOR)
+                + padding;
         }
 
         private float getMainScoreYCoordinate()
         {
             const float percentageFromTopOfScreen = .10f;
             return GameConstants.SCREEN_HEIGHT * percentageFromTopOfScreen;
+        }
+
+        private Rectangle getSampleSpriteRectangle()
+        {
+            var sampleSprite = _textureAtlas.getSubtexture($"{getSpriteSizePrefix()}0");
+            var rectangle = sampleSprite.sourceRect;
+            return rectangle;
         }
 
         public enum SpriteSize
