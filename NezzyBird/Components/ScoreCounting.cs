@@ -14,8 +14,9 @@ namespace NezzyBird.Components
 
         public ScoreCounting(int countTo)
         {
+            const float twoOutOfSixtyFramesPerSecond = 2 / 60;
             CountTo = countTo;
-            TimeBetweenDisplays = 0.25f;
+            TimeBetweenDisplays = twoOutOfSixtyFramesPerSecond;
         }
 
         public void updateDisplayTime(float deltaTime)
