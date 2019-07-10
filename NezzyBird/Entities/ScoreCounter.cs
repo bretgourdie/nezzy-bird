@@ -24,7 +24,7 @@ namespace NezzyBird.Entities
         public bool IsFinished()
         {
             var scoreCounting = getComponent<ScoreCounting>();
-            return scoreCounting == null || scoreCounting.CurrentNumber <= scoreCounting.CountTo;
+            return scoreCounting == null || scoreCounting.CurrentNumber >= scoreCounting.CountTo;
         }
 
         public bool RemoveAfterFinished()
