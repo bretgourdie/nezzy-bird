@@ -67,11 +67,13 @@
     <Compile Include="Components\WaitsForFirstTap.cs" />
     <Compile Include="Entities\Background.cs" />
     <Compile Include="Entities\Bird.cs" />
+    <Compile Include="Entities\BronzeMedal.cs" />
     <Compile Include="Entities\Foreground.cs" />
     <Compile Include="Entities\GameOverContainer.cs" />
     <Compile Include="Entities\GameOverGraphic.cs" />
     <Compile Include="Entities\GameOverMenu.cs" />
     <Compile Include="Entities\GetReady.cs" />
+    <Compile Include="Entities\GoldMedal.cs" />
     <Compile Include="Entities\IGameOverState.cs" />
     <Compile Include="Entities\Instructions.cs" />
     <Compile Include="Entities\MedalBoard.cs" />
@@ -80,10 +82,12 @@
     <Compile Include="Entities\Pipe.cs" />
     <Compile Include="Entities\PipePair.cs" />
     <Compile Include="Entities\PipePairSpawner.cs" />
+    <Compile Include="Entities\PlatinumMedal.cs" />
     <Compile Include="Entities\ScoreCounter.cs" />
     <Compile Include="Entities\ScoreDisplay.cs" />
     <Compile Include="Entities\ScoreZone.cs" />
     <Compile Include="Entities\ScreenFlasher.cs" />
+    <Compile Include="Entities\SilverMedal.cs" />
     <Compile Include="Entities\TitleSceneUI.cs" />
     <Compile Include="Entities\TitleScreenBird.cs" />
     <Compile Include="Game1.cs" />
