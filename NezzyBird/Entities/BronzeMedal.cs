@@ -8,7 +8,7 @@ namespace NezzyBird.Entities
     {
         public BronzeMedal(TextureAtlas textureAtlas)
         {
-            var subtexture = textureAtlas.getSubtexture("BronzeMedal");
+            var subtexture = textureAtlas.getSubtexture("Bronze");
             addComponent(new Sprite(subtexture));
 
             this.scale = GameConstants.GetGameScale();
