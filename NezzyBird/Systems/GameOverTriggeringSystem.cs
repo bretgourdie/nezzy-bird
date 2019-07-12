@@ -38,6 +38,7 @@ namespace NezzyBird.Systems
                 new GameOverGraphic(_textureAtlas),
                 new MedalBoard(_textureAtlas),
                 new ScoreCounter(hasScore.Score),
+                new MedalContainer(hasScore.Score),
                 new GameOverMenu(_textureAtlas)
             };
 

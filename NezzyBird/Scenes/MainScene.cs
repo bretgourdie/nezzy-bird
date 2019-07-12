@@ -54,7 +54,8 @@ namespace NezzyBird.Scenes
                 new FadeSystem(),
                 new FirstJumpSystem(emitter),
                 new FloatInSystem(),
-                new ScoreCountingSystem(textureAtlas)
+                new ScoreCountingSystem(textureAtlas),
+                new MedalSelectionSystem(textureAtlas)
             };
 
             foreach (var system in initialSystems)
