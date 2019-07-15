@@ -9,9 +9,12 @@ namespace NezzyBird.Entities
         public MedalContainer(int score)
         {
             addComponent(new MedalContaining(score));
+
+            const int xOffsetFromCenter = -98;
+            const int yOffsetFromCenter =  12;
             this.position = new Vector2(
-                GameConstants.SCREEN_WIDTH / 2,
-                GameConstants.SCREEN_HEIGHT / 2);
+                GameConstants.SCREEN_WIDTH / 2 + xOffsetFromCenter,
+                GameConstants.SCREEN_HEIGHT / 2 + yOffsetFromCenter);
         }
 
         public Entity Get() => this;
