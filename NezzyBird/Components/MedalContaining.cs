@@ -1,5 +1,4 @@
 ﻿using Nez;
-using Nez.Sprites;
 
 namespace NezzyBird.Components
 {
