@@ -31,6 +31,7 @@ namespace NezzyBird.Systems
 
             if (timePassed >= totalTime)
             {
+                entity.setPosition(end);
                 entity.removeComponent<FloatIn>();
             }
         }
