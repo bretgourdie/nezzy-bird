@@ -52,7 +52,7 @@
     <Compile Include="Components\Pause.cs" />
     <Compile Include="Components\ScoreCounting.cs" />
     <Compile Include="Components\ScreenFlash.cs" />
-    <Compile Include="Components\Sparkles.cs" />
+    <Compile Include="Components\SparklesCollection.cs" />
     <Compile Include="Components\SpawnsPipePair.cs" />
     <Compile Include="Components\AffectedByGravity.cs" />
     <Compile Include="Components\ChangeSceneOnTap.cs" />
