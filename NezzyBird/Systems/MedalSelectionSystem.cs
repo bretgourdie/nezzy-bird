@@ -32,35 +32,36 @@ namespace NezzyBird.Systems
 
         private Entity _determineMedal(int score)
         {
-            if (score < 10)
-            {
-                return new NoMedal(_textureAtlas);
-            }
+            return new PlatinumMedal(_textureAtlas);
+            //if (score < 10)
+            //{
+            //    return new NoMedal(_textureAtlas);
+            //}
 
-            else if (score >= 10 && score < 20)
-            {
-                return new BronzeMedal(_textureAtlas);
-            }
+            //else if (score >= 10 && score < 20)
+            //{
+            //    return new BronzeMedal(_textureAtlas);
+            //}
 
-            else if (score >= 20 && score < 30)
-            {
-                return new SilverMedal(_textureAtlas);
-            }
+            //else if (score >= 20 && score < 30)
+            //{
+            //    return new SilverMedal(_textureAtlas);
+            //}
 
-            else if (score >= 30 && score < 40)
-            {
-                return new GoldMedal(_textureAtlas);
-            }
+            //else if (score >= 30 && score < 40)
+            //{
+            //    return new GoldMedal(_textureAtlas);
+            //}
 
-            else if (score >= 40)
-            {
-                return new PlatinumMedal(_textureAtlas);
-            }
+            //else if (score >= 40)
+            //{
+            //    return new PlatinumMedal(_textureAtlas);
+            //}
 
-            else
-            {
-                throw new System.NotImplementedException();
-            }
+            //else
+            //{
+            //    throw new System.NotImplementedException();
+            //}
         }
     }
 }

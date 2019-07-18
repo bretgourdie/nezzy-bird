@@ -52,6 +52,7 @@
     <Compile Include="Components\Pause.cs" />
     <Compile Include="Components\ScoreCounting.cs" />
     <Compile Include="Components\ScreenFlash.cs" />
+    <Compile Include="Components\Sparkles.cs" />
     <Compile Include="Components\SpawnsPipePair.cs" />
     <Compile Include="Components\AffectedByGravity.cs" />
     <Compile Include="Components\ChangeSceneOnTap.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Entities\ScoreZone.cs" />
     <Compile Include="Entities\ScreenFlasher.cs" />
     <Compile Include="Entities\SilverMedal.cs" />
+    <Compile Include="Entities\Sparkle.cs" />
     <Compile Include="Entities\TitleSceneUI.cs" />
     <Compile Include="Entities\TitleScreenBird.cs" />
     <Compile Include="Game1.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Systems\ScrollingSystem.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
     <Compile Include="Systems\BirdSpriteRotationSystem.cs" />
+    <Compile Include="Systems\SparkleSystem.cs" />
     <Compile Include="UI\PlayAndRankButtonRow.cs" />
     <Compile Include="UI\PlayButtonFactory.cs" />
     <Compile Include="UI\RankingButtonFactory.cs" />

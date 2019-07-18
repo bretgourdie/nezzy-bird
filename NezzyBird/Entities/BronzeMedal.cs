@@ -1,6 +1,7 @@
 ﻿using Nez;
 using Nez.Sprites;
 using Nez.TextureAtlases;
+using NezzyBird.Components;
 
 namespace NezzyBird.Entities
 {
@@ -10,6 +11,8 @@ namespace NezzyBird.Entities
         {
             var subtexture = textureAtlas.getSubtexture("Bronze");
             addComponent(new Sprite(subtexture));
+
+            addComponent(new Sparkles(Sparkles.SparkleSpeed.Bronze));
 
             this.scale = GameConstants.GetGameScale();
 
