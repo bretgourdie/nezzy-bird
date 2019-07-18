@@ -1,12 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nez;
+using NezzyBird.Components;
 
 namespace NezzyBird.Systems
 {
-    class SparkleSystem
+    public class SparkleSystem : EntityProcessingSystem
     {
+        public SparkleSystem() : base(
+            new Matcher().all(
+                typeof(SparklesCollection)
+        ))
+        { }
+
+        public override void process(Entity entity)
+        {
+            var sparkleCollection = entity.getComponent<SparklesCollection>();
+
+            foreach(var sparkle in sparkleCollection)
+            {
+                if (!sparkle.IsAnimationPlaying())
+                {
+                    sparkle.PlayAnimation();
+                }
+            }
+        }
     }
 }
