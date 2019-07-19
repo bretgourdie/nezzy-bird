@@ -1,5 +1,8 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
+using Nez.Sprites;
 using NezzyBird.Components;
+using NezzyBird.Entities;
 
 namespace NezzyBird.Systems
 {
@@ -17,9 +20,18 @@ namespace NezzyBird.Systems
 
             foreach(var sparkle in sparkleCollection)
             {
-                if (!sparkle.IsAnimationPlaying())
+                var sprite = sparkle.getComponent<Sprite<int>>();
+
+                if (!sprite.isPlaying)
                 {
-                    sparkle.PlayAnimation();
+                    var randomX = Random.nextFloat(50f) - 25f;
+                    var randomY = Random.nextFloat(50f) - 25f;
+                    entity.setPosition(
+                        new Vector2(
+                            randomX,
+                            randomY));
+
+                    sprite.play(Sparkle.SparkleAnimationKey);
                 }
             }
         }

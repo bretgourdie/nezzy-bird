@@ -12,7 +12,10 @@ namespace NezzyBird.Entities
             var subtexture = textureAtlas.getSubtexture("Silver");
             addComponent(new Sprite(subtexture));
 
-            addComponent(new SparklesCollection(SparklesCollection.SparkleSpeed.Silver));
+            addComponent(
+                new SparklesCollection(
+                    textureAtlas,
+                    SparklesCollection.SparkleSpeed.Silver));
 
             this.scale = GameConstants.GetGameScale();
 

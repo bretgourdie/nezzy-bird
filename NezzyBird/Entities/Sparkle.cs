@@ -6,28 +6,21 @@ namespace NezzyBird.Entities
 {
     public class Sparkle : Entity
     {
-        private const int _sparkleAnimationKey = 0;
-        private readonly Sprite<int> _sparkleAnimation;
+        public const int SparkleAnimationKey = 0;
 
-        public Sparkle(TextureAtlas textureAtlas)
+        public Sparkle(
+            TextureAtlas textureAtlas,
+            float delay)
         {
             var sparkleAnimation = textureAtlas.getSpriteAnimation("sparkle");
 
-            _sparkleAnimation = new Sprite<int>(
-                _sparkleAnimationKey,
+            var sparkleSprite = new Sprite<int>(
+                SparkleAnimationKey,
                 sparkleAnimation);
 
-            this.addComponent(_sparkleAnimation);
-        }
+            sparkleSprite.getAnimation(SparkleAnimationKey).delay = delay;
 
-        public void PlayAnimation()
-        {
-            _sparkleAnimation.play(_sparkleAnimationKey);
-        }
-
-        public bool IsAnimationPlaying()
-        {
-            return !_sparkleAnimation.isPlaying;
+            this.addComponent(sparkleSprite);
         }
     }
 }
