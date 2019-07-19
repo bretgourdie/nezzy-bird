@@ -12,7 +12,7 @@ namespace NezzyBird.Entities
             TextureAtlas textureAtlas,
             float delay)
         {
-            var sparkleAnimation = textureAtlas.getSpriteAnimation("sparkle");
+            var sparkleAnimation = textureAtlas.getSpriteAnimation("Sparkle");
 
             var sparkleSprite = new Sprite<int>(
                 SparkleAnimationKey,
