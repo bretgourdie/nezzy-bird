@@ -26,7 +26,7 @@ namespace NezzyBird.Systems
                 {
                     var randomX = Random.nextFloat(50f) - 25f;
                     var randomY = Random.nextFloat(50f) - 25f;
-                    entity.setPosition(
+                    sparkle.setPosition(
                         new Vector2(
                             randomX,
                             randomY));
