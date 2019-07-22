@@ -22,7 +22,7 @@ namespace NezzyBird.Entities
             }
             var backgroundSubtexture = atlas.getSubtexture(selectedBackground);
             var backgroundSprite = new Sprite(backgroundSubtexture);
-            backgroundSprite.renderLayer = GameConstants.RenderingLevels.Background;
+            backgroundSprite.setRenderLayer(GameConstants.RenderingLevels.Background);
             addComponent(backgroundSprite);
 
             this.scale = GameConstants.GetGameScale();

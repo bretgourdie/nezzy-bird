@@ -26,7 +26,7 @@ namespace NezzyBird.Entities
             var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird{randomBirdIndex}");
             var birdIdleSprite = birdFlapAnimation.frames.lastItem();
             var sprite = new Sprite(birdIdleSprite);
-            sprite.renderLayer = GameConstants.RenderingLevels.Bird;
+            sprite.setRenderLayer(GameConstants.RenderingLevels.Bird);
             addComponent(sprite);
             addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
             addComponent(new JumpsOnTap(JUMP_HEIGHT));

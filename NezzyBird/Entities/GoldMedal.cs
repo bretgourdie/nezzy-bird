@@ -10,7 +10,9 @@ namespace NezzyBird.Entities
         public GoldMedal(TextureAtlas textureAtlas)
         {
             var subtexture = textureAtlas.getSubtexture("Gold");
-            addComponent(new Sprite(subtexture));
+            var sprite = new Sprite(subtexture);
+            sprite.setRenderLayer(GameConstants.RenderingLevels.Medal);
+            addComponent(sprite);
 
             addComponent(
                 new SparklesCollection(

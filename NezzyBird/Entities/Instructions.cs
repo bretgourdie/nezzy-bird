@@ -12,6 +12,7 @@ namespace NezzyBird.Entities
         {
             var instructionsSubtexture = textureAtlas.getSubtexture("Instructions");
             var sprite = new Sprite(instructionsSubtexture);
+            sprite.setRenderLayer(GameConstants.RenderingLevels.Graphic);
 
             addComponent(sprite);
             addComponent(new Fades(FadeDirection.In, 1f));

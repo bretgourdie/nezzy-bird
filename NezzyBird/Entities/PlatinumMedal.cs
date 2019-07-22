@@ -10,7 +10,9 @@ namespace NezzyBird.Entities
         public PlatinumMedal(TextureAtlas textureAtlas)
         {
             var subtexture = textureAtlas.getSubtexture("Platinum");
-            addComponent(new Sprite(subtexture));
+            var sprite = new Sprite(subtexture);
+            sprite.setRenderLayer(GameConstants.RenderingLevels.Medal);
+            addComponent(sprite);
 
             addComponent(
                 new SparklesCollection(

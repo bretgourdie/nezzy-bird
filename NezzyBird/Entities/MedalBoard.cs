@@ -13,6 +13,7 @@ namespace NezzyBird.Entities
         {
             var subtexture = textureAtlas.getSubtexture("MedalBoard");
             var sprite = new Sprite(subtexture);
+            sprite.setRenderLayer(GameConstants.RenderingLevels.MedalBoard);
             addComponent(sprite);
 
             var startPosition = new Vector2(

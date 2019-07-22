@@ -14,7 +14,7 @@ namespace NezzyBird.Entities
             var foregroundSubtexture = textureAtlas.getSubtexture("Foreground");
 
             var sprite = new Sprite(foregroundSubtexture);
-            sprite.renderLayer = GameConstants.RenderingLevels.Foreground;
+            sprite.setRenderLayer(GameConstants.RenderingLevels.Foreground);
             addComponent(sprite);
 
             addComponent(new EndsGameOnCollision());

@@ -25,10 +25,15 @@ namespace NezzyBird
         public static class RenderingLevels
         {
             public const int Background = 100;
-            public const int Foreground = 50;
-            public const int Pipes = 75;
-            public const int Bird = 25;
-            public const int HUD = 1;
+            public const int Pipe = 90;
+            public const int Foreground = 80;
+            public const int Bird = 70;
+            public const int MedalBoard = 60;
+            public const int Number = 50;
+            public const int Medal = 40;
+            public const int Sparkle = 30;
+            public const int Graphic = 20;
+            public const int Flash = 10;
         }
     }
 }

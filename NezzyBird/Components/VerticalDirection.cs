@@ -24,7 +24,7 @@ namespace NezzyBird.Components
             _openDirection = openDirection;
             var _subtexture = getCorrectSubtexture(textureAtlas, openDirection);
             _sprite = new Sprite(_subtexture);
-            _sprite.renderLayer = GameConstants.RenderingLevels.Pipes;
+            _sprite.setRenderLayer(GameConstants.RenderingLevels.Pipe);
         }
 
         public override void onAddedToEntity()

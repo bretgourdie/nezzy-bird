@@ -17,10 +17,13 @@ namespace NezzyBird.Entities
             var sparkleSprite = new Sprite<int>(
                 SparkleAnimationKey,
                 sparkleAnimation);
-
-            sparkleSprite.getAnimation(SparkleAnimationKey).delay = delay;
+            sparkleSprite.setRenderLayer(GameConstants.RenderingLevels.Sparkle);
 
             this.addComponent(sparkleSprite);
+
+            this.scale = GameConstants.GetGameScale();
+
+            this.name = this.GetType().Name + Time.time;
         }
     }
 }

@@ -22,6 +22,7 @@ namespace NezzyBird.Components
                 GameConstants.SCREEN_HEIGHT);
 
             _overlay = new Sprite(_overlayTexture);
+            _overlay.setRenderLayer(GameConstants.RenderingLevels.Flash);
 
             _setOverlayTextureColor(Color.Transparent);
 

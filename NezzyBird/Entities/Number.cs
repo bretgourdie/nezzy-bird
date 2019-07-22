@@ -15,6 +15,7 @@ namespace NezzyBird.Entities
         {
             removeComponent<Sprite>();
             addComponent(sprite);
+            sprite.setRenderLayer(GameConstants.RenderingLevels.Number);
         }
     }
 }

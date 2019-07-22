@@ -13,6 +13,7 @@ namespace NezzyBird.Entities
         {
             var subtexture = textureAtlas.getSubtexture("GameOver");
             var sprite = new Sprite(subtexture);
+            sprite.setRenderLayer(GameConstants.RenderingLevels.Graphic);
             addComponent(sprite);
 
             addComponent(new Fades(FadeDirection.In, 1f));
