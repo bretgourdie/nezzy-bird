@@ -31,6 +31,8 @@ namespace NezzyBird.Systems
                             randomX,
                             randomY));
 
+                    sparkleSprite.setLocalOffset(sparkle.localPosition);
+
                     sparkleSprite.play(Sparkle.SparkleAnimationKey);
                 }
             }
