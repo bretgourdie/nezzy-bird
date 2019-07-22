@@ -14,24 +14,24 @@ namespace NezzyBird.Systems
         ))
         { }
 
-        public override void process(Entity entity)
+        public override void process(Entity medal)
         {
-            var sparkleCollection = entity.getComponent<SparklesCollection>();
+            var sparkleCollection = medal.getComponent<SparklesCollection>();
 
             foreach(var sparkle in sparkleCollection)
             {
-                var sprite = sparkle.getComponent<Sprite<int>>();
+                var sparkleSprite = sparkle.getComponent<Sprite<int>>();
 
-                if (!sprite.isPlaying)
+                if (!sparkleSprite.isPlaying)
                 {
                     var randomX = Random.nextFloat(50f) - 25f;
                     var randomY = Random.nextFloat(50f) - 25f;
-                    sparkle.setPosition(
+                    sparkle.setLocalPosition(
                         new Vector2(
                             randomX,
                             randomY));
 
-                    sprite.play(Sparkle.SparkleAnimationKey);
+                    sparkleSprite.play(Sparkle.SparkleAnimationKey);
                 }
             }
         }
