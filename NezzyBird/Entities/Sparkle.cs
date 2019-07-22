@@ -8,9 +8,7 @@ namespace NezzyBird.Entities
     {
         public const int SparkleAnimationKey = 0;
 
-        public Sparkle(
-            TextureAtlas textureAtlas,
-            float delay)
+        public Sparkle(TextureAtlas textureAtlas)
         {
             var sparkleAnimation = textureAtlas.getSpriteAnimation("Sparkle");
 

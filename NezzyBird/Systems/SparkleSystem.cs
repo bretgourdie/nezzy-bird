@@ -10,31 +10,30 @@ namespace NezzyBird.Systems
     {
         public SparkleSystem() : base(
             new Matcher().all(
-                typeof(SparklesCollection)
+                typeof(Sparkling)
         ))
         { }
 
         public override void process(Entity medal)
         {
-            var sparkleCollection = medal.getComponent<SparklesCollection>();
+            var sparkling = medal.getComponent<Sparkling>();
 
-            foreach(var sparkle in sparkleCollection)
+            var sparkle = sparkling.Sparkle;
+
+            var sparkleSprite = sparkle.getComponent<Sprite<int>>();
+
+            if (!sparkleSprite.isPlaying)
             {
-                var sparkleSprite = sparkle.getComponent<Sprite<int>>();
+                var randomX = Random.nextFloat(50f) - 25f;
+                var randomY = Random.nextFloat(50f) - 25f;
+                sparkle.setLocalPosition(
+                    new Vector2(
+                        randomX,
+                        randomY));
 
-                if (!sparkleSprite.isPlaying)
-                {
-                    var randomX = Random.nextFloat(50f) - 25f;
-                    var randomY = Random.nextFloat(50f) - 25f;
-                    sparkle.setLocalPosition(
-                        new Vector2(
-                            randomX,
-                            randomY));
+                sparkleSprite.setLocalOffset(sparkle.localPosition);
 
-                    sparkleSprite.setLocalOffset(sparkle.localPosition);
-
-                    sparkleSprite.play(Sparkle.SparkleAnimationKey);
-                }
+                sparkleSprite.play(Sparkle.SparkleAnimationKey);
             }
         }
     }

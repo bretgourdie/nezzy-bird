@@ -14,10 +14,7 @@ namespace NezzyBird.Entities
             sprite.setRenderLayer(GameConstants.RenderingLevels.Medal);
             addComponent(sprite);
 
-            addComponent(
-                new SparklesCollection(
-                    textureAtlas,
-                    SparklesCollection.SparkleSpeed.Gold));
+            addComponent(new Sparkling(textureAtlas));
 
             this.scale = GameConstants.GetGameScale();
 
