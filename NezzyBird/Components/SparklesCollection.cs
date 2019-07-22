@@ -23,8 +23,6 @@ namespace NezzyBird.Components
             SparkleSlots = new List<Sparkle>()
             {
                 new Sparkle(textureAtlas, delay),
-                new Sparkle(textureAtlas, delay),
-                new Sparkle(textureAtlas, delay)
             };
         }
 
