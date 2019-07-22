@@ -28,6 +28,15 @@ namespace NezzyBird.Components
             };
         }
 
+        public override void onAddedToEntity()
+        {
+            foreach (var sparkle in SparkleSlots)
+            {
+                sparkle.setParent(this.entity);
+                this.entity.scene.addEntity(sparkle);
+            }
+        }
+
         public IEnumerator<Sparkle> GetEnumerator()
         {
             return SparkleSlots.GetEnumerator();
