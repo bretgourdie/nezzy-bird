@@ -21,8 +21,6 @@ namespace NezzyBird.Entities
 
             this.addComponent(sparkleSprite);
 
-            this.scale = GameConstants.GetGameScale();
-
             this.name = this.GetType().Name + Time.time;
         }
     }
