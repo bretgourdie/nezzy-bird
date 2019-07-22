@@ -14,6 +14,10 @@ namespace NezzyBird.Entities
         {
             var sparkleAnimation = textureAtlas.getSpriteAnimation("Sparkle");
 
+            sparkleAnimation.setLoop(false);
+            sparkleAnimation.setPingPong(true);
+            sparkleAnimation.setFps(8);
+
             var sparkleSprite = new Sprite<int>(
                 SparkleAnimationKey,
                 sparkleAnimation);
