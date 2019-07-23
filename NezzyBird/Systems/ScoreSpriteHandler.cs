@@ -79,10 +79,10 @@ namespace NezzyBird.Systems
             switch (_numberLocation)
             {
                 case NumberLocation.ScoreHUD:
-                case NumberLocation.HighScoreMedalBoard:
                     startingXCoordinate = GameConstants.SCREEN_WIDTH * .5f;
                     break;
                 case NumberLocation.PlayerScoreMedalBoard:
+                case NumberLocation.HighScoreMedalBoard:
                     startingXCoordinate = GameConstants.SCREEN_WIDTH * .75f + (_sampleRectangle.Width * GameConstants.SPRITE_SCALE_FACTOR);
                     break;
                 default:
@@ -103,18 +103,28 @@ namespace NezzyBird.Systems
             switch (_numberLocation)
             {
                 case NumberLocation.ScoreHUD:
-                case NumberLocation.HighScoreMedalBoard:
                     return getMainScoreYCoordinate();
+                case NumberLocation.HighScoreMedalBoard:
+                    return getHighScoreMedalBoardYCoordinate();
                 case NumberLocation.PlayerScoreMedalBoard:
-                    return getMedalBoardYCoordinate();
+                    return getPlayerScoreMedalBoardYCoordinate();
                 default:
                     throw new System.NotImplementedException();
             }
         }
 
-        private float getMedalBoardYCoordinate()
+        private float getPlayerScoreMedalBoardYCoordinate()
         {
-            const float padding = 2;
+            return getMedalBoardYCoordinate(padding: 8f);
+        }
+
+        private float getHighScoreMedalBoardYCoordinate()
+        {
+            return getMedalBoardYCoordinate(padding: 72f);
+        }
+
+        private float getMedalBoardYCoordinate(float padding)
+        {
             return
                 GameConstants.SCREEN_HEIGHT * 0.5f
                 - (_sampleRectangle.Height * GameConstants.SPRITE_SCALE_FACTOR)
