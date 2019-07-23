@@ -11,15 +11,15 @@ namespace NezzyBird.Systems
     {
         private readonly TextureAtlas _textureAtlas;
 
-        private readonly SpriteSize _spriteSize;
+        private readonly NumberLocation _numberLocation;
 
         private readonly Rectangle _sampleRectangle;
 
         public ScoreSpriteHandler(
-            SpriteSize spriteSize,
+            NumberLocation numberLocation,
             TextureAtlas textureAtlas)
         {
-            _spriteSize = spriteSize;
+            _numberLocation = numberLocation;
             _textureAtlas = textureAtlas;
             _sampleRectangle = getSampleSpriteRectangle();
         }
@@ -60,11 +60,12 @@ namespace NezzyBird.Systems
 
         private string getSpriteSizePrefix()
         {
-            switch (_spriteSize)
+            switch (_numberLocation)
             {
-                case SpriteSize.Large:
+                case NumberLocation.ScoreHUD:
                     return "l";
-                case SpriteSize.Small:
+                case NumberLocation.PlayerScoreMedalBoard:
+                case NumberLocation.HighScoreMedalBoard:
                     return "s";
                 default:
                     throw new System.NotImplementedException();
@@ -75,12 +76,13 @@ namespace NezzyBird.Systems
         {
             float startingXCoordinate;
 
-            switch (_spriteSize)
+            switch (_numberLocation)
             {
-                case SpriteSize.Large:
+                case NumberLocation.ScoreHUD:
+                case NumberLocation.HighScoreMedalBoard:
                     startingXCoordinate = GameConstants.SCREEN_WIDTH * .5f;
                     break;
-                case SpriteSize.Small:
+                case NumberLocation.PlayerScoreMedalBoard:
                     startingXCoordinate = GameConstants.SCREEN_WIDTH * .75f + (_sampleRectangle.Width * GameConstants.SPRITE_SCALE_FACTOR);
                     break;
                 default:
@@ -98,11 +100,12 @@ namespace NezzyBird.Systems
 
         private float getYCoordinate()
         {
-            switch (_spriteSize)
+            switch (_numberLocation)
             {
-                case SpriteSize.Large:
+                case NumberLocation.ScoreHUD:
+                case NumberLocation.HighScoreMedalBoard:
                     return getMainScoreYCoordinate();
-                case SpriteSize.Small:
+                case NumberLocation.PlayerScoreMedalBoard:
                     return getMedalBoardYCoordinate();
                 default:
                     throw new System.NotImplementedException();
@@ -131,10 +134,11 @@ namespace NezzyBird.Systems
             return rectangle;
         }
 
-        public enum SpriteSize
+        public enum NumberLocation
         {
-            Large,
-            Small
+            ScoreHUD,
+            PlayerScoreMedalBoard,
+            HighScoreMedalBoard
         }
     }
 }

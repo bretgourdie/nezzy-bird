@@ -10,6 +10,7 @@ namespace NezzyBird.Entities
         {
             addComponent(new ScoreCounting(score));
             addComponent(new DisplaysNumber(removeAfterBirdDies: false));
+            addComponent(new DisplaysCurrentScore());
 
             this.position = new Vector2(
                 GameConstants.SCREEN_WIDTH,

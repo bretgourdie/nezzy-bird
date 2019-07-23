@@ -11,9 +11,9 @@ namespace NezzyBird.Components
 
         public int NumberSpriteHoldersCount { get { return NumberSpriteHolders.Count; } }
 
-        public int Number { get; private set; }
+        public int Number { get; set; }
 
-        public bool NumberNeedsToBeUpdated { get; private set; }
+        public bool NumberNeedsToBeUpdated { get; set; }
 
         public bool RemoveAfterBirdDies { get; private set; }
 

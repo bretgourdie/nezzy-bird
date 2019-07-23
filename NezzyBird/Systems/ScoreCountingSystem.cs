@@ -15,7 +15,7 @@ namespace NezzyBird.Systems
             ))
         {
             _scoreSpriteHandler = new ScoreSpriteHandler(
-                ScoreSpriteHandler.SpriteSize.Small,
+                ScoreSpriteHandler.NumberLocation.PlayerScoreMedalBoard,
                 textureAtlas);
         }
 

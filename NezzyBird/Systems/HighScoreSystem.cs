@@ -1,57 +1,94 @@
-﻿using Microsoft.Xna.Framework;
-using Nez;
+﻿using Nez;
+using Nez.TextureAtlases;
+using NezzyBird.Components;
 using System.IO;
 
 namespace NezzyBird.Systems
 {
-    public class HighScoreSystem : PassiveSystem
+    public class HighScoreSystem : EntityProcessingSystem
     {
-        public int HighScore { get; private set; }
+        private const string _highScoreFileName = "HighScore.txt";
 
-        private const string _highScoreFile = "HighScore.txt";
+        private readonly ScoreSpriteHandler _scoreSpriteHandler;
 
-        public HighScoreSystem()
+        public HighScoreSystem(TextureAtlas textureAtlas) : base(
+            new Matcher().all(
+                typeof(HighScoreContainer),
+                typeof(DisplaysNumber)
+            ))
         {
-            HighScore = _retrieveScore();
+            _scoreSpriteHandler = new ScoreSpriteHandler(
+                ScoreSpriteHandler.NumberLocation.HighScoreMedalBoard,
+                textureAtlas);
         }
 
-        private int _retrieveScore()
+        public override void process(Entity entity)
         {
-            using (var fsHighScore = TitleContainer.OpenStream(_highScoreFile))
-            {
-                using (var streamReader = new StreamReader(fsHighScore))
-                {
-                    var sHighScore = streamReader.ReadLine();
+            var hs = entity.getComponent<HighScoreContainer>();
+            _handleHighScoreContainer(hs);
 
-                    int highScore;
-                    if (int.TryParse(sHighScore, out highScore))
-                    {
-                        return highScore;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+            var dn = entity.getComponent<DisplaysNumber>();
+            _handleDisplaysNumber(dn, entity, hs.HighScore);
+        }
+
+        private void _handleDisplaysNumber(DisplaysNumber dn, Entity entity, int highScore)
+        {
+            if (dn.Number != highScore)
+            {
+                dn.Number = highScore;
+                dn.NumberNeedsToBeUpdated = true;
+                _scoreSpriteHandler.HandleSprite(entity);
             }
         }
 
-        public void SetScore(int newScore)
+        private void _handleHighScoreContainer(HighScoreContainer hs)
         {
-            if (newScore <= HighScore)
+            if (hs.IsHighScoreRetrieved && hs.WasHighScoreWritten)
             {
                 return;
             }
 
-            HighScore = newScore;
-
-            using (var fsHighScore = TitleContainer.OpenStream(_highScoreFile))
+            if (!hs.IsHighScoreRetrieved)
             {
-                using (var streamWriter = new StreamWriter(fsHighScore))
-                {
-                    streamWriter.Write(HighScore);
-                }
+                var highScore = _retrieveScore();
+                hs.SetHighScore(highScore);
             }
+
+            if (!hs.WasHighScoreWritten)
+            {
+                _setScore(hs);
+                hs.WasHighScoreWritten = true;
+            }
+        }
+
+        private int _retrieveScore()
+        {
+            string sHighScore;
+
+            var highScoreFileText = File.ReadAllText(_highScoreFileName);
+
+            int highScore;
+            if (int.TryParse(highScoreFileText, out highScore))
+            {
+                return highScore;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private void _setScore(HighScoreContainer hs)
+        {
+            if (hs.PlayerScore <= hs.HighScore)
+            {
+                return;
+            }
+
+            hs.SetHighScore(hs.PlayerScore);
+            hs.WasNewHighScore = true;
+
+            File.WriteAllText(_highScoreFileName, hs.HighScore.ToString());
         }
     }
 }

@@ -43,10 +43,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\DisplaysCurrentScore.cs" />
     <Compile Include="Components\Fades.cs" />
     <Compile Include="Components\FadesOnFirstJump.cs" />
     <Compile Include="Components\FloatIn.cs" />
     <Compile Include="Components\GameOverState.cs" />
+    <Compile Include="Components\HighScoreContainer.cs" />
     <Compile Include="Components\MedalContaining.cs" />
     <Compile Include="Components\ParallaxScrolling.cs" />
     <Compile Include="Components\Pause.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Entities\GameOverMenu.cs" />
     <Compile Include="Entities\GetReady.cs" />
     <Compile Include="Entities\GoldMedal.cs" />
+    <Compile Include="Entities\HighScoreDisplay.cs" />
     <Compile Include="Entities\IGameOverState.cs" />
     <Compile Include="Entities\Instructions.cs" />
     <Compile Include="Entities\MedalBoard.cs" />

@@ -14,6 +14,7 @@ namespace NezzyBird.Entities
         {
             var displaysNumber = new DisplaysNumber(removeAfterBirdDies: true);
             addComponent(displaysNumber);
+            addComponent(new DisplaysCurrentScore());
 
             this.setPosition(
                 GameConstants.SCREEN_WIDTH / 2,

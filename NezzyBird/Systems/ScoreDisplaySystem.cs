@@ -13,12 +13,15 @@ namespace NezzyBird.Systems
         public ScoreDisplaySystem(
             Emitter<NezzyEvents> emitter,
             TextureAtlas textureAtlas) : base(
-            new Matcher().all(typeof(DisplaysNumber)))
+                new Matcher().all(
+                    typeof(DisplaysNumber),
+                    typeof(DisplaysCurrentScore)
+            ))
         {
             emitter.addObserver(NezzyEvents.BirdDied, () => _birdDied = true);
             _scoreSpriteHandler =
                 new ScoreSpriteHandler(
-                    ScoreSpriteHandler.SpriteSize.Large,
+                    ScoreSpriteHandler.NumberLocation.ScoreHUD,
                     textureAtlas);
         }
 
