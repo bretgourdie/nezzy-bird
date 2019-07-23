@@ -63,8 +63,6 @@ namespace NezzyBird.Systems
 
         private int _retrieveScore()
         {
-            string sHighScore;
-
             var highScoreFileText = File.ReadAllText(_highScoreFileName);
 
             int highScore;
