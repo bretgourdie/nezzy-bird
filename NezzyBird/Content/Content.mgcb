@@ -116,6 +116,12 @@
 #begin nez/effects/Vignette.mgfxo
 /copy:nez/effects/Vignette.mgfxo
 
+#begin Sounds/death.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/death.ogg
+
 #begin Sounds/jump.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
