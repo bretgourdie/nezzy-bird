@@ -130,6 +130,7 @@
     <Compile Include="Systems\ScrollingSystem.cs" />
     <Compile Include="Systems\GravitySystem.cs" />
     <Compile Include="Systems\BirdSpriteRotationSystem.cs" />
+    <Compile Include="Systems\SoundSystem.cs" />
     <Compile Include="Systems\SparkleSystem.cs" />
     <Compile Include="UI\PlayAndRankButtonRow.cs" />
     <Compile Include="UI\PlayButtonFactory.cs" />

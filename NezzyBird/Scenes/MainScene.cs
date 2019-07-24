@@ -57,7 +57,8 @@ namespace NezzyBird.Scenes
                 new ScoreCountingSystem(textureAtlas),
                 new MedalSelectionSystem(textureAtlas),
                 new SparkleSystem(),
-                new HighScoreSystem(textureAtlas)
+                new HighScoreSystem(textureAtlas),
+                new SoundSystem(emitter)
             };
 
             foreach (var system in initialSystems)
