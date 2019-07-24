@@ -10,12 +10,14 @@ namespace NezzyBird.Systems
     {
         private bool _gameOverWasTriggered;
         private readonly TextureAtlas _textureAtlas;
+        private readonly Emitter<NezzyEvents> _emitter;
 
         public GameOverTriggeringSystem(
             Emitter<NezzyEvents> emitter,
             TextureAtlas textureAtlas)
         {
-            emitter.addObserver(NezzyEvents.BirdDied, _handleGameOverTriggering);
+            _emitter = emitter;
+            _emitter.addObserver(NezzyEvents.BirdDied, _handleGameOverTriggering);
             _textureAtlas = textureAtlas;
         }
 
@@ -40,7 +42,7 @@ namespace NezzyBird.Systems
                 new ScoreCounter(hasScore.Score),
                 new HighScoreDisplay(hasScore.Score),
                 new MedalContainer(hasScore.Score),
-                new GameOverMenu(_textureAtlas)
+                new GameOverMenu(_textureAtlas, _emitter)
             };
 
             scene.addEntity(new GameOverContainer(gameOverStateEntities));

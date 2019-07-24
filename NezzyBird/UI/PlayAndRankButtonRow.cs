@@ -1,6 +1,8 @@
 ﻿using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using Nez.UI;
+using NezzyBird.Systems;
 
 namespace NezzyBird.UI
 {
@@ -8,11 +10,12 @@ namespace NezzyBird.UI
     {
         public void AddToTable(
             TextureAtlas textureAtlas,
-            Table table)
+            Table table,
+            Emitter<NezzyEvents> emitter)
         {
             var gameScale = GameConstants.GetGameScale();
 
-            var playButton = new PlayButtonFactory<T>().Get(textureAtlas);
+            var playButton = new PlayButtonFactory<T>(emitter).Get(textureAtlas);
 
             var rankingButton = new RankingButtonFactory().Get(textureAtlas);
 

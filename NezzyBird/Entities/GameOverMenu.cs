@@ -1,14 +1,18 @@
 ﻿using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using Nez.UI;
 using NezzyBird.Scenes;
+using NezzyBird.Systems;
 using NezzyBird.UI;
 
 namespace NezzyBird.Entities
 {
     public class GameOverMenu : Entity, IGameOverState
     {
-        public GameOverMenu(TextureAtlas textureAtlas)
+        public GameOverMenu(
+            TextureAtlas textureAtlas,
+            Emitter<NezzyEvents> emitter)
         {
             var gameScale = GameConstants.GetGameScale();
 
@@ -19,7 +23,7 @@ namespace NezzyBird.Entities
             var table = stage.addElement(new Table()).setFillParent(true);
             table.padTop(GameConstants.SCREEN_HEIGHT * 3 / 4);
 
-            new PlayAndRankButtonRow<TitleScene>().AddToTable(textureAtlas, table);
+            new PlayAndRankButtonRow<TitleScene>().AddToTable(textureAtlas, table, emitter);
 
             this.addComponent(canvas);
 

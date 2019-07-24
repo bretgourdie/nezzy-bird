@@ -16,6 +16,8 @@ namespace NezzyBird.Components
 
         public readonly EaseType EaseType;
 
+        public bool PlayedTransitionSwoosh { get; set; }
+
         public FloatIn(
             Vector2 startPosition,
             Vector2 endPosition,

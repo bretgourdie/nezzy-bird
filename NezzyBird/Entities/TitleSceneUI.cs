@@ -1,14 +1,18 @@
 ﻿using Nez;
+using Nez.Systems;
 using Nez.TextureAtlases;
 using Nez.UI;
 using NezzyBird.Scenes;
+using NezzyBird.Systems;
 using NezzyBird.UI;
 
 namespace NezzyBird.Entities
 {
     public class TitleSceneUI : Entity
     {
-        public TitleSceneUI(TextureAtlas textureAtlas)
+        public TitleSceneUI(
+            TextureAtlas textureAtlas,
+            Emitter<NezzyEvents> emitter)
         {
             var gameScale = GameConstants.GetGameScale();
 
@@ -25,7 +29,7 @@ namespace NezzyBird.Entities
                 .setPadBottom(400);
             table.row();
 
-            new PlayAndRankButtonRow<MainScene>().AddToTable(textureAtlas, table);
+            new PlayAndRankButtonRow<MainScene>().AddToTable(textureAtlas, table, emitter);
             table.row();
 
             var copyrightImage = new Image(textureAtlas.getSubtexture("Copyright"));

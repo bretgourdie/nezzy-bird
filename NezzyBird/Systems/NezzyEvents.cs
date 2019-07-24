@@ -7,6 +7,7 @@ namespace NezzyBird.Systems
         BirdScored = 1,
         BirdDied = 2,
         BirdJumped = 3,
+        Transition = 4,
     }
 
     public struct NezzyEventsComparer : IEqualityComparer<NezzyEvents>

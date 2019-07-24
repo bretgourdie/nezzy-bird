@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Systems;
 using Nez.Tweens;
 using NezzyBird.Components;
 
@@ -7,11 +8,15 @@ namespace NezzyBird.Systems
 {
     public class FloatInSystem : EntityProcessingSystem
     {
-        public FloatInSystem() : base(
+        private readonly Emitter<NezzyEvents> _emitter;
+
+        public FloatInSystem(Emitter<NezzyEvents> emitter) : base(
             new Matcher().all(
                 typeof(FloatIn)
             ))
-        { }
+        {
+            _emitter = emitter;
+        }
 
         public override void process(Entity entity)
         {
@@ -24,6 +29,12 @@ namespace NezzyBird.Systems
             var timePassed = floatIn.TimePassed;
             var totalTime = floatIn.TotalTime;
             var easeType = floatIn.EaseType;
+
+            if (!floatIn.PlayedTransitionSwoosh)
+            {
+                _emitter.emit(NezzyEvents.Transition);
+                floatIn.PlayedTransitionSwoosh = true;
+            }
 
             var newLerpedPosition = lerpedPosition(start, end, timePassed, totalTime, easeType);
 

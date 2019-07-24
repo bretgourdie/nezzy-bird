@@ -15,10 +15,12 @@ namespace NezzyBird.Scenes
 
             var renderer = new DefaultRenderer { renderTargetClearColor = Color.CornflowerBlue };
 
+            var emitter = new Emitter<NezzyEvents>();
+
             var initialEntities = new Entity[]
             {
                 new Background(textureAtlas, onlyUseDay: true),
-                new TitleSceneUI(textureAtlas),
+                new TitleSceneUI(textureAtlas, emitter),
                 new Foreground(textureAtlas),
                 new TitleScreenBird().GetBird(textureAtlas)
             };
@@ -29,12 +31,12 @@ namespace NezzyBird.Scenes
             }
 
             var scrollingMovement = new ScrollingMovement();
-            var emitter = new Emitter<NezzyEvents>();
 
             var initialSystems = new EntitySystem[]
             {
                 new ParallaxScrollingSystem(),
-                new ScrollingSystem(scrollingMovement, emitter)
+                new ScrollingSystem(scrollingMovement, emitter),
+                new SoundSystem(emitter)
             };
 
             foreach (var system in initialSystems)

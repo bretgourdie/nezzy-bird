@@ -128,6 +128,12 @@
 /processorParam:Quality=Best
 /build:Sounds/jump.ogg
 
+#begin Sounds/transition swoosh.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/transition swoosh.ogg
+
 #begin Textures/Atlas/Backgrounds/Day.png
 /importer:TextureImporter
 /processor:TextureProcessor
