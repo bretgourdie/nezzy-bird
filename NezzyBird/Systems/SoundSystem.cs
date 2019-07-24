@@ -12,6 +12,7 @@ namespace NezzyBird.Systems
         private SoundEffect _jumpSound;
         private SoundEffect _deathSound;
         private SoundEffect _transitionSwoosh;
+        private SoundEffect _scoreSound;
 
         private readonly Emitter<NezzyEvents> _emitter;
 
@@ -32,6 +33,7 @@ namespace NezzyBird.Systems
             _jumpSound = scene.content.Load<SoundEffect>(@"Sounds\jump");
             _deathSound = scene.content.Load<SoundEffect>(@"Sounds\death");
             _transitionSwoosh = scene.content.Load<SoundEffect>(@"Sounds\transition swoosh");
+            _scoreSound = scene.content.Load<SoundEffect>(@"Sounds\score");
         }
 
         private void _registerEvents(Emitter<NezzyEvents> emitter)
@@ -39,6 +41,12 @@ namespace NezzyBird.Systems
             emitter.addObserver(NezzyEvents.BirdJumped, _playJumpSound);
             emitter.addObserver(NezzyEvents.BirdDied, _playDeathSound);
             emitter.addObserver(NezzyEvents.Transition, _playTransitionSwoosh);
+            emitter.addObserver(NezzyEvents.BirdScored, _playScoreSound);
+        }
+
+        private void _playScoreSound()
+        {
+            _playSound(_scoreSound);
         }
 
         private void _playTransitionSwoosh()
