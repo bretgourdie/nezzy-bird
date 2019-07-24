@@ -83,6 +83,7 @@
     <Compile Include="Entities\Instructions.cs" />
     <Compile Include="Entities\MedalBoard.cs" />
     <Compile Include="Entities\MedalContainer.cs" />
+    <Compile Include="Entities\New.cs" />
     <Compile Include="Entities\NoMedal.cs" />
     <Compile Include="Entities\Number.cs" />
     <Compile Include="Entities\Pauser.cs" />

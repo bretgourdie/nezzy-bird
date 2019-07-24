@@ -1,6 +1,7 @@
 ﻿using Nez;
 using Nez.TextureAtlases;
 using NezzyBird.Components;
+using NezzyBird.Entities;
 using System.IO;
 
 namespace NezzyBird.Systems
@@ -10,6 +11,7 @@ namespace NezzyBird.Systems
         private const string _highScoreFileName = "HighScore.txt";
 
         private readonly ScoreSpriteHandler _scoreSpriteHandler;
+        private readonly TextureAtlas _textureAtlas;
 
         public HighScoreSystem(TextureAtlas textureAtlas) : base(
             new Matcher().all(
@@ -20,6 +22,8 @@ namespace NezzyBird.Systems
             _scoreSpriteHandler = new ScoreSpriteHandler(
                 ScoreSpriteHandler.NumberLocation.HighScoreMedalBoard,
                 textureAtlas);
+
+            _textureAtlas = textureAtlas;
         }
 
         public override void process(Entity entity)
@@ -85,6 +89,8 @@ namespace NezzyBird.Systems
 
             hs.SetHighScore(hs.PlayerScore);
             hs.WasNewHighScore = true;
+
+            this.scene.addEntity(new New(_textureAtlas));
 
             File.WriteAllText(_highScoreFileName, hs.HighScore.ToString());
         }
