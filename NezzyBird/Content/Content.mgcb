@@ -116,6 +116,12 @@
 #begin nez/effects/Vignette.mgfxo
 /copy:nez/effects/Vignette.mgfxo
 
+#begin Sounds/jump.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/jump.ogg
+
 #begin Textures/Atlas/Backgrounds/Day.png
 /importer:TextureImporter
 /processor:TextureProcessor
