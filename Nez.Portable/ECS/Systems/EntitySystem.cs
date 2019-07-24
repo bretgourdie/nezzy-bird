@@ -49,6 +49,9 @@ namespace Nez
 				remove( entity );
 		}
 
+        public virtual void onAddedToScene()
+        { }
+
 
 		public virtual void add( Entity entity )
 		{

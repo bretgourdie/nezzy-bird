@@ -1097,6 +1097,7 @@ namespace Nez
 		{
 			processor.scene = this;
 			entityProcessors.add( processor );
+            processor.onAddedToScene();
 			return processor;
 		}
 
