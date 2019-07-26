@@ -15,7 +15,7 @@ namespace NezzyBird.Systems
             new Matcher()
             .all(
                 typeof(JumpsOnTap),
-                typeof(Sprite)))
+                typeof(Sprite<int>)))
         {
             emitter.addObserver(NezzyEvents.BirdJumped, () => _birdHasJumped = true);
         }
@@ -29,7 +29,7 @@ namespace NezzyBird.Systems
                 return;
             }
 
-            var sprite = entity.getComponent<Sprite>();
+            var sprite = entity.getComponent<Sprite<int>>();
 
             TweenManager.stopAllTweensWithTarget(sprite.transform);
 

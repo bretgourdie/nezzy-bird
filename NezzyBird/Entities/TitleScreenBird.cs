@@ -7,7 +7,7 @@ namespace NezzyBird.Entities
     {
         public Bird GetBird(TextureAtlas textureAtlas)
         {
-            var bird = new Bird(textureAtlas, onlyUseBird0: true);
+            var bird = new Bird(textureAtlas, useTitleScreenBird: true);
             bird.position = new Vector2(
                 GameConstants.SCREEN_WIDTH / 2,
                 GameConstants.SCREEN_HEIGHT / 3);

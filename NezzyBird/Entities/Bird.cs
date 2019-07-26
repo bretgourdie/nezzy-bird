@@ -10,24 +10,30 @@ namespace NezzyBird.Entities
     {
         public static readonly float GRAVITY_WEIGHT = 0.50f;
         public static readonly float JUMP_HEIGHT = 9f;
+        private const int _birdFlapAnimation = 0;
 
-        public Bird(TextureAtlas textureAtlas, bool onlyUseBird0 = false)
+        public Bird(TextureAtlas textureAtlas, bool useTitleScreenBird = false)
         {
-            int randomBirdIndex;
-            if (onlyUseBird0)
+            if (useTitleScreenBird)
             {
-                randomBirdIndex = 0;
+                var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird0");
+                var birdIdleSprite = birdFlapAnimation.frames.lastItem();
+                var sprite = new Sprite(birdIdleSprite);
+                sprite.setRenderLayer(GameConstants.RenderingLevels.Bird);
+                addComponent(sprite);
             }
             else
             {
-                randomBirdIndex = Random.choose(0, 1, 2);
+                var randomBirdIndex = Random.choose(0, 1, 2);
+                var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird{randomBirdIndex}");
+                birdFlapAnimation.setFps(30);
+                birdFlapAnimation.setLoop(true);
+                var birdFlapT = new Sprite<int>(_birdFlapAnimation, birdFlapAnimation);
+                birdFlapT.setRenderLayer(GameConstants.RenderingLevels.Bird);
+                addComponent(birdFlapT);
+                birdFlapT.play(_birdFlapAnimation);
             }
 
-            var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird{randomBirdIndex}");
-            var birdIdleSprite = birdFlapAnimation.frames.lastItem();
-            var sprite = new Sprite(birdIdleSprite);
-            sprite.setRenderLayer(GameConstants.RenderingLevels.Bird);
-            addComponent(sprite);
             addComponent(new AffectedByGravity(GRAVITY_WEIGHT));
             addComponent(new JumpsOnTap(JUMP_HEIGHT));
             addComponent(new Mover());

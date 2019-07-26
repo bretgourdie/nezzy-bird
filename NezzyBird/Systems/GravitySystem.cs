@@ -16,7 +16,7 @@ namespace NezzyBird.Systems
                 typeof(WaitsForFirstTap),
                 typeof(Mover),
                 typeof(HasVelocity),
-                typeof(Sprite)
+                typeof(Sprite<int>)
             ))
         {
             var foregroundSprite = foreground.getComponent<Sprite>();
@@ -33,7 +33,7 @@ namespace NezzyBird.Systems
             }
 
             var position = entity.position;
-            var sprite = entity.getComponent<Sprite>();
+            var sprite = entity.getComponent<Sprite<int>>();
 
             if (position.Y + sprite.height / 2 >= _floorY)
             {
