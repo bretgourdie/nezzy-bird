@@ -30,7 +30,7 @@ namespace NezzyBird.Systems
             var hasLife = entity.getComponent<HasLife>();
             var spriteAnimation = entity.getComponent<Sprite<int>>();
 
-            if (hasLife == null)
+            if (hasLife == null || !hasLife.IsAlive)
             {
                 return;
             }
