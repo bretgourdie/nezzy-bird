@@ -36,7 +36,12 @@ namespace NezzyBird.Systems
             }
 
             hasLife.Kill();
-            spriteAnimation.stop();
+
+            if (spriteAnimation != null && spriteAnimation.isPlaying)
+            {
+                spriteAnimation.stop();
+            }
+
             _emitter.emit(NezzyEvents.BirdDied);
         }
 
