@@ -26,7 +26,7 @@ namespace NezzyBird.Entities
             {
                 var randomBirdIndex = Random.choose(0, 1, 2);
                 var birdFlapAnimation = textureAtlas.getSpriteAnimation($"Bird{randomBirdIndex}");
-                birdFlapAnimation.setFps(30);
+                birdFlapAnimation.setFps(20);
                 birdFlapAnimation.setLoop(true);
                 var birdFlapT = new Sprite<int>(_birdFlapAnimation, birdFlapAnimation);
                 birdFlapT.setRenderLayer(GameConstants.RenderingLevels.Bird);
