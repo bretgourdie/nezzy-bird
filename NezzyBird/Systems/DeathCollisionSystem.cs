@@ -1,4 +1,5 @@
 ﻿using Nez;
+using Nez.Sprites;
 using Nez.Systems;
 using NezzyBird.Components;
 
@@ -27,6 +28,7 @@ namespace NezzyBird.Systems
             var entity = e.Entity;
 
             var hasLife = entity.getComponent<HasLife>();
+            var spriteAnimation = entity.getComponent<Sprite<int>>();
 
             if (hasLife == null)
             {
@@ -34,6 +36,7 @@ namespace NezzyBird.Systems
             }
 
             hasLife.Kill();
+            spriteAnimation.stop();
             _emitter.emit(NezzyEvents.BirdDied);
         }
 
