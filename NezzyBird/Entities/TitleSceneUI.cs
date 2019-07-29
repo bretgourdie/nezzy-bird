@@ -34,7 +34,8 @@ namespace NezzyBird.Entities
 
             var copyrightImage = new Image(textureAtlas.getSubtexture("Copyright"));
             copyrightImage.setScale(gameScale.X, gameScale.Y);
-            table.add(copyrightImage);
+            table.add(copyrightImage)
+                .setPadTop(50f);
 
             this.addComponent(canvas);
 
