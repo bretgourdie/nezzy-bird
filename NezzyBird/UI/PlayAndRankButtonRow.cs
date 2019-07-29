@@ -17,7 +17,7 @@ namespace NezzyBird.UI
 
             var playButton = new PlayButtonFactory<T>(emitter).Get(textureAtlas);
 
-            var rankingButton = new RankingButtonFactory().Get(textureAtlas);
+            var rankingButton = new RankingButtonFactory(emitter).Get(textureAtlas);
 
             playButton.gamepadRightElement = rankingButton;
             rankingButton.gamepadLeftElement = playButton;
